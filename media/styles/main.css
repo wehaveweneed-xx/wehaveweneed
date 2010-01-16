@@ -42,12 +42,22 @@ div#pageMain { width: 960px; margin: 0 auto;}
 
 h2, h3 { font-family: Georgia, Times New Roman, Times, serif; color:#55504E; margin-bottom: 20px; font-style: oblique;}
 h2 { font-size: 210%; }
-h3 { font-size: 180%;}
+h3 { font-size: 150%;}
+
+h2.detailHeader { float: left;}
+a#reportProblem { float: right; padding-top:5px;}
 
 div#ltColumn, div#rtColumn { float: left; margin-top: 50px;}
+div#ltColumn { width: 690px; margin-right: 30px;}
+div#rtColumn { width: 210px; margin-left: 30px;}
 
-body.home div#ltColumn { float: left; width: 290px; margin-right: 30px; margin-top: 0px;}
-body.home div#rtColumn { float: left; width: 610px; margin-left: 30px; margin-top: 0px;}
+body.home div#ltColumn { width: 290px; margin-top: 0px;}
+body.home div#rtColumn { width: 610px; margin-top: 0px;}
+
+span.detailHeader { font-weight: bold; width: 120px; display: block; float: left;}
+
+div#contactInfo { margin-top: 20px; background: #dee6ec; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 20px; border: 1px solid #ccd4da; margin-bottom: 30px;}
+div#contactInfo h3 { float: left; margin-right: 15px;}
 
 input, textarea { -moz-border-radius: 3px; -webkit-border-radius: 3px; border: 2px solid #e2e7e7; padding: 3px; border: 1px solid #d1d7db;}
 
