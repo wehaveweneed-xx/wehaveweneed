@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
+from django.contrib.auth.views import login, logout, password_change
+from wehaveweneed.web.views import *
 
 admin.autodiscover()
 
