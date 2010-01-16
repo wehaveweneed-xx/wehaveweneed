@@ -70,4 +70,13 @@ div#ltColumn input, div#ltColumn textarea { width: 300px;}
 
 div#ltColumn input.radio { margin-right: 7px; width: 15px;}
 
+tr.odd{ background: #fff; }
+tr.even{ background: #eaf0f5;}
+td.left, th.left { padding-left: 15px; padding-right: 10px;}
+td.right, th.right { padding-right: 15px;}
+td.center, th.center { padding-right: 10px;}
+
+tbody td { padding-bottom: 10px; padding-top: 10px; }
+tr#titles th { font-weight: bold; font-size: 110%; padding-bottom: 10px;}
+
 .clear { clear: both;}
