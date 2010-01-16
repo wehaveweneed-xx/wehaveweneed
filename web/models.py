@@ -1,12 +1,13 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 
 POSTCHOICE = (
-	('have', 'Offer')
+	('have', 'Offer'),
 	('need', 'Request')
 )
 PRIORITYCHOICE = (
-	('immediate', 'Immediate / Life-Saving')
+	('immediate', 'Immediate / Life-Saving'),
 	('midterm', 'Mid-Term / Life-Sustaining')
 )
 
