@@ -15,12 +15,13 @@ PRIORITYCHOICE = (
 class Category(models.Model):
     name = models.CharField(max_length=200)
     slug = models.CharField(max_length=200)
+    parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
     
     class Meta:
         ordering = ('name',)
     
     def __unicode__(self):
-        return self.name
+        return '%s/%s' % (self.parent, self.name,)
 
 class UserProfile(models.Model):
     user  = models.ForeignKey(User, unique=True)
