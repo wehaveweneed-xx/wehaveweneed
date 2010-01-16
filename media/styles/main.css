@@ -18,9 +18,9 @@ body{
   	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-div#headerWrapper { background: url(media/images/header_bg.jpg) top left repeat-x;}
+div#headerWrapper { background: url(/media/images/header_bg.jpg) top left repeat-x;}
 h1 { float: left; width: 146px; height: 72px; margin-top: 20px;}
-h1 a { background: url(media/images/logo.png) top left no-repeat; width: 146px; height: 72px; display: block; text-indent: -9999em;}
+h1 a { background: url(/media/images/logo.png) top left no-repeat; width: 146px; height: 72px; display: block; text-indent: -9999em;}
 div#utility { float: right; margin-top: 15px; line-height: 12px;}
 div#utility li { float: left;}
 li#utilityRegister { margin-right: 15px; padding-right: 15px; border-right: 1px solid #DDE3E8;}
