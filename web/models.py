@@ -37,7 +37,7 @@ class Post(models.Model):
     location    = models.CharField(max_length=100)
     geostamp    = models.CharField(max_length=100, blank=True)
     time_start  = models.DateTimeField(default=datetime.utcnow, blank=True)
-    time_end    = models.DateTimeField(blank=True)
+    time_end    = models.DateTimeField(blank=True, null=True)
     category    = models.ForeignKey(Category)
     contact     = models.ForeignKey(User, blank=True, null=True)
     content     = models.TextField()
