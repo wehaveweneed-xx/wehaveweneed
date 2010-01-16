@@ -3,12 +3,12 @@ from datetime import datetime
 from django.contrib.auth.models import User
 
 POSTCHOICE = (
-  ('have', 'Offer'),
-  ('need', 'Request'),
+  ('have', 'Have'),
+  ('need', 'Need'),
 )
 PRIORITYCHOICE = (
   ('short', 'Immediate / Life-Saving'),
-  ('mide', 'Mid-Term / Life-Sustaining'),
+  ('mid', 'Mid-Term / Life-Sustaining'),
   ('long', 'Long-Term / Life-Enhancing'),
 )
 
@@ -37,7 +37,7 @@ class Post(models.Model):
     location    = models.CharField(max_length=100)
     geostamp    = models.CharField(max_length=100, blank=True)
     time_start  = models.DateTimeField(default=datetime.utcnow, blank=True)
-    time_end    = models.DateTimeField(blank=True)
+    time_end    = models.DateTimeField(blank=True, null=True)
     category    = models.ForeignKey(Category)
     contact     = models.ForeignKey(User, blank=True, null=True)
     content     = models.TextField()
