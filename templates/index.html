@@ -1,58 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-	<head>
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>WeHaveWeNeed.org</title>
-		<link rel="stylesheet" href="media/styles/main.css" type="text/css" media="screen" />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-		<script type="text/javascript" src="js/dataCatalog.js"></script>
+{% extends "base.html" %}
 
-		<!--[if IE 6]><link rel="stylesheet" href="buggy.css" type="text/css" media="screen" /><![endif]-->
-		<!--[if IE 7]><link rel="stylesheet" href="buggy7.css" type="text/css" media="screen" /><![endif]-->
-
-	</head>
-	<body class="home">
-		<div id="headerWrapper">
-			<div id="pageMain">
-				<div id="header">
-					<div id="utility">
-				        <ul>
-				            <li id="utilityRegister"><a href="/register">Register</a></li>
-				            <li id="utilitySignup"><a href="/login">Log In</a></li>
-				        </ul>
-					</div>
-					<div class="clear"></div>
-					<h1><a href="/">We Have We Need</a></h1>
-					<div id="nav">
-						<ul>
-							<li id="nav_post"><a href="/post">Post</a></li>
-				            <li id="nav_have"><a href="/haves">Haves</a></li>
-				            <li id="nav_need"><a href="/needs">Needs</a></li>
-						</ul>
-					</div>
-					<div class="clear"></div>
-					<div id="search">
-						<span id="searchTitle">Search</span>
-						<form id="searchForm" action="." method="get">
-							<select id="id_sources" name="sources">
-								<option value="all">Search All Categories</option>
-								<option value="1">Category 1</option>
-								<option value="2">Category 2</option>
-								<option value="3">Category 3</option>
-							</select>
-							<input id="id_skills" type="text" name="skills"/>
-			            	<button class="searchBtn" type="submit">
-                            	<span>Go</span>
-                        	</button>
-						</form>
-					</div>	
-				</div>
+      	{% block featureBox %}
 				<div id="featureBox">
 					<h2>Welcome to We Have We Need</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis viverra elit non varius. Aenean pretium, sem eget pulvinar egestas, neque augue scelerisque ipsum, in porta tortor lectus vel odio. Mauris ut turpis nulla, nec dapibus nisi. Fusce consequat congue euismod. Fusce at leo ac tortor tincidunt porta. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
 				</div>
+	      {% endblock %}  <!-- featureBox -->
+      	{% block ltColumn %}
 				<div id="ltColumn">
 					<h3>Categories</h3>
 					<ul>
@@ -98,6 +52,8 @@
 						</ul>
 					</ul>	
 				</div>
+	      {% endblock %}  <!-- ltColumn -->
+      	{% block rtColumn %}
 				<div id="rtColumn">
 					<h3>Recent Wants and Needs</h3>
 					<ul>
@@ -106,8 +62,4 @@
 						</li>	
 					</ul>	
 				</div>
-				<div class="clear"></div>			
-			</div>
-		</div>
-	</body>
-</html>					
+	      {% endblock %}  <!-- rtColumn -->
