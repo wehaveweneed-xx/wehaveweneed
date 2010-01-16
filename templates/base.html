@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>pie.videntity.com</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="description" content="This is an open source home health monitoring system from Videntity.  Commercial support videntity.com Empowering patients, health care providers and payers."/>
+
+		<link href="{{web_server}}css/base-style.css" type="text/css" rel="stylesheet" /> 
+		<script language="javascript" src="{{web_server}}js/form_validation.js" type="text/javascript"></script>
+	
+	{% block head %}
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+	{% endblock %}
+        
+        
+        <script language="JavaScript">
+            <!-- 
+            var officeoffset = 240;
+            browser = (parseInt(navigator.appVersion) >= 4)
+            var weekdays=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+            if(! weekdays) { browser = 0; }
+            if(browser) {
+            var visitortime = new Date();
+            var visitoroffset = visitortime.getTimezoneOffset();
+            if(visitoroffset < 0) { visitoroffset = Math.abs(visitoroffset) + 720; }
+            else { visitoroffset = 720 - visitoroffset; }
+            if(officeoffset < 0) { officeoffset = Math.abs(officeoffset) + 720; }
+            else { officeoffset = 720 - officeoffset; }
+            var diff = officeoffset - visitoroffset;
+            var officetime = new Date();
+            officetime.setTime(Number(visitortime) + (diff * 60000));
+            } // -->
+        </script>
+	
+</head>
+	<body>
+	{%block high_breadcrumbs %} {% endblock %}
+	
+       <script type="text/javascript">
+
+            // function to calculate local time
+            // in a different city
+            // given the city's UTC offset
+            function calcTime(city, offset)
+            {
+            // create Date object for current location
+            d = new Date();
+   
+            // convert to msec
+            // add local time zone offset
+            // get UTC time in msec
+            utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+   
+            // create new Date object for different city
+            // using supplied offset
+            nd = new Date(utc + (3600000*offset));
+   
+            // return time as a string
+            return "The local time in " + city + " is " + nd.toLocaleString();
+            }
+
+// get Bombay time
+(calcTime('Bombay', '+5.5'));
+
+// get Singapore time
+(calcTime('Singapore', '+8'));
+
+// get London time
+(calcTime('London', '+1'));
+
+</script>
+	
+	<div id="wrapper">
+		
+		<h1>PIE - Personal Information Exchange</h1>
+
+		{% if user.is_authenticated %}
+    		<p align="right">Hello <strong style="color:#7fb13b;">{{ user.first_name }}</strong>. You're logged in.</p>
+		<div id="top-nav">
+			<br>
+				   
+				   <a href="/">Home</a>|
+				   <a href="/accounts">Accounts</a>|
+				   <a href="/inbox">Inbox</a>|
+				   <a href="/sent">Sent</a>|
+				   <a href="/files">Upload a File</a>|
+				   <a href="/send">Send a File</a>|
+				   <a href="/accounts/logout">Logout</a>
+	       	</div>
+
+		{% else %}
+    		<p align="right"><strong style="color:#7fb13b;">Welcome. Please log in.</strong></p>
+
+		<div id="top-nav">
+			<br/>
+				   <a href="/accounts/login">Login</a>
+				   <a href="/">Home</a>|
+				   <a href="/accounts">Accounts</a>|
+				   <a href="/inbox">Inbox</a>|
+				   <a href="/sent">Sent</a>|
+				   <a href="/files">Upload a File</a>|
+				   <a href="/transactions">Send a File</a>|
+				   
+	       	</div>
+		{% endif %}
+                
+                
+<br><br>
+        <div id="top-time">
+            <script language="JavaScript">
+                <!-- 
+                if(browser) {
+                document.write('<table><tr><td align="right">');
+                document.write("Your Local Time:</td><td><b>");
+                document.write(visitortime.getHours() + ':');
+                if(visitortime.getMinutes() < 10) { document.write('0'); }
+                document.write(visitortime.getMinutes()); 
+                document.write('</b> on ' + weekdays[visitortime.getDay()]);
+                document.write('</td></tr><tr><td align="right">');
+
+                document.write("Web site Business Office:</td><td><b>");
+                document.write(officetime.getHours() + ':');
+                if(officetime.getMinutes() < 10) { document.write('0'); }
+                document.write(officetime.getMinutes()); 
+                document.write('</b> on ' + weekdays[officetime.getDay()]);
+                document.write('</td></tr></table>');
+                } -->
+            </script>
+
+            <script language="JavaScript">
+                <!-- 
+                if(browser)
+                    {
+                    document.write("Your Local Time: ");
+                    document.write(visitortime.getHours() + ':');
+
+                    if(visitortime.getMinutes() < 10) { document.write('0'); }
+                    document.write(visitortime.getMinutes());
+                    document.write(' on ' + weekdays[visitortime.getDay()]);
+                    } //-->
+            </script>
+        </div>
+
+
+	       	<div id="box">
+	       	   	<img src="{{web_server}}images/box-top.gif" alt="image" width="891" height="9" /><div id="box-content">
+                    	{% block heading %}
+			
+			{% endblock %}
+			<img src="{{web_server}}images/highlight-box-top.gif" alt="image" width="844" height="9" /><div id="highlight">
+	
+	
+	{%block main_content %}{% endblock %}
+	{%block extra_body %}{% endblock%}
+	{%block low_breadcrumbs %}{% endblock %}
+	 
+	
+
+<div style="clear:both;padding-top:20px;text-align:center">
+                           
+                        </div>
+			
+			
+                         
+                </div><img src="{{web_server}}images/highlight-box-bottom.gif" alt="image" width="844" height="9" /></div><img src="{{web_server}}images/box-bottom.gif" alt="image" width="891" height="9" /></div></div>                                               
+                    	   
+	   <div id="footer">
+	       Copyright &#169; 2009 <a href="http://www.videntity.com">Videntity Systems, Inc.</a><br>
+	   <center>This Application is Powered by: <br><a href="http://videntity.com"><img src="http://videntity.com/images/videntity_logo_final_w_background.jpg"></img></a></center>
+	   </div>
+	   
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2867645-1";
+urchinTracker();
+</script>
+
+
+</body>
+</html>
