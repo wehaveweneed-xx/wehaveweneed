@@ -41,7 +41,6 @@ class Post(models.Model):
     category    = models.ForeignKey(Category)
     contact     = models.ForeignKey(User, blank=True, null=True)
     content     = models.TextField()
-
     class Meta:
         ordering = ('-created_at',)
 

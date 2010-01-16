@@ -13,6 +13,6 @@ class PostHandler(BaseHandler):
             if post_type:
                 posts = posts.filter(type=post_type)
             if category:
-                posts = posts.filter(category=category)
+                posts = posts.filter(category__slug=category)
             return posts
        
