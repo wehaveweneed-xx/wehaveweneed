@@ -3,8 +3,8 @@ from datetime import datetime
 from django.contrib.auth.models import User
 
 POSTCHOICE = (
-  ('have', 'Offer'),
-  ('need', 'Request'),
+  ('have', 'Have'),
+  ('need', 'Need'),
 )
 PRIORITYCHOICE = (
   ('short', 'Immediate / Life-Saving'),
