@@ -60,5 +60,14 @@ div#contactInfo { margin-top: 20px; background: #dee6ec; -moz-border-radius: 3px
 div#contactInfo h3 { float: left; margin-right: 15px;}
 
 input, textarea { -moz-border-radius: 3px; -webkit-border-radius: 3px; border: 2px solid #e2e7e7; padding: 3px; border: 1px solid #d1d7db;}
+label { font-weight: bold; width: 120px; display: block; float: left;}
+label#timeHeader { float: none; margin-bottom: 10px;}
+ul#timeDetails label{ padding-left: 15px; color: #99918d;}
+ul#timeDetails input{ margin-left: -15px;}
+form li { margin-bottom: 15px;}
+
+div#ltColumn input, div#ltColumn textarea { width: 300px;}
+
+div#ltColumn input.radio { margin-right: 7px; width: 15px;}
 
 .clear { clear: both;}

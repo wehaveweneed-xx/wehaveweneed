@@ -51,12 +51,14 @@
 				</div>
 				<div id="ltColumn">
 					<h3>Post</h3>
-					<form id="signupForm" action="." method="get">
+					<h2>Post</h2>
+					<form id="postForm" action="." method="get">
 					<ul>
 						<li>
 							<label><input class="radio" type="radio" name="word" />Have</label>
 							<label><input class="radio" type="radio" name="word" />Need</label>
 						</li>
+						<li class="clear"></li>	
 						<li>
 							<label>Category</label>
 							<select class="category" name="category">
@@ -78,8 +80,8 @@
         					<input id="location" class="full" type="text" name="word" />
 						</li>
 						<li>
-							<label>Time</label>
-							<ul>
+							<label id="timeHeader">Time</label>
+							<ul id="timeDetails">
 								<li>
 									<label>To</label>
 									<input id="to" class="full" type="text" name="word" />
@@ -88,17 +90,19 @@
 									<label>From</label>
 									<input id="from" class="full" type="text" name="word" />
 								</li>
-								<label>Description</label>
-								<textarea id="id_description" class="textarea" rows="5" cols="32" name="description"></textarea>
 							</ul>	
 						</li>
+						<li>
+							<label>Description</label>
+							<textarea id="id_description" class="textarea" rows="5" cols="32" name="description"></textarea>
+						</li>	
 						<li>
 							<button class="postBtn" type="submit">
                             	<span>Post!</span>
                         	</button>
 						</li>	
 					</ul>
-					</form>	
+					</form>
 				</div>
 				<div id="rtColumn">
 	
