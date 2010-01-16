@@ -1,17 +1,5 @@
-from django.conf.urls.defaults import *
 from django.contrib.syndication.feeds import Feed
 from wehaveweneed.web.models import Post, Category
-
-feeds = {
-  'all': AllFeed,
-  'haves': HavesFeed,
-  'needs': NeedsFeed,
-  'category': CategoryFeed
-}
-
-urlpatterns = patterns (
-  url(r'^feeds/(?P<url>\w+)$', 'django.contrib.syndication.views.feed', {'feed_dict': 'feeds'}),
-)
 
 class AllFeed(Feed):
   title = "Wehaveweneed haves and needs from all categories"
@@ -22,28 +10,34 @@ class AllFeed(Feed):
     return Post.objects.all()[:20]
 
 
-class HavesFeed(Feed):
+class HaveFeed(Feed):
   title = "Wehaveweneed haves"
-  link = "/haves/"
+  link = "/have/"
   description = "Haves from all categories"
   
   def items(self):
     return Post.objects.filter(type='have')[:20]
 
 
-class NeedsFeed(Feed):
+class NeedFeed(Feed):
   title = "Wehaveweneed needs"
-  link = "/needs/"
+  link = "/need/"
   description = "Needs from all categories"
   
   def items(self):
-    return Post.objects.all(type='needs')[:20]
+    return Post.objects.filter(type='need')[:20]
 
 
+# Display feed for a specific category
+# Unrecognized categories cause an empty list to be generated
+# The code for handling unrecognized categories is ugly and needs to be cleaned up
 class CategoryFeed(Feed):
   def get_object(self, bits):
+    # Currently using only the first bit
+    if not len(bits):
+      return "category"
     category = Category.objects.get(category__slug=bits[0])
-    if category == None:
+    if not category:
       return bits[0]
     else:
       return category
@@ -59,7 +53,7 @@ class CategoryFeed(Feed):
   def link(self, obj):
     if type(obj).__name__ == 'str':
       return obj
-    else
+    else:
       return obj.name
 
   def description(self, obj):
@@ -68,7 +62,7 @@ class CategoryFeed(Feed):
       name = obj
     else:
       name = obj.name
-    return "Haves and needsd from category: %s" % obj.name
+    return "Haves and needsd from category: %s" % name
 
   def items(self, obj):
     if type(obj).__name__ == 'str':
