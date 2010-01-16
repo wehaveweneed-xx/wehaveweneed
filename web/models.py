@@ -15,19 +15,21 @@ PRIORITYCHOICE = (
 class Category(models.Model):
     name = models.CharField(max_length=200)
     slug = models.CharField(max_length=200)
+    parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
     
     class Meta:
         ordering = ('name',)
     
     def __unicode__(self):
-        return self.name
+        return '%s/%s' % (self.parent, self.name,)
 
 class UserProfile(models.Model):
     user  = models.ForeignKey(User, unique=True)
     phone = models.CharField(max_length=100)
 
     def __unicode__(self):
-        return self.user
+        return 'profile of %s' % self.user.username
+
 
 class Post(models.Model):
     created_at  = models.DateTimeField(default=datetime.utcnow)
@@ -41,6 +43,9 @@ class Post(models.Model):
     category    = models.ForeignKey(Category)
     contact     = models.ForeignKey(User, blank=True, null=True)
     content     = models.TextField()
+    responses   = models.IntegerField(default=0)
+    fulfilled   = models.BooleanField(default=False)
+
     class Meta:
         ordering = ('-created_at',)
 
