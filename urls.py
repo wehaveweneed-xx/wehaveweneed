@@ -6,4 +6,5 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('wehaveweneed.api.urls')),
+    url(r'^login/', 'django.contrib.auth.views.login'),
 )

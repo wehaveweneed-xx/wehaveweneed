@@ -25,6 +25,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'wehaveweneed.urls'
 
+AUTH_PROFILE_MODULE = 'web.userprofile'
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -32,6 +34,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'piston',
+    'wehaveweneed.web',
+    'wehaveweneed.api',
 )
 
 try:
