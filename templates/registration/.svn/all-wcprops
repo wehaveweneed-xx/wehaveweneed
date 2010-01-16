@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration
+END
+accounts_land.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/accounts_land.html
+END
+login_centered.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/login_centered.html
+END
+phone_number.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/phone_number.html
+END
+register.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/register.html
+END
+site_key_login.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/site_key_login.html
+END
+login_bak.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/login_bak.html
+END
+login_refresh.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/login_refresh.html
+END
+pin.html
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/pin.html
+END
+login.html
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/login.html
+END
+no_match.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/no_match.html
+END
+logout.html
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/logout.html
+END
+register_attention.html
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/pie/!svn/ver/34/trunk/pie/pie/templates/registration/register_attention.html
+END

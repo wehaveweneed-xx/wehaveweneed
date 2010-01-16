@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+ 
+{% block title %}Register for an Account - {{ block.super }}{% endblock %}
+ 
+{% block main_content %}
+<h1>Create an Account</h1>
+    <form action="." method="POST">
+        <table cellspacing="8" style="width:800px;border-top:1px solid #CCCCCC;">
+    
+        {% for field in form %}
+        <tr>
+            
+            <td style="text-align:right;">{{ field.label }}:</td>
+            <td> {{ field }}</td> 
+            <td style="text-align:left;color:red;"> {{ field.errors }}</td>
+            
+        </tr>
+        {% endfor %}
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+            <input type="submit" value="Create the account">
+            </td>
+        </tr>
+        
+        </table>
+
+		
+    </form>
+        
+        
+    
+  
+
+{% endblock %}

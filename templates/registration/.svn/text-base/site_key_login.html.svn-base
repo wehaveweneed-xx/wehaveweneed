@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block heading %}
+
+	            <h1>
+                        <strong style="color:#7fb13b;">Site Key Login</strong> 
+                    </h1>
+                    <div>
+                        <p style="float:left;width:550px;">
+                        To log in please enter your phone number and pin and select a method of transmission for your site key.
+                        Your site key will be sent to your phone to verify you. 
+                        <div style="clear:both;"></div>  
+                    </div>
+              
+
+     
+                                                         			
+{% endblock %}
+
+
+{% block main_content %}
+	
+
+
+<p style="text-align:left;color:red;">{{error}}</p>
+
+<form method="post" action=".">
+<table cellspacing="8" frame="border" bgcolor="#427cce">
+<caption> <strong style="color:black;">TEXT LOGIN</strong></caption>
+
+<tr>
+	<td><strong style="color:white;">{{ form.phone_number.label_tag }}</strong> </td><td>{{ form.phone_number }}</td>		
+
+
+</tr>
+<tr>
+	<td><strong style="color:white;">{{ form.pin.label_tag }}</strong> </td><td>{{ form.pin }}</td>
+
+</tr>
+<tr>
+	<td><strong style="color:white;">{{ form.site_key_transmission.label_tag}}</strong> </td><td>{{ form.site_key_transmission}}</td>
+
+</tr>
+
+</table>
+
+
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+
+
+<script language="JavaScript">
+var visitortime = new Date();
+document.write('<input type="hidden" name="tz_offset" ');
+if(visitortime) {
+document.write('value="' + visitortime.getTimezoneOffset()/60 + '">');
+}
+else {
+document.write('value="JavaScript not Date() enabled">');
+}
+</script>
+</form>
+
+	
+	
+{% endblock %}

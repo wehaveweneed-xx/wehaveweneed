@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block head %}
+<meta http-equiv="refresh" content="0;url={% url login.views.login_site %}"> 
+{% endblock %}
+

@@ -1,0 +1,50 @@
+
+
+<head>
+<style type="text/css">
+html, body, #wrapper {
+      height:100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+      text-align: center;
+   }
+   #wrapper {
+      margin: 0 auto;
+      text-align: left;
+      vertical-align: middle;
+      width: 400px;
+   }
+</style>
+</head>
+
+<body>
+   <table>
+      <tr>
+         <td>This is centered</td>
+      </tr>
+   </table>
+</body>
+
+<p style="text-align:left;color:red;">{{error}}</p>
+
+<form method="post" action=".">
+<table cellspacing="8" id="wrapper" frame="border" bgcolor="#dd5f22">
+<caption> <strong style="color:black;">USER LOGIN</strong></caption>
+
+<tr>
+	<td><strong style="color:white;">{{ form.phone_number.label_tag }}</strong> </td><td>{{ form.phone_number }}</td>		
+	<td style="text-align:left;color:white;">{{ form.phone_number.errors }}</td>
+
+</tr>
+<tr>
+	<td><strong style="color:white;">{{ form.pin.label_tag }}</strong> </td><td>{{ form.pin }}</td>
+	<td style="text-align:left;color:white;">{{ form.pin.errors }}</td>
+</tr>
+</table>
+
+<br>
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
