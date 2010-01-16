@@ -9,7 +9,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('wehaveweneed.api.urls')),
-    url(r'^feeds/', include('wehaveweneed.api.feeds')),
     url(r'^login/', 'django.contrib.auth.views.login'),
     url(r'^logout/', 'django.contrib.auth.views.logout'),
     url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
@@ -18,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^haves/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
     url(r'^needs/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
     url(r'^search/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
-    url(r'^post/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
+    url(r'^post/', 'django.views.generic.simple.direct_to_template', {'template': 'post.html'}),
     
     
 )
