@@ -3,12 +3,13 @@ from datetime import datetime
 from django.contrib.auth.models import User
 
 POSTCHOICE = (
-    ('have', 'Offer'),
-    ('need', 'Request')
+    ('have', 'Have'),
+    ('need', 'Need'),
 )
 PRIORITYCHOICE = (
-    ('immediate', 'Immediate / Life-Saving'),
-    ('midterm', 'Mid-Term / Life-Sustaining')
+    ('short', 'Immediate / Life-Saving'),
+    ('mid', 'Mid-Term / Life-Sustaining'),
+    ('long', 'Long-Term / Life-Enhancing'),
 )
 
 class Category(models.Model):
@@ -36,7 +37,7 @@ class Post(models.Model):
     category            = models.ForeignKey(Category)
     contact_name    = models.CharField(max_length=100)
     contact_email = models.CharField(max_length=100)
-    contact_phone = models.CharField(max_length=40)
+    contact_phone = models.CharField(max_length=40, blank=True)
     user                    = models.ForeignKey(User, blank=True, null=True)
     content             = models.TextField()
     
