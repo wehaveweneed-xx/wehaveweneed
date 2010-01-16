@@ -9,9 +9,9 @@ feeds = {
   'category': CategoryFeed
 }
 
-urlpatterns = patterns {
+urlpatterns = patterns (
   url(r'^feeds/(?P<url>\w+)$', 'django.contrib.syndication.views.feed', {'feed_dict': 'feeds'}),
-}
+)
 
 class AllFeed(Feed):
   title = "Wehaveweneed haves and needs from all categories"
