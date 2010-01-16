@@ -1,5 +1,5 @@
 from django.db import models
-from datetime datetime
+from datetime import datetime
 
 POSTCHOICE = (
 	('have', 'Offer')
