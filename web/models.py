@@ -8,7 +8,7 @@ POSTCHOICE = (
 )
 PRIORITYCHOICE = (
   ('short', 'Immediate / Life-Saving'),
-  ('mide', 'Mid-Term / Life-Sustaining'),
+  ('mid', 'Mid-Term / Life-Sustaining'),
   ('long', 'Long-Term / Life-Enhancing'),
 )
 
