@@ -1,0 +1,2 @@
+Django
+-e hg+http://bitbucket.org/jespern/django-piston/#egg=piston
