@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block extra_head %}
+
+
+{% endblock %}
+
+{% block main_content %}
+    <p><h1>Hello!</h1>
+    <p>PIE facilites secure information exchange between providers, payers, and patients.  Let's get started. </p>
+    
+    {% if user.is_authenticated %}
+    <p>Try it out! <a href="/files">Upload a file to transfer.</a></p>
+    {% else %}
+    <p>Please <a href="/accounts/login">Log In</a>.</p>
+    {% endif %}  
+
+    
+    	
+{% endblock %}
