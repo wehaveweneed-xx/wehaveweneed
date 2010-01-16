@@ -28,35 +28,33 @@
 
 
 	<body class="home">
-		
-		<div id="headerWrapper">
-			<div id="pageMain">
-				
-	{%block utility %}
-		{% if user.is_authenticated %}
-    		
 
-		{% else %}
-    		
-		
-		{% endif %}
-                
-	
-	
-	{% endblock %}
-	
-
+    {% block headerWrapper %}
 		<div id="headerWrapper">
+      {% block pageMain %}
 			<div id="pageMain">
+        {% block header %}
 				<div id="header">
+      	  {% block utility %}
+		      {% if user.is_authenticated %}
 					<div id="utility">
 				        <ul>
 				            <li id="utilityRegister"><a href="/register">Register</a></li>
 				            <li id="utilitySignup"><a href="/login">Log In</a></li>
 				        </ul>
 					</div>
+		      {% else %}
+					<div id="utility">
+				        <ul>
+				            <li id="utilityRegister"><a href="/register">Account Settings</a></li>
+				            <li id="utilitySignup"><a href="/login">Log Out</a></li>
+				        </ul>
+					</div>
+      		{% endif %}
+	        {% endblock %}  <!-- utility -->
 					<div class="clear"></div>
 					<h1><a href="/">We Have We Need</a></h1>
+      	  {% block nav %}
 					<div id="nav">
 						<ul>
 							<li id="nav_post"><a href="/post">Post</a></li>
@@ -64,7 +62,9 @@
 				            <li id="nav_need"><a href="/needs">Needs</a></li>
 						</ul>
 					</div>
+	        {% endblock %}  <!-- nav -->
 					<div class="clear"></div>
+      	  {% block search %}
 					<div id="search">
 						<span id="searchTitle">Search</span>
 						<form id="searchForm" action="." method="get">
@@ -80,11 +80,16 @@
                         	</button>
 						</form>
 					</div>	
+	        {% endblock %}  <!-- search -->
 				</div>
+	      {% endblock %}  <!-- header -->
+      	{% block featureBox %}
 				<div id="featureBox">
 					<h2>Welcome to We Have We Need</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis viverra elit non varius. Aenean pretium, sem eget pulvinar egestas, neque augue scelerisque ipsum, in porta tortor lectus vel odio. Mauris ut turpis nulla, nec dapibus nisi. Fusce consequat congue euismod. Fusce at leo ac tortor tincidunt porta. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
 				</div>
+	      {% endblock %}  <!-- featureBox -->
+      	{% block ltColumn %}
 				<div id="ltColumn">
 					<h3>Categories</h3>
 					<ul>
@@ -130,6 +135,8 @@
 						</ul>
 					</ul>	
 				</div>
+	      {% endblock %}  <!-- ltColumn -->
+      	{% block rtColumn %}
 				<div id="rtColumn">
 					<h3>Recent Wants and Needs</h3>
 					<ul>
@@ -138,16 +145,19 @@
 						</li>	
 					</ul>	
 				</div>
+	      {% endblock %}  <!-- rtColumn -->
 				<div class="clear"></div>			
 			</div>
+	    {% endblock %}  <!-- pageMain -->
 		</div>
+	  {% endblock %}  <!-- headerWrapper -->
 
 
 
                 
 
-	{%block main_content %}{% endblock %}
-	{%block extra_body %}{% endblock%}
+	{% block main_content %}{% endblock %}
+	{% block extra_body %}{% endblock%}
 
 	 
 
