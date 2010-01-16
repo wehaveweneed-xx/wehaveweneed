@@ -3,13 +3,13 @@ from datetime import datetime
 from django.contrib.auth.models import User
 
 POSTCHOICE = (
-    ('have', 'Have'),
-    ('need', 'Need'),
+  ('have', 'Offer'),
+  ('need', 'Request'),
 )
 PRIORITYCHOICE = (
-    ('short', 'Immediate / Life-Saving'),
-    ('mid', 'Mid-Term / Life-Sustaining'),
-    ('long', 'Long-Term / Life-Enhancing'),
+  ('short', 'Immediate / Life-Saving'),
+  ('mide', 'Mid-Term / Life-Sustaining'),
+  ('long', 'Long-Term / Life-Enhancing'),
 )
 
 class Category(models.Model):
@@ -23,25 +23,25 @@ class Category(models.Model):
         return self.name
 
 class UserProfile(models.Model):
-    user    = models.ForeignKey(User, unique=True)
+    user  = models.ForeignKey(User, unique=True)
     phone = models.CharField(max_length=100)
 
+    def __unicode__(self):
+        return self.user
+
 class Post(models.Model):
-    created_at = models.DateTimeField(default=datetime.utcnow)
-    title = models.CharField(max_length=200)
-    type = models.CharField(max_length=10, choices=POSTCHOICE)
-    priority = models.CharField(max_length=10, choices=PRIORITYCHOICE)
-    location = models.CharField(max_length=100)
-    geostamp = models.CharField(max_length=100, blank=True)
-    time_start = models.DateTimeField(default=datetime.utcnow, blank=True, null=True)
-    time_end = models.DateTimeField(blank=True, null=True)
-    category = models.ForeignKey(Category)
-    contact_name = models.CharField(max_length=100)
-    contact_email = models.CharField(max_length=100)
-    contact_phone = models.CharField(max_length=40, blank=True)
-    user                    = models.ForeignKey(User, blank=True, null=True)
-    content             = models.TextField()
-    
+    created_at  = models.DateTimeField(default=datetime.utcnow)
+    title       = models.CharField(max_length=200)
+    type        = models.CharField(max_length=10, choices=POSTCHOICE)
+    priority    = models.CharField(max_length=10, choices=PRIORITYCHOICE)
+    location    = models.CharField(max_length=100)
+    geostamp    = models.CharField(max_length=100, blank=True)
+    time_start  = models.DateTimeField(default=datetime.utcnow, blank=True)
+    time_end    = models.DateTimeField(blank=True)
+    category    = models.ForeignKey(Category)
+    contact     = models.ForeignKey(User, blank=True, null=True)
+    content     = models.TextField()
+
     class Meta:
         ordering = ('-created_at',)
 
