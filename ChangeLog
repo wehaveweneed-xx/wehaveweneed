@@ -1,0 +1,5 @@
+2010-01-16  Pete Vander Giessen  <petevg@fox>
+
+	* templates/post.html: Changed form action to POST.
+
+
