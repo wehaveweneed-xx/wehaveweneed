@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
-from django.contrib.auth.views import login, logout, password_change
+from django.contrib.auth.views import login, logout, logout_then_login, password_change
 from wehaveweneed.web.views import *
 
 admin.autodiscover()
@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^api/', include('wehaveweneed.api.urls')),
     url(r'^feeds/', include('wehaveweneed.api.feedurls')),
     url(r'^login/', login, { 'template_name': 'registration/login.html' }),
-    url(r'^logout/', 'django.contrib.auth.views.logout'),
+    url(r'^logout/', logout_then_login ),
     url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
     url(r'^account/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
     url(r'^register/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
