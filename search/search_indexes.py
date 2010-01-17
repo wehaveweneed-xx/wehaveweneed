@@ -2,7 +2,7 @@ from haystack import indexes, site
 from wehaveweneed.web.models import Post
 
 
-class PostIndex(indexes.SearchIndex):
+class PostIndex(indexes.RealTimeSearchIndex):
     """
     We'll include all of the fields for now - most of them could be useful
     for faceting, etc. If index size becomes a problem some of them could
