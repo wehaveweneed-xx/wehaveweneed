@@ -1,3 +1,5 @@
 Django
 -e hg+http://bitbucket.org/jespern/django-piston/#egg=piston
 django-mediasync
+-e git+git://github.com/toastdriven/django-haystack.git#egg=django-haystack
+whoosh
