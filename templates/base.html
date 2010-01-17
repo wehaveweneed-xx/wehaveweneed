@@ -1,3 +1,5 @@
+{% load search_tags %}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -69,21 +71,7 @@
 					<div class="clear"></div>
       	  {% block search %}
 					<div id="search">
-						<span id="searchTitle">Find people who</span>
-						<form id="searchForm" action="/search" method="get">
-						    <fieldset>
-						        <label for="need_id"><input id="need_id" type="checkbox" name="need" checked="true"/> Need</label>
-							<label for="have_id"><input id="have_id" type="checkbox" name="have" checked="true"/> Have</label>
-							<input id="id_q" type="text" name="q"/>							<select id="id_sources" name="sources">
-								<option value="all">Search All Categories</option>
-								<option value="1">Category 1</option>
-								<option value="2">Category 2</option>
-								<option value="3">Category 3</option>
-							</select>
-			            	<button class="searchBtn" type="submit">
-                            	            <span>Go</span>
-                        		</button>
-						</form>
+						{% search_bar %}
 					</div>	
 	        {% endblock %}  <!-- search -->
 				</div>
