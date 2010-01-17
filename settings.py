@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'wehaveweneed.web',
     'wehaveweneed.api',
     'wehaveweneed.search',
+    'wehaveweneed.data',
 )
 
 try:
