@@ -27,7 +27,7 @@ def post_create(request):
         if 'next' in request.POST:
             next = request.POST['next']
         else:
-            next = reverse('ev_have')
+            next = reverse('home')
             
         request.user.message_set.create(
                 message=_('Your post was created.'))
@@ -60,3 +60,6 @@ def viewneeds(request):
         context,
         context_instance=RequestContext(request),
     )
+
+def index():
+    pass
