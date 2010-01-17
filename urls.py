@@ -15,10 +15,10 @@ urlpatterns = patterns('',
     url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
     url(r'^account/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
     url(r'^register/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
-    url(r'^haves/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
-    url(r'^needs/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
+    url(r'^haves/', 'web.views.viewhaves', name='web_viewhaves'),
+    url(r'^needs/', 'web.views.viewneeds', name='web_viewneeds'),
     url(r'^search/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
-    url(r'^post/', 'django.views.generic.simple.direct_to_template', {'template': 'post.html'}),
+    url(r'^post/', 'web.views.post_create', name='web_postcreate'),
     
     
 )
