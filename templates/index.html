@@ -8,58 +8,30 @@
 	      {% endblock %}  <!-- featureBox -->
       	{% block ltColumn %}
 				<div id="ltColumn">
+
 					<h3>Categories</h3>
-					<ul>
-						<li>Category 1</li>
-						<ul>
-							<li>Subcategory 1</li>
-							<li>Subcategory 2</li>
-							<li>Subcategory 3</li>
-							<li>Subcategory 4</li>
-							<li>Subcategory 5</li>
-						</ul>
-						<li>Category 2</li>
-						<ul>
-							<li>Subcategory 1</li>
-							<li>Subcategory 2</li>
-							<li>Subcategory 3</li>
-							<li>Subcategory 4</li>
-							<li>Subcategory 5</li>
-						</ul>	
-						<li>Category 3</li>
-						<ul>
-							<li>Subcategory 1</li>
-							<li>Subcategory 2</li>
-							<li>Subcategory 3</li>
-							<li>Subcategory 4</li>
-							<li>Subcategory 5</li>
-						</ul>
-						<li>Category 4</li>
-						<ul>
-							<li>Subcategory 1</li>
-							<li>Subcategory 2</li>
-							<li>Subcategory 3</li>
-							<li>Subcategory 4</li>
-							<li>Subcategory 5</li>
-						</ul>
-						<li>Category 5</li>
-						<ul>
-							<li>Subcategory 1</li>
-							<li>Subcategory 2</li>
-							<li>Subcategory 3</li>
-							<li>Subcategory 4</li>
-							<li>Subcategory 5</li>
-						</ul>
-					</ul>	
+					    <ul>
+					{% for cat in categories %}
+					        <li>{{ cat }} (<a href="{% url web_viewhaves category=cat.slug %}">haves</a>) (<a href="{% url web_viewneeds category=cat.slug %}">needs</a>)</li>
+                                        {% endfor %}
+
+					    </ul>
+					
 				</div>
 	      {% endblock %}  <!-- ltColumn -->
       	{% block rtColumn %}
 				<div id="rtColumn">
 					<h3>Recent Wants and Needs</h3>
-					<ul>
-						<li>
-							
-						</li>	
-					</ul>	
+					{% include 'includes/post_table.html' %}
+					{% if is_paginated %}
+						<p id="pagination">
+							{% if page_obj.has_next %}
+								<a href="?page={{ page_obj.next_page_number }}" class="next">Next</a>
+							{% endif %}
+							{% if page_obj.has_previous %}
+								<a href="?page={{ page_obj.previous_page_number }}" class="previous">Previous</a>
+							{% endif %}
+						</p>
+					{% endif %}
 				</div>
 	      {% endblock %}  <!-- rtColumn -->

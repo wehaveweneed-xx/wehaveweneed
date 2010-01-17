@@ -44,8 +44,10 @@ def post_create(request):
     )
 post_create = login_required(post_create)
     
-def viewhaves(request):
+def viewhaves(request, category=None):
     posts = Post.objects.filter(type="have")
+    if category:
+        posts = posts.filter(category__slug=category)
     return object_list(
         request,
         queryset=posts,
@@ -54,8 +56,10 @@ def viewhaves(request):
         template_object_name='post'
     )
 
-def viewneeds(request):
+def viewneeds(request, category=None):
     posts = Post.objects.filter(type="need")
+    if category:
+        posts = posts.filter(category__slug=category)
     return object_list(
         request,
         queryset=posts,
@@ -63,3 +67,16 @@ def viewneeds(request):
         template_name='needs.html',
         template_object_name='post'
     )
+
+def home(request):
+    posts = Post.objects.all()
+    categories = Category.objects.all()
+
+    return object_list(
+        request,
+        queryset=posts,
+        paginate_by=10,
+        template_name='index.html',
+        template_object_name='post',
+        extra_context = { 'categories': categories },
+        )
