@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+	{% block bodyClass %}
+		<body class="haves">
+	{% endblock %}
+      	{% block ltColumn %}
+				<div id="ltColumn">
+					<h2>{% block body_title %}{% endblock %}</h2>
+					<table id="haveTable">
+				        <thead>
+					        <tr id="titles">
+								<th class="left">Name</th>
+								<th class="center">Organization</th>
+								<th class="center">Location</th>
+								<th class="right">Time</th>
+							</tr>
+						</thead>
+						<tbody>
+					            {% for post in posts %}
+						    <tr class="{% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
+								<td class="dataContent left">
+								    <a class="dataName" href="#">{{ post.title }}</a>
+								    {{ post.content|linebreaks }}
+								</td>
+								<td class="center">
+								    {{ post.contact }}
+								</td>
+								<td class="center">{{ post.location }}</td>
+								<td class="right">
+								    <span>{{ post.created_at }}</span>
+								</td>
+							</tr>	
+						        {% endfor %}
+						</tbody>
+				    </table>
+				</div>
+	      {% endblock %}  <!-- ltColumn -->
+      	{% block rtColumn %}
+				<div id="rtColumn">
+				</div>
+	      {% endblock %}  <!-- rtColumn -->
