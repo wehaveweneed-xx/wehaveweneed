@@ -27,6 +27,8 @@ ROOT_URLCONF = 'wehaveweneed.urls'
 
 AUTH_PROFILE_MODULE = 'web.userprofile'
 
+LOGIN_URL = '/login'
+LOGOUT_URL = '/logout'
 LOGIN_REDIRECT_URL = '/'
 
 HAYSTACK_SITECONF = 'wehaveweneed.search.search_sites'
