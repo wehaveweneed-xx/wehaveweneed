@@ -1,5 +1,9 @@
 2010-01-16  Pete Vander Giessen  <petevg@fox>
 
+	* templates/posts.html: Added (substrate for haves and needs)
+
+	* templates/needs.html: Added.
+
 	* web/views.py (viewneeds): corrected template name.
 
 	* urls.py: Added haves and needs to urls.
