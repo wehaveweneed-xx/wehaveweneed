@@ -41,8 +41,12 @@
 		      {% if user.is_authenticated %}
 					<div id="utility">
 				        <ul>
+					    {% if request.user.is_authenticated %}
+				            <li id="utilityLogout"><a href="/logout">Log Out</a></li>
+					    {% else %}
 				            <li id="utilityRegister"><a href="/register">Register</a></li>
 				            <li id="utilitySignup"><a href="/login">Log In</a></li>
+					    {% endif %}
 				        </ul>
 					</div>
 		      {% else %}
