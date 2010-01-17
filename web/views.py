@@ -63,3 +63,14 @@ def viewneeds(request):
         template_name='needs.html',
         template_object_name='post'
     )
+
+def home(request):
+    posts = Post.objects.all()
+    return object_list(
+        request,
+        queryset=posts,
+        paginate_by=10,
+        template_name='index.html',
+        template_object_name='post',
+        extra_context = { 'categories': Category.objects.all() },
+        )

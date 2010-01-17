@@ -56,10 +56,16 @@
       	{% block rtColumn %}
 				<div id="rtColumn">
 					<h3>Recent Wants and Needs</h3>
-					<ul>
-						<li>
-							
-						</li>	
-					</ul>	
+					{% include 'includes/post_table.html' %}
+					{% if is_paginated %}
+						<p id="pagination">
+							{% if page_obj.has_next %}
+								<a href="?page={{ page_obj.next_page_number }}" class="next">Next</a>
+							{% endif %}
+							{% if page_obj.has_previous %}
+								<a href="?page={{ page_obj.previous_page_number }}" class="previous">Previous</a>
+							{% endif %}
+						</p>
+					{% endif %}
 				</div>
 	      {% endblock %}  <!-- rtColumn -->
