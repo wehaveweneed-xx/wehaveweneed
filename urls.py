@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('wehaveweneed.api.urls')),
     url(r'^feeds/', include('wehaveweneed.api.feedurls')),
-    url(r'^login/', 'django.contrib.auth.views.login'),
+    url(r'^login/', login, { 'template_name': 'registration/login.html' }),
     url(r'^logout/', 'django.contrib.auth.views.logout'),
     url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
     url(r'^account/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
@@ -19,8 +19,6 @@ urlpatterns = patterns('',
     url(r'^needs/', 'web.views.viewneeds', name='web_viewneeds'),
     url(r'^search/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
     url(r'^post/', 'web.views.post_create', name='web_postcreate'),
-    
-    
 )
 
 if (settings.DEBUG):  

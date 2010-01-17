@@ -1,5 +1,9 @@
 2010-01-16  Pete Vander Giessen  <petevg@fox>
 
+	* urls.py: Fixed login url.
+
+	* settings.py: Added login redirect url.
+
 	* templates/needs.html, haves.html: Fixed highlighting on navigation.
 
 	* templates/posts.html: Made a block tag to specify body class.

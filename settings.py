@@ -27,6 +27,8 @@ ROOT_URLCONF = 'wehaveweneed.urls'
 
 AUTH_PROFILE_MODULE = 'web.userprofile'
 
+LOGIN_REDIRECT_URL = '/'
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',

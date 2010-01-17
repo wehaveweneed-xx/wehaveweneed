@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block main_content %}
-
+{% block ltColumn %}
   {% if form.errors %}
     <p class="error">Sorry, that's not a valid username or password</p>
   {% endif %}
 
+ <p>test</p>
+
   <form action='.' method='POST'>
-  
       <label for="username">User name:</label>
       <input type="text" name="username" value="" id="username">
       <br>
