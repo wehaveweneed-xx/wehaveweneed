@@ -16,13 +16,18 @@ class Command(BaseCommand):
             categories = [line.replace(",", " -- ") for line in f]
 
         for name in categories:
-            if ' -- ' in name:
-                parent_name = ' -- '.join(name.split(' -- ')[:-1])
-                parent = Category.objects.get_or_create(
-                    name=parent_name, slug=slugify(parent_name))[0]
-            else:
-                parent = None
+            built_name = None
+            prev = None
 
-            Category.objects.get_or_create(name=name, parent=parent,
-                                           slug=slugify(name))
+            # Not necesarily the most efficient way to do this, but the
+            # taxonomy file is rather small and this only has to be
+            # run once
+            for part in name.split(' -- '):
+                if built_name:
+                    built_name += ' -- ' + part
+                else:
+                    built_name = part
 
+                prev, c = Category.objects.get_or_create(
+                    name=built_name, slug=slugify(built_name),
+                    parent=prev)
