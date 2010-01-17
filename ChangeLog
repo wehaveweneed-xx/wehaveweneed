@@ -1,3 +1,8 @@
+2010-01-16  Pete Vander Giessen  <petevg@raven>
+
+	* templates/base.html: Fixed brain fart with check for user being
+	logged in.
+
 2010-01-16  Pete Vander Giessen  <petevg@fox>
 
 	* urls.py: Fixed login url.
