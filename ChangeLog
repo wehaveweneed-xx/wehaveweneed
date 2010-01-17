@@ -1,5 +1,12 @@
 2010-01-16  Pete Vander Giessen  <petevg@fox>
 
+	* templates/needs.html, haves.html: Fixed highlighting on navigation.
+
+	* templates/posts.html: Made a block tag to specify body class.
+
+	* media/styles/main.css (a): Fixed highlighting on navigation
+	tags.
+
 	* templates/posts.html: Added (substrate for haves and needs)
 
 	* templates/needs.html: Added.

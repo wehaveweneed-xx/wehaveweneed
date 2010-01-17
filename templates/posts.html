@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 	{% block bodyClass %}
-		<body class="haves">
+		<body class="{% block body_class %}{% endblock %}">
 	{% endblock %}
       	{% block ltColumn %}
 				<div id="ltColumn">
