@@ -1,5 +1,28 @@
 2010-01-16  Pete Vander Giessen  <petevg@raven>
 
+	* urls.py: Added category parameter to needs and haves views.
+
+	* web/views.py (viewneeds): needs and haves now can filter by
+	category.
+
+	* templates/index.html: Added list of categories to index page.
+
+	* templates/posts.html: Now uses post_table include.
+
+	* urls.py: 'home' now goes to a web.views.home, rather than
+	direct_to_template.
+
+	* web/views.py (home): Added home view.
+
+	* templates/index.html: Added list of recent posts.
+
+	* templates/includes/post_table.html: Broke this out into an
+	include to make our index and posts templates DRYer.
+
+	* web/views.py (post_create): Post form now redirects to home page
+	after successful post by default, rather than picking between
+	needs or haves.
+
 	* templates/base.html: Fixed brain fart with check for user being
 	logged in.
 
