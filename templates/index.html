@@ -8,49 +8,15 @@
 	      {% endblock %}  <!-- featureBox -->
       	{% block ltColumn %}
 				<div id="ltColumn">
+
 					<h3>Categories</h3>
-					<ul>
-						<li>Category 1</li>
-						<ul>
-							<li>Subcategory 1</li>
-							<li>Subcategory 2</li>
-							<li>Subcategory 3</li>
-							<li>Subcategory 4</li>
-							<li>Subcategory 5</li>
-						</ul>
-						<li>Category 2</li>
-						<ul>
-							<li>Subcategory 1</li>
-							<li>Subcategory 2</li>
-							<li>Subcategory 3</li>
-							<li>Subcategory 4</li>
-							<li>Subcategory 5</li>
-						</ul>	
-						<li>Category 3</li>
-						<ul>
-							<li>Subcategory 1</li>
-							<li>Subcategory 2</li>
-							<li>Subcategory 3</li>
-							<li>Subcategory 4</li>
-							<li>Subcategory 5</li>
-						</ul>
-						<li>Category 4</li>
-						<ul>
-							<li>Subcategory 1</li>
-							<li>Subcategory 2</li>
-							<li>Subcategory 3</li>
-							<li>Subcategory 4</li>
-							<li>Subcategory 5</li>
-						</ul>
-						<li>Category 5</li>
-						<ul>
-							<li>Subcategory 1</li>
-							<li>Subcategory 2</li>
-							<li>Subcategory 3</li>
-							<li>Subcategory 4</li>
-							<li>Subcategory 5</li>
-						</ul>
-					</ul>	
+					    <ul>
+					{% for cat in categories %}
+					        <li>{{ cat }} (<a href="{% url web_viewhaves category=cat.slug %}">haves</a>) (<a href="{% url web_viewneeds category=cat.slug %}">needs</a>)</li>
+                                        {% endfor %}
+
+					    </ul>
+					
 				</div>
 	      {% endblock %}  <!-- ltColumn -->
       	{% block rtColumn %}

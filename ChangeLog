@@ -1,5 +1,12 @@
 2010-01-16  Pete Vander Giessen  <petevg@raven>
 
+	* urls.py: Added category parameter to needs and haves views.
+
+	* web/views.py (viewneeds): needs and haves now can filter by
+	category.
+
+	* templates/index.html: Added list of categories to index page.
+
 	* templates/posts.html: Now uses post_table include.
 
 	* urls.py: 'home' now goes to a web.views.home, rather than
