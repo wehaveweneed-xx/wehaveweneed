@@ -20,6 +20,7 @@ class PostIndex(indexes.SearchIndex):
     time_start = indexes.DateTimeField(model_attr='time_start', null=True)
     time_end = indexes.DateTimeField(model_attr='time_end', null=True)
     category = indexes.CharField(model_attr='category__name')
+    category_id = indexes.IntegerField(model_attr='category_id')
     contact_phone = indexes.CharField(model_attr='contact__phone',
                                      null=True)
     responses = indexes.IntegerField(model_attr='responses')
