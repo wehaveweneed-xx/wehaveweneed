@@ -1,0 +1,6 @@
+{{ object.title }}
+{{ object.type }}
+{{ object.location }}
+{{ object.category.name }}
+{{ object.contact }}
+{{ object.content }}

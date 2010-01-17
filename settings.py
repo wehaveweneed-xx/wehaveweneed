@@ -29,6 +29,8 @@ AUTH_PROFILE_MODULE = 'web.userprofile'
 
 LOGIN_REDIRECT_URL = '/'
 
+HAYSTACK_SITECONF = 'wehaveweneed.search.search_sites'
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -36,8 +38,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'piston',
+    'haystack',
     'wehaveweneed.web',
     'wehaveweneed.api',
+    'wehaveweneed.search',
 )
 
 try:

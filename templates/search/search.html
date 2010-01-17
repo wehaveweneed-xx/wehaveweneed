@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block rtColumn %}
+<div id="rtColumn">
+  <h3>Search Results</h3>
+  <ul>
+    {% for result in page.object_list %}
+    <li>
+      <a href="{{ result.object.get_absolute_url }}">{{ result.type|upper }}
+    {{ result.title }} at {{ result.location }}</a>
+    </li>
+    {% endfor %}
+  </ul>	
+</div>
+{% endblock %}  <!-- rtColumn -->

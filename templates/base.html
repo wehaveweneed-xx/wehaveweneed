@@ -69,14 +69,14 @@
       	  {% block search %}
 					<div id="search">
 						<span id="searchTitle">Search</span>
-						<form id="searchForm" action="." method="get">
+						<form id="searchForm" action="/search" method="get">
 							<select id="id_sources" name="sources">
 								<option value="all">Search All Categories</option>
 								<option value="1">Category 1</option>
 								<option value="2">Category 2</option>
 								<option value="3">Category 3</option>
 							</select>
-							<input id="id_skills" type="text" name="skills"/>
+							<input id="id_q" type="text" name="q"/>
 			            	<button class="searchBtn" type="submit">
                             	<span>Go</span>
                         	</button>
