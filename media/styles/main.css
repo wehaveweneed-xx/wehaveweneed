@@ -18,9 +18,25 @@ body{
   	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
-div#headerWrapper { background: url(/media/images/header_bg.jpg) top left repeat-x;}
+div#headerWrapper {
+    background: url(/media/images/header_bg.jpg) top left repeat-x;
+}
 h1 { float: left; width: 146px; height: 72px; margin-top: 20px;}
-h1 a { background: url(/media/images/logo.png) top left no-repeat; width: 146px; height: 72px; display: block; text-indent: -9999em;}
+h1 a { 
+    background: url(/media/images/logo.png) top left no-repeat; 
+    width: 146px; 
+    height: 72px; 
+    display: block; 
+    text-indent: -9999em;
+}
+#site { 
+    float: left;
+    font-style: normal;
+    font-size: 350%;
+    margin: 32px 0 0 16px;
+    line-height: 120%; /* Internet Explorer fix */
+    color: #c2d1df;
+}
 div#utility { float: right; margin-top: 15px; line-height: 12px;}
 div#utility li { float: left;}
 li#utilityRegister { margin-right: 15px; padding-right: 15px; border-right: 1px solid #DDE3E8;}
@@ -38,7 +54,11 @@ div#featureBox { margin-top: 50px; margin-bottom: 40px; padding-bottom: 40px; bo
 
 select { padding: 2px 0; margin-right: 5px;}
 
-div#pageMain { width: 960px; margin: 0 auto;}
+div#pageMain { 
+    width: 960px; 
+    margin: 0 auto; 
+    position: relative; /* So we can absolutely position elements inside. */
+}
 
 h2, h3 { font-family: Georgia, Times New Roman, Times, serif; color:#55504E; margin-bottom: 20px; font-style: oblique;}
 h2 { font-size: 210%; }
