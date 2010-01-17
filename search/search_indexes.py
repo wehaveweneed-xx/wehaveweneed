@@ -21,6 +21,7 @@ class PostIndex(indexes.RealTimeSearchIndex):
     time_end = indexes.DateTimeField(model_attr='time_end', null=True)
     category = indexes.CharField(model_attr='category__name')
     category_id = indexes.IntegerField(model_attr='category_id')
+    content = indexes.CharField(model_attr='content')
     contact_phone = indexes.CharField(model_attr='contact__phone',
                                      null=True)
     responses = indexes.IntegerField(model_attr='responses')
