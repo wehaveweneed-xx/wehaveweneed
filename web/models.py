@@ -21,7 +21,7 @@ class Category(models.Model):
         ordering = ('name',)
     
     def __unicode__(self):
-        return '%s/%s' % (self.parent, self.name,)
+        return self.name
 
 class UserProfile(models.Model):
     user  = models.ForeignKey(User, unique=True)
