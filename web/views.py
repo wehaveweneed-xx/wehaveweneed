@@ -1,15 +1,16 @@
 # Create your views here.
-from django.utils.translation import ugettext as _
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.core import serializers
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib.auth.decorators import login_required
+from django.utils.translation import ugettext as _
+from django.views.decorators.http import require_POST
+from django.views.generic.list_detail import object_list
 from wehaveweneed.web.models import *
 from wehaveweneed.web.forms import *
-from django.core import serializers
-from django.http import HttpResponseRedirect, HttpResponse, Http404
-from django.views.decorators.http import require_POST
-from django.core.urlresolvers import reverse
-from wehaveweneed import settings
 
 @login_required
 def post_create(request):
@@ -45,21 +46,20 @@ post_create = login_required(post_create)
     
 def viewhaves(request):
     posts = Post.objects.filter(type="have")
-    context ={'posts':posts}
-    return render_to_response(
-        'haves.html',
-        context,
-        context_instance=RequestContext(request),
+    return object_list(
+        request,
+        queryset=posts,
+        paginate_by=getattr(settings, 'PAGINATE_POSTS_BY', 10),
+        template_name='haves.html',
+        template_object_name='post'
     )
 
 def viewneeds(request):
     posts = Post.objects.filter(type="need")
-    context ={'posts':posts}
-    return render_to_response(
-        'needs.html',
-        context,
-        context_instance=RequestContext(request),
+    return object_list(
+        request,
+        queryset=posts,
+        paginate_by=getattr(settings, 'PAGINATE_POSTS_BY', 10),
+        template_name='needs.html',
+        template_object_name='post'
     )
-
-def index():
-    pass

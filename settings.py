@@ -45,6 +45,8 @@ INSTALLED_APPS = (
     'wehaveweneed.data',
 )
 
+PAGINATE_POSTS_BY = 20
+
 try:
     from local_settings import *
 except ImportError:
