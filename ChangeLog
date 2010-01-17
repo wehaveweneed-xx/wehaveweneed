@@ -1,5 +1,13 @@
 2010-01-16  Pete Vander Giessen  <petevg@fox>
 
+	* web/views.py (viewneeds): corrected template name.
+
+	* urls.py: Added haves and needs to urls.
+
+	* templates/post.html: Now renders form.as_p
+
+	* urls.py: post_create now points at the right place.
+
 	* templates/post.html: Changed form action to POST.
 
 

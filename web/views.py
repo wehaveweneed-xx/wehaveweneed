@@ -19,6 +19,7 @@ def post_create(request):
     form, and creates the new instances.
     """
     form = PostForm(request.POST or None)
+
     if form.is_valid():
         post = form.save(commit=False)
         post.contact = request.user
@@ -34,7 +35,7 @@ def post_create(request):
     
     if request.is_ajax():
         raise Http404
-    
+
     return render_to_response(
         'post.html',
         {'form': form},
@@ -43,19 +44,19 @@ def post_create(request):
 post_create = login_required(post_create)
     
 def viewhaves(request):
-    posts==Post.objects.filter(type="have")
+    posts = Post.objects.filter(type="have")
     context ={'posts':posts}
     return render_to_response(
-        'have.html',
+        'haves.html',
         context,
         context_instance=RequestContext(request),
     )
 
 def viewneeds(request):
-    posts==Post.objects.filter(type="need")
+    posts = Post.objects.filter(type="need")
     context ={'posts':posts}
     return render_to_response(
-        'need.html',
+        'needs.html',
         context,
         context_instance=RequestContext(request),
     )
