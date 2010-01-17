@@ -38,7 +38,7 @@ def post_create(request):
 
     return render_to_response(
         'post.html',
-        {'form': form},
+        {'form': form },
         context_instance = RequestContext(request)
     )
 post_create = login_required(post_create)
