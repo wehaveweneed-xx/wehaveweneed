@@ -25,7 +25,8 @@ class Category(models.Model):
 
 class UserProfile(models.Model):
     user  = models.ForeignKey(User, unique=True)
-    phone = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100, blank=True)
+    organization = models.CharField(max_length=200)
 
     def __unicode__(self):
         return 'profile of %s' % self.user.username
