@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block featureBox %}
+<div id="featureBox">
+  {% if account %}
+  Thank you for registering!
+    <a href="/">Return to the main page</a>
+  {% else %}
+  Activation failed. Please try
+  <a href="/accounts/register">registering</a>
+  again or contact the webmaster.
+  {% endif %}
+</div>
+{% endblock %}

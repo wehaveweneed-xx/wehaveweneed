@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'piston',
     'haystack',
+    'registration',
     'wehaveweneed.web',
     'wehaveweneed.api',
     'wehaveweneed.search',
@@ -48,6 +49,8 @@ INSTALLED_APPS = (
 )
 
 PAGINATE_POSTS_BY = 20
+
+ACCOUNT_ACTIVATION_DAYS = 2
 
 try:
     from local_settings import *
