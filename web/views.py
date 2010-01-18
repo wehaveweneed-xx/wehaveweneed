@@ -99,9 +99,10 @@ def view_post(request, id):
     else:
         form = form_class()
     return render_to_response('view_post.html',
-                              {'post': post,
-                               'form': form,
-                               'sent': sent})
+                              RequestContext(request,
+                                             {'post': post,
+                                              'form': form,
+                                              'sent': sent}))
 
 @login_required
 def account_settings(request):
@@ -118,5 +119,7 @@ def account_settings(request):
             {'organization': request.user.get_profile().organization})
 
     return render_to_response('registration/account_settings.html',
-                              {'form': form, 'user': request.user,
-                               'updated': updated})
+                              RequestContext(request,
+                                             {'form': form,
+                                              'user': request.user,
+                                              'updated': updated}))
