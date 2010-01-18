@@ -2,9 +2,10 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.views import login, logout, logout_then_login, password_change
+from django.contrib.auth.forms import AuthenticationForm
 from haystack.views import SearchView
 from wehaveweneed.search.forms import PostSearchForm
-from wehaveweneed.web.views import *
+from wehaveweneed.web.forms import RegistrationForm
 
 admin.autodiscover()
 
@@ -17,6 +18,12 @@ urlpatterns = patterns('',
     url(r'^$', 'wehaveweneed.web.views.home', name="home"),
     #url(r'^account/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
     #url(r'^register/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
+    url(r'^accounts/register/$', 'registration.views.register',
+        {'form_class': RegistrationForm}),
+    url(r'^accounts/activate/(?P<activation_key>\w+)/$',
+        'registration.views.activate',
+        {'extra_context': {'auth_form': AuthenticationForm()}},
+        name='registration_activate'),
     url(r'^accounts/', include('registration.urls')),
     url(r'^haves/(?P<category>[-\w]+)?', 'wehaveweneed.web.views.viewhaves', name='web_viewhaves'),
     url(r'^needs/(?P<category>[-\w]+)?', 'wehaveweneed.web.views.viewneeds', name='web_viewneeds'),

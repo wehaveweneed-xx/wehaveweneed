@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 
-{% block ltColumn %}
+{% block featureBox %}
+<div id="featureBox">
   {% if form.errors %}
     <p class="error">Sorry, that's not a valid username or password</p>
   {% endif %}
-
- <p>test</p>
 
   <form action='.' method='POST'>
       <label for="username">User name:</label>
@@ -17,5 +16,5 @@
       <input type="submit" value="login" />
       <input type="hidden" name="next" value="{{ next|escape }}" />
   </form>
-
+</div>
 {% endblock %}
