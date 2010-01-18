@@ -82,3 +82,21 @@ def home(request):
         template_object_name='post',
         extra_context = { 'categories': categories },
         )
+
+@login_required
+def account_settings(request):
+    updated = False
+    if request.method == 'POST':
+        form = AccountSettingsForm(request.POST)
+        if form.is_valid():
+            profile = request.user.get_profile()
+            profile.organization = form.cleaned_data['organization']
+            profile.save()
+            updated = True
+    else:
+        form = AccountSettingsForm(
+            {'organization': request.user.get_profile().organization})
+
+    return render_to_response('registration/account_settings.html',
+                              {'form': form, 'user': request.user,
+                               'updated': updated})

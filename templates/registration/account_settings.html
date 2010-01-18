@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block featureBox %}
+<div id="featureBox">
+  {% if updated %}
+  Account settings updated successfully!
+  {% endif %}
+  <p><label>User name:</label> <span>{{ user.username }}</span></p>
+  <p><label>Email:</label> <span>{{ user.email }}</span></p>
+  <form action="." method="POST">
+    {{ form.as_p }}
+    <input type="submit" name="update" />
+  </form>
+</div>
+{% endblock %}

@@ -24,6 +24,9 @@ class RegistrationForm(RegistrationFormUniqueEmail):
 
         return new_user
 
+class AccountSettingsForm(forms.Form):
+    organization = forms.CharField(max_length=200)
+
 class PostForm(forms.ModelForm):
 
     class Meta:
