@@ -15,7 +15,7 @@
 								    {{ post.content|linebreaks }}
 								</td>
 								<td class="center">
-								    {{ post.contact }}
+								    {{ post.contact.get_profile.organization }}
 								</td>
 								<td class="center">{{ post.location }}</td>
 								<td class="right">
