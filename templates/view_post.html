@@ -15,9 +15,9 @@
   <p><label>Content:</label></p>
   <p>{{ post.content|linebreaks }}</p>
 
-  {% ifnotequal user post.contact %}
-  {% if user.is_authenticated %}
   <hr />
+  {% if user.is_authenticated %}
+  {% ifnotequal user post.contact %}
   <div id="replyBox">
     <h3>Reply:</h3>
     <form action="." method="POST">
@@ -28,8 +28,11 @@
     <p>Warning: your email address will be shared with the person
     you're replying to!</p>
   </div>
-  {% endif %}
   {% endifnotequal %}
+  {% else %}
+  Please <a href="/login/">login</a> or
+  <a href="/accounts/register/">register</a> to reply.
+  {% endif %}
   {% endif %}
 </div>
 {% endblock %}
