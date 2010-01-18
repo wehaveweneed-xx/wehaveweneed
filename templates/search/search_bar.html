@@ -1,7 +1,16 @@
-<span id="searchTitle">Search</span>
+
 <form id="searchForm" action="/search" method="get">
-  {{ form }}
-  <button class="searchBtn" type="submit">
-    <span>Go</span>
-  </button>
+    <fieldset>
+        <label id="searchTitle">I am looking for people who</label>
+        {% for field in form %}
+        <div id="{{ field.label }}_wrap">
+            {{ field.errors }}  
+            {{ field }}{{ field.label_tag }}
+        </div>
+        {% endfor %}
+
+    <button class="searchBtn" type="submit">
+        <span>Go</span>
+    </button>
+    </fieldset>
 </form>

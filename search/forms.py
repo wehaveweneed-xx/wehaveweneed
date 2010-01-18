@@ -10,11 +10,17 @@ class CategoryChoiceField(forms.ModelChoiceField):
 
 
 class PostSearchForm(SearchForm):
-    category = CategoryChoiceField(queryset=Category.objects.all(),
-                                   empty_label='All Categories',
-                                   required=False)
+    """ Our search form.  
+
+    """
+
     have = forms.BooleanField(initial=True, required=False)
     need = forms.BooleanField(initial=True, required=False)
+
+    category = CategoryChoiceField(queryset=Category.objects.all(),
+                                   empty_label='Search in All Categories',
+                                   required=False)
+
 
     def search(self):
         sqs = super(PostSearchForm, self).search()
@@ -31,3 +37,8 @@ class PostSearchForm(SearchForm):
             sqs = sqs.filter(type='need')
 
         return sqs
+
+
+
+
+

@@ -1,7 +1,15 @@
 2010-01-17  Pete Vander Giessen  <petevg@raven>
 
-	* media/styles/main.css: Dropped in style for site specific title.
+	* templates/post.html: Added submit class to post button.
 
+	* media/styles/main.css (a): Styled search form.
+	(a): Laid in basic form style.
+
+	* templates/search/search_bar.html: Tweaked the form to include
+	divs that we could do stuff with.
+
+	* media/styles/main.css: Dropped in style for site specific title.
+c
 	* templates/base.html: Added site-specific title (currently
 	Haiti).  Also moved stuff in search form around a bit to match
 	scourger's design.
