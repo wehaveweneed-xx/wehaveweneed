@@ -3,3 +3,4 @@ Django
 django-mediasync
 -e git+git://github.com/toastdriven/django-haystack.git#egg=django-haystack
 whoosh
+django-registration
