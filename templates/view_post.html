@@ -15,6 +15,7 @@
   <p><label>Content:</label></p>
   <p>{{ post.content|linebreaks }}</p>
 
+  {% ifnotequal user post.contact %}
   <hr />
   <div id="replyBox">
     <h3>Reply:</h3>
@@ -26,6 +27,7 @@
     <p>Warning: your email address will be shared with the person
     you're replying to!</p>
   </div>
+  {% endifnotequal %}
   {% endif %}
 </div>
 {% endblock %}
