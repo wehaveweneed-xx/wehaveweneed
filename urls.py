@@ -14,14 +14,14 @@ urlpatterns = patterns('',
     url(r'^feeds/', include('wehaveweneed.api.feedurls')),
     url(r'^login/', login, { 'template_name': 'registration/login.html' }),
     url(r'^logout/', logout_then_login ),
-    url(r'^$', 'web.views.home', name="home"),
+    url(r'^$', 'wehaveweneed.web.views.home', name="home"),
     #url(r'^account/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
     #url(r'^register/', 'django.views.generic.simple.direct_to_template', {'template': 'not_yet_implemented.html'}),
     url(r'^accounts/', include('registration.urls')),
-    url(r'^haves/(?P<category>[-\w]+)?', 'web.views.viewhaves', name='web_viewhaves'),
-    url(r'^needs/(?P<category>[-\w]+)?', 'web.views.viewneeds', name='web_viewneeds'),
+    url(r'^haves/(?P<category>[-\w]+)?', 'wehaveweneed.web.views.viewhaves', name='web_viewhaves'),
+    url(r'^needs/(?P<category>[-\w]+)?', 'wehaveweneed.web.views.viewneeds', name='web_viewneeds'),
     url(r'^search/', SearchView(form_class=PostSearchForm)),
-    url(r'^post/', 'web.views.post_create', name='web_postcreate'),
+    url(r'^post/', 'wehaveweneed.web.views.post_create', name='web_postcreate'),
 )
 
 if (settings.DEBUG):  
