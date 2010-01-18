@@ -3,3 +3,4 @@
 {{ object.location }}
 {{ object.category.name }}
 {{ object.content }}
+{{ object.contact.get_profile.organization }}

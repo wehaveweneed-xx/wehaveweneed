@@ -24,6 +24,8 @@ class PostIndex(indexes.RealTimeSearchIndex):
     content = indexes.CharField(model_attr='content')
     responses = indexes.IntegerField(model_attr='responses')
     fulfilled = indexes.BooleanField(model_attr='fulfilled')
+    organization = indexes.CharField(use_template=True,
+                                     template_name='search/indexes/post_org.txt')
 
 
 site.register(Post, PostIndex)
