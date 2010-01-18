@@ -13,6 +13,7 @@ from django.views.generic.list_detail import object_list
 from registration.models import RegistrationProfile
 from wehaveweneed.web.models import *
 from wehaveweneed.web.forms import *
+from wehaveweneed.web.emails import send_reply_email
 
 @login_required
 def post_create(request):
@@ -82,6 +83,25 @@ def home(request):
         template_object_name='post',
         extra_context = { 'categories': categories },
         )
+
+def view_post(request, id):
+    post = get_object_or_404(Post, pk=id)
+    sent =  False
+    if request.user.is_authenticated():
+        form_class = ReplyForm
+    else:
+        form_class = UnauthenticatedReplyForm
+    if request.method == 'POST':
+        form = form_class(request.POST)
+        if form.is_valid():
+            send_reply_email(request, post, form)
+            sent = True
+    else:
+        form = form_class()
+    return render_to_response('view_post.html',
+                              {'post': post,
+                               'form': form,
+                               'sent': sent})
 
 @login_required
 def account_settings(request):

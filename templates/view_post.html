@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block featureBox %}
+<div id="featureBox">
+  {% if sent %}
+  <h3>Your reply has been sent!</h3>
+  {% else %}
+  <h3>{{ post.type|title }} details:</h3>
+  <p><label>Title:</label> <span>{{ post.title }}</span></p>
+  <p><label>Organization:</label> <span>{{ post.contact.get_profile.organization }}</span></p>
+  <p><label>Location:</label> <span>{{ post.location }}</span></p>
+  <p><label>Posted at:</label> <span>{{ post.time_start }}</span></p>
+  <p><label>Priority:</label> <span>{{ post.priority }}</span></p>
+  <p><label>Category:</label> <span>{{ post.category }}</span></p>
+  <p><label>Content:</label></p>
+  <p>{{ post.content|linebreaks }}</p>
+
+  <hr />
+  <div id="replyBox">
+    <h3>Reply:</h3>
+    <form action="." method="POST">
+      {{ form.as_p }}
+      <input type="submit" value="submit" />
+    </form>
+
+    <p>Warning: your email address will be shared with the person
+    you're replying to!</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

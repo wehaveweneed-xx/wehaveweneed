@@ -32,11 +32,16 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'type', 'priority',
-                  'location', 'geostamp',
-                  'time_start',
-                  'time_end',
+                  'location',
                   'category',
                   'content',)
+
+class ReplyForm(forms.Form):
+    content = forms.CharField(required=False,
+                              widget=forms.Textarea())
+
+class UnauthenticatedReplyForm(ReplyForm):
+    email = forms.EmailField()
 
 class userprofileForm(forms.Form):
     username = forms.CharField(max_length=50,widget=forms.TextInput(attrs={'size':'25'}),error_messages={'required': 'Please enter a username'})
