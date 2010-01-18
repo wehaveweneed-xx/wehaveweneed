@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load cache %}
       	{% block featureBox %}
 				<div id="featureBox">
 					<h2>Welcome to We Have We Need</h2>
@@ -8,7 +8,7 @@
 	      {% endblock %}  <!-- featureBox -->
       	{% block ltColumn %}
 				<div id="ltColumn">
-
+                  {% cache 600 categories %}
 					<h3>Categories</h3>
 					    <ul>
 					{% for cat in categories %}
@@ -16,7 +16,7 @@
                                         {% endfor %}
 
 					    </ul>
-					
+					{% endcache %}
 				</div>
 	      {% endblock %}  <!-- ltColumn -->
       	{% block rtColumn %}

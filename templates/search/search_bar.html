@@ -1,4 +1,6 @@
 
+{% load cache %}
+{% cache 600 search_bar %}
 <form id="searchForm" action="/search" method="get">
     <fieldset>
         <label id="searchTitle">I am looking for people who</label>
@@ -14,3 +16,4 @@
     </button>
     </fieldset>
 </form>
+{% endcache %}
