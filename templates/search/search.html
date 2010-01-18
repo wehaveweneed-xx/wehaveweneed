@@ -1,39 +1,43 @@
 {% extends "base.html" %}
 
-{% block rtColumn %}
-<div id="ltColumn">
-  <h2>{% block body_title %}{% endblock %}</h2>
-  <table id="searchResultTable">
-    <thead>
-      <tr id="titles">
-        <th class="left">Name</th>
-        <th class="center">Type</th>
-        <th class="center">Organization</th>
-        <th class="center">Location</th>
-        <th class="right">Time</th>
-      </tr>
-      </thead>
-    <tbody>
-      {% for post in page.object_list %}
-      <tr class="{% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
+{% block featureBox %}
+<div id="featureBox">
+  <h3>{% block body_title %}Search results:{% endblock %}</h3>
+  <table id="searchResultsTable">
+				        <thead>
+					        <tr id="titles">
+								<th class="left">Name</th>
+                                <th class="center">Type</th>
+								<th class="center">Organization</th>
+								<th class="center">Location</th>
+                                <th class="center">Time</th>
+                                <th class="right">Category</th>
 
-        <td class="dataContent left">
-          <a class="dataName" href="#">{{ post.title }}</a>
-          {{ post.content|linebreaks }}
-        </td>
-        <td class="center">
-          {{ post.type }}
-        </td>
-        <td class="center">
-          {{ post.contact }}
-        </td>
-        <td class="center">{{ post.location }}</td>
-        <td class="right">
-          <span>{{ post.created_at }}</span>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-{% endblock %}  <!-- rtColumn -->
+							</tr>
+						</thead>
+						<tbody>
+					            {% for post in page.object_list %}
+						    <tr class="{% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
+								<td class="dataContent left">
+								    <a class="dataName" href="#">{{ post.title }}</a>
+								    {{ post.content|linebreaks }}
+								</td>
+                                <td class="center">
+                                  <span>{{ post.type|upper }}</span>
+                                </td>
+								<td class="center">
+                                  <span>{{ post.organization }}</span>
+								</td>
+								<td class="center">{{ post.location }}</td>
+								<td class="center">
+								    <span>{{ post.created_at }}</span>
+								</td>
+                                <td class="category">
+                                  <span>{{ post.category }}</span>
+                                </td>
+							</tr>
+						        {% endfor %}
+						</tbody>
+				    </table>
+
+{% endblock %}
