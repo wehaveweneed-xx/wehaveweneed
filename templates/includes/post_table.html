@@ -14,8 +14,7 @@
 					            {% for post in post_list %}
 						    <tr class="{% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
 								<td class="dataContent left">
-								    <a class="dataName" href="#">{{ post.title }}</a>
-								    {{ post.content|linebreaks }}
+								    <a class="dataName" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
 								</td>
                                 <td class="center">
                                   <span>{{ post.type|upper }}</span>

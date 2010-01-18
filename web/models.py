@@ -35,8 +35,10 @@ class UserProfile(models.Model):
 class Post(models.Model):
     created_at  = models.DateTimeField(default=datetime.utcnow)
     title       = models.CharField(max_length=200)
-    type        = models.CharField(max_length=10, choices=POSTCHOICE)
-    priority    = models.CharField(max_length=10, choices=PRIORITYCHOICE)
+    type        = models.CharField(max_length=10, choices=POSTCHOICE,
+                                   default='need')
+    priority    = models.CharField(max_length=10, choices=PRIORITYCHOICE,
+                                   default='mid')
     location    = models.CharField(max_length=100)
     geostamp    = models.CharField(max_length=100, blank=True)
     time_start  = models.DateTimeField(default=datetime.utcnow, blank=True)
@@ -52,3 +54,7 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('view_post', (), {'id': self.id})
