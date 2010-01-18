@@ -21,10 +21,17 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',)
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
+
+CACHE_MIDDLEWARE_SECONDS = 60
+CACHE_MIDDLEWARE_PREFIX = 'wehaveweneed'
+CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+CACHE_BACKEND = 'locmem://'
 
 ROOT_URLCONF = 'wehaveweneed.urls'
 
