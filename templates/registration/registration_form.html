@@ -2,17 +2,20 @@
 
 {% block featureBox %}
 <div id="featureBox">
-  <h2>Register</h2>
-  <form action="." method="POST">
-    <fieldset>
-      {{ form.as_p }}
-      <input type="submit" value="Register" class="submit" />
-  </fieldset>
-  </form>
-  <div id="warning">
-    Warning: Your name, organization, and phone number (if you choose
-    to include one) may be shared publicly. Your email address will
-    not be shared publicly except with your permission.
-  </div>
+	<h2>Register</h2>
+	<p>Registration is temporarily closed</p>
+	{% comment %}
+		<form action="." method="POST">
+			<fieldset>
+				{{ form.as_p }}
+				<input type="submit" value="Register" class="submit" />
+			</fieldset>
+		</form>
+		<p id="warning">
+			Warning: Your name, organization, and phone number (if you choose
+			to include one) may be shared publicly. Your email address will
+			not be shared publicly except with your permission.
+		</p>
+	{% endcomment %}
 </div>
 {% endblock %}

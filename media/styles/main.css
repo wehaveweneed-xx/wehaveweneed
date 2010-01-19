@@ -40,6 +40,14 @@ h1 a {
     display: block; 
     text-indent: -9999em;
 }
+h1 span {
+    display: block;
+    text-align: center;
+    font-variant: small-caps;
+    font-weight: bold;
+    width: 100%;
+    letter-spacing: 5px;
+}
 #site { 
     float: left;
     font-style: normal;
