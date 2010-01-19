@@ -58,3 +58,9 @@ class Post(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('view_post', (), {'id': self.id})
+
+    @property
+    def priority_full(self):
+        return {'short': 'Immediate / Life-Saving',
+                'mid': 'Mid-Term / Life-Sustaining',
+                'long': 'Long-Term / Life-Enhancing'}[self.priority]
