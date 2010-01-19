@@ -107,16 +107,18 @@ def view_post(request, id):
 @login_required
 def account_settings(request):
     updated = False
+    profile = request.user.get_profile()
     if request.method == 'POST':
         form = AccountSettingsForm(request.POST)
         if form.is_valid():
-            profile = request.user.get_profile()
             profile.organization = form.cleaned_data['organization']
+            profile.phone = form.cleaned_data['phone']
             profile.save()
             updated = True
     else:
         form = AccountSettingsForm(
-            {'organization': request.user.get_profile().organization})
+            {'organization': profile.organization,
+             'phone': profile.phone})
 
     return render_to_response('registration/account_settings.html',
                               RequestContext(request,

@@ -9,7 +9,11 @@ from registration.forms import RegistrationFormUniqueEmail
 from registration.models import RegistrationProfile
 
 class RegistrationForm(RegistrationFormUniqueEmail):
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=30)
     organization = forms.CharField(max_length=200)
+    phone = forms.CharField(max_length=100, required=False,
+                            label="Phone # (optional)")
 
     def save(self, profile_callback=None):
         new_user = RegistrationProfile.objects.create_inactive_user(
@@ -18,14 +22,21 @@ class RegistrationForm(RegistrationFormUniqueEmail):
             email=self.cleaned_data['email'],
             profile_callback=profile_callback)
 
+        new_user.first_name = self.cleaned_data.get('first_name', "")
+        new_user.last_name = self.cleaned_data.get('last_name', "")
+        new_user.save()
+
         UserProfile.objects.create(
             user=new_user,
-            organization=self.cleaned_data['organization'])
+            organization=self.cleaned_data['organization'],
+            phone=self.cleaned_data.get('phone', ""))
 
         return new_user
 
 class AccountSettingsForm(forms.Form):
     organization = forms.CharField(max_length=200)
+    phone = forms.CharField(max_length=100, required=False,
+                            label="Phone # (optional)")
 
 class PostForm(forms.ModelForm):
 
