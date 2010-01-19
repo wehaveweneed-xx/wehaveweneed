@@ -4,3 +4,8 @@
 {{ object.category.name }}
 {{ object.content }}
 {{ object.contact.get_profile.organization }}
+{% if object.object and object.number and object.unit %}
+   {{ object.object }}
+   {{ object.number }}
+   {{ object.unit }}
+{% endif %}
