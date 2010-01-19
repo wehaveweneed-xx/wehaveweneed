@@ -21,6 +21,9 @@
   <p><label>Posted at:</label> <span>{{ post.time_start }}</span></p>
   <p><label>Priority:</label> <span>{{ post.priority_full }}</span></p>
   <p><label>Category:</label> <span>{{ post.category }}</span></p>
+  {% if post.object and post.number and post.unit %}
+  <p><label>Specific {{post.type}}:</label> <span>{{post.number}} {{post.unit}} of {{post.object}}</span></p>
+  {% endif %}
   <p><label>Content:</label></p>
   <p>{{ post.content|linebreaks }}</p>
 

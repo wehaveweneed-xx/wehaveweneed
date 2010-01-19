@@ -32,6 +32,17 @@ class UserProfile(models.Model):
         return 'profile of %s' % self.user.username
 
 
+UNITS = (
+    ('units', 'generic units'),
+    ('lbs', 'lbs'),
+    ('kg', 'kg'),
+    ('gallons', 'gallons'),
+    ('liters', 'liters'),
+    ('feed', 'feet'),
+    ('yards', 'yards'),
+    ('meters', 'meters'),
+    )
+
 class Post(models.Model):
     created_at  = models.DateTimeField(default=datetime.utcnow)
     title       = models.CharField(max_length=200)
@@ -48,6 +59,11 @@ class Post(models.Model):
     content     = models.TextField()
     responses   = models.IntegerField(default=0)
     fulfilled   = models.BooleanField(default=False)
+
+    object = models.CharField(max_length=100, blank=True)
+    number = models.PositiveIntegerField(blank=True)
+    unit = models.CharField(max_length=100, choices=UNITS,
+                            default='', blank=True)
 
     class Meta:
         ordering = ('-created_at',)

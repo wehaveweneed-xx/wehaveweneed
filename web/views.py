@@ -10,6 +10,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext as _
 from django.views.decorators.http import require_POST
 from django.views.generic.list_detail import object_list
+from django.db.models import Sum
 from registration.models import RegistrationProfile
 from wehaveweneed.web.models import *
 from wehaveweneed.web.forms import *
@@ -125,3 +126,27 @@ def account_settings(request):
                                              {'form': form,
                                               'user': request.user,
                                               'updated': updated}))
+
+def top_needs(request):
+    need_water = Post.objects.filter(object__iexact='water',
+                                        unit__iexact='gallons',
+                                        fulfilled=False,
+                                        type='need').aggregate(
+        total=Sum('number'))['total'] or 0
+
+    have_water = Post.objects.filter(object__iexact='water',
+                                      unit__iexact='gallons',
+                                      fulfilled=False,
+                                      type='have').aggregate(
+        total=Sum('number'))['total'] or 0
+
+    net_water = need_water - have_water
+
+    return render_to_response('top_needs.html',
+                              RequestContext(request,
+                                             {'need_water':
+                                                  need_water,
+                                              'have_water':
+                                                  have_water,
+                                              'net_water':
+                                                  net_water}))

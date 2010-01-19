@@ -45,6 +45,9 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'type', 'priority',
                   'location',
                   'category',
+                  'number',
+                  'object',
+                  'unit',
                   'content',)
 
 class ReplyForm(forms.Form):
