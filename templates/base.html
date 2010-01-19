@@ -43,15 +43,14 @@
 		      {% if user.is_authenticated %}
 					<div id="utility">
 				        <ul>
-				            <li id="utilityRegister"><a href="/accounts/settings">Account Settings</a></li>
-				            <li id="utilityLogout"><a href="/logout">Log Out</a></li>
+				            <li id="utilityRegister"><a href="/accounts/settings/">Account Settings</a></li>
+				            <li id="utilityLogout"><a href="/logout/">Log Out</a></li>
 				        </ul>
 					</div>
 		      {% else %}
 					<div id="utility">
 				        <ul>
-				            <li id="utilityRegister"><a href="/accounts/register">Register</a></li>
-				            <li id="utilitySignup"><a href="/login">Log In</a></li>
+				            <li id="utilitySignup"><a href="/login/">Log In</a></li>
 				        </ul>
 					</div>
       		{% endif %}
@@ -62,9 +61,9 @@
       	  {% block nav %}
 					<div id="nav">
 						<ul>
-							<li id="nav_post"><a href="/post">Post</a></li>
-				            <li id="nav_have"><a href="/haves">Haves</a></li>
-				            <li id="nav_need"><a href="/needs">Needs</a></li>
+							<li id="nav_post"><a href="/post/">Post</a></li>
+				            <li id="nav_have"><a href="/haves/">Haves</a></li>
+				            <li id="nav_need"><a href="/needs/">Needs</a></li>
 						</ul>
 					</div>
 	        {% endblock %}  <!-- nav -->
