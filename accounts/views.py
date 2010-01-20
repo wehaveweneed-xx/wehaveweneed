@@ -9,7 +9,7 @@ def verify_email(request, verification_key,
                  template_name='registration/activate.html',
                  extra_context=None):
     verification_key = verification_key.lower() # Normalize before trying anything with it.
-    account = verify_util(verification_key)
+    account = verify(verification_key)
 
     if extra_context is None:
         extra_context = {}
