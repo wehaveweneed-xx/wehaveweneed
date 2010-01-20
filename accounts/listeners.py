@@ -4,8 +4,7 @@ from registration.models import RegistrationProfile
 def send_activation_email(sender, instance, signal, *args, **kwargs):
     try:
         reg_prof = RegistrationProfile.objects.get(user=instance)
-    except RegistrationProfile.ObjectDoesNotExist:
-        print "TSRATSRATSRA"
+    except RegistrationProfile.DoesNotExist:
         return
     
     if (instance.is_active and
