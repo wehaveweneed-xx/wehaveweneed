@@ -142,3 +142,6 @@ tbody td { padding-bottom: 10px; padding-top: 10px; }
 tr#titles th { font-weight: bold; font-size: 110%; padding-bottom: 10px;}
 
 .clear { clear: both;}
+
+span.touh2 {color:#55504E; font-family:Georgia,Times New Roman,Times,serif; font-style:oblique; margin-bottom:20px; font-size:210%; font-weight:normal; 	padding-top: 12px; padding-bottom: 3px; line-height: 30px;}
+span.toup {color:#706A67; font-family:Helvetica Neue,Helvetica,Arial,sans-serif; font-size:120%; line-height:20px;}
