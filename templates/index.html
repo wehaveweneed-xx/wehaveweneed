@@ -34,9 +34,9 @@
 <div id="ltColumn">
   {% cache 600 categories %}
   <h3>Categories</h3>
-  <ul>
+  <ul id="categories_nav">
     {% for cat in categories %}
-    <li>{{ cat }} (<a href="{% url web_viewhaves category=cat.slug %}">haves</a>) (<a href="{% url web_viewneeds category=cat.slug %}">needs</a>)</li>
+    <li>{{ cat }} <span><a href="{% url web_viewhaves category=cat.slug %}">haves</a> | <a href="{% url web_viewneeds category=cat.slug %}">needs</a></span></li>
     {% endfor %}
 
   </ul>
