@@ -48,7 +48,7 @@ UNITS = (
     )
 
 class Post(models.Model):
-    created_at  = models.DateTimeField(default=datetime.utcnow)
+    created_at  = models.DateTimeField(default=datetime.now)
     title       = models.CharField(max_length=200)
     type        = models.CharField(max_length=10, choices=POSTCHOICE,
                                    default='need')
