@@ -10,7 +10,7 @@ class CategoryChoiceField(forms.ModelChoiceField):
 
 
 class PostSearchForm(SearchForm):
-    """ Our search form.  
+    """ Our search form.
 
     """
 
@@ -25,7 +25,7 @@ class PostSearchForm(SearchForm):
     def search(self):
         sqs = super(PostSearchForm, self).search()
 
-        sqs.filter(fulfilled=False)
+        sqs = sqs.filter(fulfilled=False)
 
         category = self.cleaned_data.get('category')
         if category:
