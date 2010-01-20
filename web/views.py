@@ -34,7 +34,7 @@ def post_create(request):
             next = reverse('home')
 
         request.user.message_set.create(
-                message=_('Your post was created.'))
+                message='Your post was created.')
         return HttpResponseRedirect(next)
 
     if request.is_ajax():
@@ -95,7 +95,7 @@ def view_post(request, id):
             if form.is_valid():
                 form.save()
                 request.user.message_set.create(
-                    message=_('Your post was updated.'))
+                    message='Your post was updated.')
         elif request.user.is_authenticated():
             form = ReplyForm(request.POST)
             if form.is_valid():
@@ -104,7 +104,7 @@ def view_post(request, id):
                                      content=form.cleaned_data['content'])
                 send_reply_email(request, post, form)
                 request.user.message_set.create(
-                    message=_('Your reply was sent.'))
+                    message='Your reply was sent.')
         else:
             raise Http404()
 
