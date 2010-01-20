@@ -62,6 +62,8 @@ PAGINATE_POSTS_BY = 20
 
 ACCOUNT_ACTIVATION_DAYS = 2
 
+DATE_FORMAT = "H:i M j"
+
 try:
     from local_settings import *
 except ImportError:
