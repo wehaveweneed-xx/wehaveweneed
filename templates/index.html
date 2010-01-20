@@ -1,38 +1,56 @@
 {% extends "base.html" %}
 {% load cache %}
-      	{% block featureBox %}
-				<div id="featureBox">
-					<h2>Welcome to We Have We Need</h2>
-                                        <p>The aftermath of the Haiti Earthquake represents a valiant relief effort on the ground. And we, a group of compassionate geeks, gathered at CrisisCamp to use technology as a way ease this tremendous burden.The WeHaveWeNeed project is our humble attempt to better align the most urgent needs reported by those on the ground with the most generous donations.</p>
-					<p>WeHaveWeNeed is a place where relief organizations can quickly post their most urgent needs and have them matched by generous donors during a time of crisis. This site was built by a group of geeky do-gooders who saw this as an opportunity to use technology to help bring people and donations together in the aftermath of a devastating earthquake in Haiti. If you'd like to participate in the program, please let us know. </p>
-				</div>
-	      {% endblock %}  <!-- featureBox -->
-      	{% block ltColumn %}
-				<div id="ltColumn">
-                  {% cache 600 categories %}
-					<h3>Categories</h3>
-					    <ul>
-					{% for cat in categories %}
-					        <li>{{ cat }} (<a href="{% url web_viewhaves category=cat.slug %}">haves</a>) (<a href="{% url web_viewneeds category=cat.slug %}">needs</a>)</li>
-                                        {% endfor %}
+{% block featureBox %}
+<div id="featureBox">
+  <h2>Welcome to We Have We Need</h2>
+  <p> The aftermath of the Haiti Earthquake represents a valiant
+  relief effort on the ground. And we, a group of compassionate geeks,
+  gathered at <a href="http://crisiscommons.org/">CrisisCamps</a>
+  to use technology as a way ease this tremendous burden.
+  The WeHaveWeNeed project is our humble attempt to
+  better align the most urgent needs reported by those on the ground
+  with the most generous donations.
+  </p>
+  <p>WeHaveWeNeed is a place where relief
+  organizations can quickly post their most urgent
+  needs and have them matched by generous donors
+  during a time of crisis. This site was built by a
+  group of geeky do-gooders who saw this as an
+  opportunity to use technology to help bring people
+  and donations together in the aftermath of a
+  devastating earthquake in Haiti. If you'd like to
+  participate in the program, please
+  <a href="mailto:help@wehaveweneed.org">let us know</a>. </p>
+</div>
+{% endblock %}  <!-- featureBox -->
 
-					    </ul>
-					{% endcache %}
-				</div>
-	      {% endblock %}  <!-- ltColumn -->
-      	{% block rtColumn %}
-				<div id="rtColumn">
-					<h3>Recent Wants and Needs</h3>
-					{% include 'includes/post_table.html' %}
-					{% if is_paginated %}
-						<p id="pagination">
-							{% if page_obj.has_next %}
-								<a href="?page={{ page_obj.next_page_number }}" class="next">Next</a>
-							{% endif %}
-							{% if page_obj.has_previous %}
-								<a href="?page={{ page_obj.previous_page_number }}" class="previous">Previous</a>
-							{% endif %}
-						</p>
-					{% endif %}
-				</div>
-	      {% endblock %}  <!-- rtColumn -->
+{% block ltColumn %}
+<div id="ltColumn">
+  {% cache 600 categories %}
+  <h3>Categories</h3>
+  <ul>
+    {% for cat in categories %}
+    <li>{{ cat }} (<a href="{% url web_viewhaves category=cat.slug %}">haves</a>) (<a href="{% url web_viewneeds category=cat.slug %}">needs</a>)</li>
+    {% endfor %}
+
+  </ul>
+  {% endcache %}
+</div>
+{% endblock %}  <!-- ltColumn -->
+
+{% block rtColumn %}
+<div id="rtColumn">
+  <h3>Recent Wants and Needs</h3>
+  {% include 'includes/post_table.html' %}
+  {% if is_paginated %}
+  <p id="pagination">
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}" class="next">Next</a>
+  {% endif %}
+  {% if page_obj.has_previous %}
+  <a href="?page={{ page_obj.previous_page_number }}" class="previous">Previous</a>
+  {% endif %}
+  </p>
+  {% endif %}
+</div>
+{% endblock %}  <!-- rtColumn -->
