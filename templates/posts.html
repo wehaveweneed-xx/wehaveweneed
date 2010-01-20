@@ -5,7 +5,7 @@
       	{% block ltColumn %}
 				<div id="ltColumn">
 					<h2>{% block body_title %}{% endblock %}</h2>
-					{% include 'includes/post_table.html' %}
+					{% include 'includes/post_list.html' %}
 					{% if is_paginated %}
 						<p id="pagination">
 							{% if page_obj.has_next %}
