@@ -1,10 +1,10 @@
 from registration.models import RegistrationProfile, SHA1_RE
 
 def verify(verification_key):
-    if SHA1_RE.search(activation_key):
+    if SHA1_RE.search(verification_key):
         try:
-            profile = RegistrationProfile.objects.get(activation_key=activation_key)
-        except self.model.DoesNotExist:
+            profile = RegistrationProfile.objects.get(activation_key=verification_key)
+        except RegistrationProfile.DoesNotExist:
             return False
         if not profile.activation_key_expired():
             user = profile.user
