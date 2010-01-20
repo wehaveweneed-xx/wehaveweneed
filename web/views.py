@@ -55,7 +55,8 @@ def viewhaves(request, category=None):
         queryset=posts,
         paginate_by=getattr(settings, 'PAGINATE_POSTS_BY', 10),
         template_name='haves.html',
-        template_object_name='post'
+        template_object_name='post',
+        extra_context={ 'category': category },
     )
 
 def viewneeds(request, category=None):
@@ -67,7 +68,8 @@ def viewneeds(request, category=None):
         queryset=posts,
         paginate_by=getattr(settings, 'PAGINATE_POSTS_BY', 10),
         template_name='needs.html',
-        template_object_name='post'
+        template_object_name='post',
+        extra_context={ 'category': category },
     )
 
 def home(request):

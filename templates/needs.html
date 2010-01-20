@@ -1,3 +1,7 @@
 {% extends "posts.html" %}
+
 {% block body_class %}needs{% endblock %}
-					{% block body_title %}Needs{% endblock %}
+
+{% block body_title %}
+	{% if category %}{{ category }} {% endif %}Needs
+{% endblock %}
