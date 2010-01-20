@@ -80,3 +80,17 @@ class Post(models.Model):
         return {'short': 'Immediate / Life-Saving',
                 'mid': 'Mid-Term / Life-Sustaining',
                 'long': 'Long-Term / Life-Enhancing'}[self.priority]
+
+
+class Reply(models.Model):
+    post = models.ForeignKey(Post, related_name='replies')
+    created_at = models.DateTimeField(default=datetime.utcnow)
+    sender = models.ForeignKey(User, related_name='replies')
+    content = models.TextField()
+
+    class Meta:
+        ordering = ('-created_at',)
+
+    def __unicode__(self):
+        return "reply from %s to '%s'" % (self.sender.username,
+                                          self.post.title)

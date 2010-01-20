@@ -95,6 +95,9 @@ def view_post(request, id):
     if request.method == 'POST':
         form = form_class(request.POST)
         if form.is_valid():
+            Reply.objects.create(post=post,
+                                 sender=request.user,
+                                 content=form.cleaned_data['content'])
             send_reply_email(request, post, form)
             sent = True
     else:
