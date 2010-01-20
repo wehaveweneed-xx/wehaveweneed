@@ -14,7 +14,7 @@ def send_activation_email(sender, instance, signal, *args, **kwargs):
                   "The account '%s' at We Have We Need has been "
                   "activated by an administrator. Please visit "
                   "http://wehaveweneed.org/login/ to login and "
-                  " use the site." % user.username,
+                  " use the site." % instance.username,
                   'webmaster@wehaveweneed.com',
                   [instance.email])
         reg_prof.activation_key = RegistrationProfile.ACTIVATED
