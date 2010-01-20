@@ -39,6 +39,14 @@ class AccountSettingsForm(forms.Form):
                             label="Phone # (optional)")
 
 class PostForm(forms.ModelForm):
+    number = forms.IntegerField(required=False,
+                                min_value=0,
+                                label='Number (optional):')
+    unit = forms.ChoiceField(required=False,
+                             choices=UNITS, initial='',
+                             label='Unit (optional):')
+    object = forms.CharField(required=False,
+                             label='Item (optional):')
 
     class Meta:
         model = Post
@@ -46,8 +54,8 @@ class PostForm(forms.ModelForm):
                   'location',
                   'category',
                   'number',
-                  'object',
                   'unit',
+                  'object',
                   'content',)
 
 class ReplyForm(forms.Form):
