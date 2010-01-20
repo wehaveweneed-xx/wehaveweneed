@@ -3,17 +3,13 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from registration.models import RegistrationProfile
-
+from wehaveweneed.accounts.utils import verify
 
 def verify_email(request, verification_key,
                  template_name='registration/activate.html',
                  extra_context=None):
     verification_key = verification_key.lower() # Normalize before trying anything with it.
-    account = RegistrationProfile.objects.activate_user(verification_key)
-    if account:
-        account.is_active = False
-        account.save()
+    account = verify_util(verification_key)
 
     if extra_context is None:
         extra_context = {}

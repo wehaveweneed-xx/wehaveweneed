@@ -1,6 +1,8 @@
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.db.models import signals
+from wehaveweneed.accounts.listeners import send_activation_email
 
 POSTCHOICE = (
   ('have', 'Have'),
@@ -31,6 +33,7 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return 'profile of %s' % self.user.username
 
+signals.post_save.connect(send_activation_email, sender=User)
 
 UNITS = (
     ('units', 'generic units'),
