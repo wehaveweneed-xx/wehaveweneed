@@ -11,10 +11,10 @@ from wehaveweneed.web.forms import RegistrationForm
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^accounts/activate/(?P<activation_key>\w+)/$',
-        'registration.views.activate',
-        {'extra_context': {'auth_form': AuthenticationForm()}},
-        name='registration_activate'),
+    #url(r'^accounts/activate/(?P<activation_key>\w+)/$',
+    #    'registration.views.activate',
+    #    {'extra_context': {'auth_form': AuthenticationForm()}},
+    #    name='registration_activate'),
     url(r'^accounts/settings/$', 'wehaveweneed.accounts.views.settings'),
     url(r'^accounts/request/$', 'registration.views.register', {'form_class': RegistrationForm}),
     url(r'^register/complete/$', direct_to_template,
