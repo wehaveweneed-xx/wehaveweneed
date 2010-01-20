@@ -18,7 +18,6 @@ from wehaveweneed.web.emails import send_reply_email
 
 @login_required
 def post_create(request):
-
     """
     Renders a form for creating a new ``POST`` instance, validates against that
     form, and creates the new instances.
@@ -46,7 +45,6 @@ def post_create(request):
         {'form': form },
         context_instance = RequestContext(request)
     )
-post_create = login_required(post_create)
 
 def viewhaves(request, category=None):
     posts = Post.objects.filter(type="have")
@@ -130,27 +128,6 @@ def view_post(request, id):
                                               'form': form,
                                               'sent': sent}))
 
-@login_required
-def account_settings(request):
-    updated = False
-    profile = request.user.get_profile()
-    if request.method == 'POST':
-        form = AccountSettingsForm(request.POST)
-        if form.is_valid():
-            profile.organization = form.cleaned_data['organization']
-            profile.phone = form.cleaned_data['phone']
-            profile.save()
-            updated = True
-    else:
-        form = AccountSettingsForm(
-            {'organization': profile.organization,
-             'phone': profile.phone})
-
-    return render_to_response('registration/account_settings.html',
-                              RequestContext(request,
-                                             {'form': form,
-                                              'user': request.user,
-                                              'updated': updated}))
 
 def top_needs(request):
     need_water = Post.objects.filter(object__iexact='water',

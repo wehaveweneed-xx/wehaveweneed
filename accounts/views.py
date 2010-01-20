@@ -3,7 +3,31 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
 from wehaveweneed.accounts.utils import verify
+from wehaveweneed.accounts.forms import AccountSettingsForm
+
+@login_required
+def settings(request):
+    updated = False
+    profile = request.user.get_profile()
+    if request.method == 'POST':
+        form = AccountSettingsForm(request.POST)
+        if form.is_valid():
+            profile.organization = form.cleaned_data['organization']
+            profile.phone = form.cleaned_data['phone']
+            profile.save()
+            updated = True
+    else:
+        form = AccountSettingsForm(
+            {'organization': profile.organization,
+             'phone': profile.phone})
+
+    return render_to_response('registration/account_settings.html',
+                              RequestContext(request,
+                                             {'form': form,
+                                              'user': request.user,
+                                              'updated': updated}))
 
 def verify_email(request, verification_key,
                  template_name='registration/activate.html',

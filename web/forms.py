@@ -33,11 +33,6 @@ class RegistrationForm(RegistrationFormUniqueEmail):
 
         return new_user
 
-class AccountSettingsForm(forms.Form):
-    organization = forms.CharField(max_length=200)
-    phone = forms.CharField(max_length=100, required=False,
-                            label="Phone # (optional)")
-
 class PostForm(forms.ModelForm):
     number = forms.IntegerField(required=False,
                                 min_value=0, initial=0,
