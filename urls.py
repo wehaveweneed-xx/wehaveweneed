@@ -6,6 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic.simple import direct_to_template
 from haystack.views import SearchView
 from wehaveweneed.search.forms import PostSearchForm
+from wehaveweneed.search.views import PostSearchView
 from wehaveweneed.web.forms import RegistrationForm
 
 admin.autodiscover()
@@ -30,7 +31,7 @@ urlpatterns = patterns('',
     url(r'^haves/(?P<category>[-\w]+)?', 'wehaveweneed.web.views.viewhaves', name='web_viewhaves'),
     url(r'^needs/(?P<category>[-\w]+)?', 'wehaveweneed.web.views.viewneeds', name='web_viewneeds'),
     url(r'^post/', 'wehaveweneed.web.views.post_create', name='web_postcreate'),
-    url(r'^search/', SearchView(form_class=PostSearchForm)),
+    url(r'^search/', PostSearchView(form_class=PostSearchForm)),
     url(r'^top_needs/$', 'wehaveweneed.web.views.top_needs', name='top_needs'),
     url(r'^view/(?P<id>\d+)/$', 'wehaveweneed.web.views.view_post', name='view_post'),
     url(r'^$', 'wehaveweneed.web.views.home', name="home"),

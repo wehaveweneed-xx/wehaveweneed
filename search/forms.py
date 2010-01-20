@@ -23,7 +23,13 @@ class PostSearchForm(SearchForm):
 
 
     def search(self):
-        sqs = super(PostSearchForm, self).search()
+        if self.is_valid():
+            if self.cleaned_data['q'].strip():
+                sqs = self.searchqueryset.auto_query(self.cleaned_data['q'])
+            else:
+                sqs = self.searchqueryset.all()
+        else:
+            return []
 
         sqs = sqs.filter(fulfilled=False)
 
@@ -37,6 +43,9 @@ class PostSearchForm(SearchForm):
             sqs = sqs.filter(type='have')
         if need and not have:
             sqs = sqs.filter(type='need')
+
+        if self.load_all:
+            sqs = sqs.load_all()
 
         return sqs
 
