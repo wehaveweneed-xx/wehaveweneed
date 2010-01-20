@@ -1,5 +1,25 @@
 {% extends "base.html" %}
 
+{% block search %}
+<div id="search">
+  <form id="searchForm" action="/search" method="get">
+      <fieldset>
+          <label id="searchTitle">I am looking for people who</label>
+          {% for field in form %}
+          <div id="{{ field.label }}_wrap">
+              {{ field.errors }}
+              {{ field }}{{ field.label_tag }}
+          </div>
+          {% endfor %}
+
+      <button class="searchBtn" type="submit">
+          <span>Go</span>
+      </button>
+      </fieldset>
+  </form>
+</div>
+{% endblock %}
+
 {% block featureBox %}
 <div id="featureBox">
   <h3>{% block body_title %}Search results:{% endblock %}</h3>
