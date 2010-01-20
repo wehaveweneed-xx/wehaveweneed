@@ -41,6 +41,5 @@ def verify_email(request, verification_key,
     for key, value in extra_context.items():
         context[key] = callable(value) and value() or value
     return render_to_response(template_name,
-                              { 'account': account,
-                                'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS },
+                              { 'account': account},
                               context_instance=context)
