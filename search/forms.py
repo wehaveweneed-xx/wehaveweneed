@@ -25,6 +25,8 @@ class PostSearchForm(SearchForm):
     def search(self):
         sqs = super(PostSearchForm, self).search()
 
+        sqs.filter(fulfilled=False)
+
         category = self.cleaned_data.get('category')
         if category:
             sqs = sqs.filter(category_id=category.id)

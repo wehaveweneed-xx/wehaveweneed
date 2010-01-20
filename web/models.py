@@ -60,8 +60,8 @@ class Post(models.Model):
     responses   = models.IntegerField(default=0)
     fulfilled   = models.BooleanField(default=False)
 
-    object = models.CharField(max_length=100, blank=True)
-    number = models.PositiveIntegerField(blank=True)
+    object = models.CharField(max_length=100, default='', blank=True)
+    number = models.PositiveIntegerField(default=0, blank=True)
     unit = models.CharField(max_length=100, choices=UNITS,
                             default='', blank=True)
 

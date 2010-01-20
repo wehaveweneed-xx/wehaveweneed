@@ -2,8 +2,11 @@
 
 {% block featureBox %}
 <div id="featureBox">
-  {% if sent %}
-  <h3>Your reply has been sent!</h3>
+  {% ifequal user post.contact %}
+  <form action="." method="POST">
+    {{ form.as_p }}
+    <input type="submit" value="update post" />
+  </form>
   {% else %}
   <h3>{{ post.type|title }} details:</h3>
   <p><label>Title:</label> <span>{{ post.title }}</span></p>
@@ -29,7 +32,6 @@
 
   <hr />
   {% if user.is_authenticated %}
-  {% ifnotequal user post.contact %}
   <div id="replyBox">
     <h3>Reply:</h3>
     <form action="." method="POST">
@@ -40,11 +42,11 @@
     <p>Warning: your email address will be shared with the person
     you're replying to!</p>
   </div>
-  {% endifnotequal %}
+
   {% else %}
   Please <a href="/login/">login</a> or
   <a href="/accounts/register/">register</a> to reply.
-  {% endif %}
-  {% endif %}
+  {% endif %} <!-- if user post.contact -->
+  {% endifequal %} <!-- ifequal user post.user -->
 </div>
 {% endblock %}

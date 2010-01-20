@@ -18,7 +18,7 @@ from wehaveweneed.web.emails import send_reply_email
 
 @login_required
 def post_create(request):
-    
+
     """
     Renders a form for creating a new ``POST`` instance, validates against that
     form, and creates the new instances.
@@ -33,11 +33,11 @@ def post_create(request):
             next = request.POST['next']
         else:
             next = reverse('home')
-            
+
         request.user.message_set.create(
                 message=_('Your post was created.'))
         return HttpResponseRedirect(next)
-    
+
     if request.is_ajax():
         raise Http404
 
@@ -47,7 +47,7 @@ def post_create(request):
         context_instance = RequestContext(request)
     )
 post_create = login_required(post_create)
-    
+
 def viewhaves(request, category=None):
     posts = Post.objects.filter(type="have")
     if category:
@@ -73,7 +73,7 @@ def viewneeds(request, category=None):
     )
 
 def home(request):
-    posts = Post.objects.all()
+    posts = Post.objects.filter(fulfilled=False)
     categories = Category.objects.all()
 
     return object_list(
@@ -88,20 +88,42 @@ def home(request):
 def view_post(request, id):
     post = get_object_or_404(Post, pk=id)
     sent =  False
-    if request.user.is_authenticated():
-        form_class = ReplyForm
-    else:
-        form_class = UnauthenticatedReplyForm
+
     if request.method == 'POST':
-        form = form_class(request.POST)
-        if form.is_valid():
-            Reply.objects.create(post=post,
-                                 sender=request.user,
-                                 content=form.cleaned_data['content'])
-            send_reply_email(request, post, form)
-            sent = True
+        if request.user == post.contact:
+            form = PostForm(request.POST, instance=post)
+            if form.is_valid():
+                form.save()
+                request.user.message_set.create(
+                    message=_('Your post was updated.'))
+        elif request.user.is_authenticated():
+            form = ReplyForm(request.POST)
+            if form.is_valid():
+                Reply.objects.create(post=post,
+                                     sender=request.user,
+                                     content=form.cleaned_data['content'])
+                send_reply_email(request, post, form)
+                request.user.message_set.create(
+                    message=_('Your reply was sent.'))
+        else:
+            raise Http404()
+
+        if 'next' in request.POST:
+            next = request.POST['next']
+        else:
+            next = reverse('home')
+        return HttpResponseRedirect(next)
+
+
+    if request.user == post.contact:
+        p = post.__dict__.copy()
+        p['category'] = post.category.pk
+        form = PostForm(p)
+    elif request.user.is_authenticated():
+        form = ReplyForm()
     else:
-        form = form_class()
+        form = None
+
     return render_to_response('view_post.html',
                               RequestContext(request,
                                              {'post': post,

@@ -40,13 +40,16 @@ class AccountSettingsForm(forms.Form):
 
 class PostForm(forms.ModelForm):
     number = forms.IntegerField(required=False,
-                                min_value=0,
+                                min_value=0, initial=0,
                                 label='Number (optional):')
     unit = forms.ChoiceField(required=False,
                              choices=UNITS, initial='',
                              label='Unit (optional):')
     object = forms.CharField(required=False,
                              label='Item (optional):')
+    fulfilled = forms.BooleanField(initial=False, required=False)
+    category = forms.ModelChoiceField(Category.objects.all(),
+                                      empty_label=None)
 
     class Meta:
         model = Post
@@ -56,6 +59,7 @@ class PostForm(forms.ModelForm):
                   'number',
                   'unit',
                   'object',
+                  'fulfilled',
                   'content',)
 
 class ReplyForm(forms.Form):

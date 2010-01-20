@@ -2,6 +2,12 @@
 {% load cache %}
 {% block featureBox %}
 <div id="featureBox">
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="message">{{ message }}</li>
+    {% endfor %}
+  {% endif %}
   <h2>Welcome to We Have We Need</h2>
   <p> The aftermath of the Haiti Earthquake represents a valiant
   relief effort on the ground. And we, a group of compassionate geeks,
