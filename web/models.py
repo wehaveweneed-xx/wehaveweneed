@@ -34,6 +34,7 @@ class UserProfile(models.Model):
 
 UNITS = (
     ('units', 'generic units'),
+    ('people', 'people'),
     ('lbs', 'lbs'),
     ('kg', 'kg'),
     ('gallons', 'gallons'),
