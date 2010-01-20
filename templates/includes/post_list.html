@@ -1,0 +1,14 @@
+<ul class="post_list">
+	{% for post in post_list %}
+	    <li class="post {% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
+			<h4>
+			    <a class="dataName" href="{{ post.get_absolute_url }}">
+					{{ post.title }}
+				</a>
+				<span>{{ post.type }} {{ post.category }}</span>
+			</h4>
+			<!-- <blockquote>{{ post.content }}</blockquote> -->
+			<p>Posted <em>{{ post.created_at|date:"fa F j" }}</em> by <em>{{ post.contact.get_profile.organization }}</em> in <em>{{ post.location }}</em></p>
+		</li>
+	{% endfor %}
+</ul>
