@@ -8,7 +8,7 @@ def send_activation_email(sender, instance, signal, *args, **kwargs):
         return
     
     if (instance.is_active and
-        reg_prof.activation_key == 'EMAIL_VERIFIED'):
+        reg_prof.activation_key != RegistrationProfile.ACTIVATED):
         
         send_mail("Your We Have We Need account has been activated",
                   "The account '%s' at We Have We Need has been "
