@@ -1,5 +1,5 @@
 from django.contrib import admin
-from wehaveweneed.web.models import UserProfile, Post, Category
+from wehaveweneed.web.models import UserProfile, Post, Category, Reply
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
@@ -8,3 +8,4 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(UserProfile)
 admin.site.register(Post)
+admin.site.register(Reply)
