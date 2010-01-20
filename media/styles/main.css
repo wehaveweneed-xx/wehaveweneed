@@ -72,8 +72,8 @@ div#nav li a { text-decoration: none; text-transform: uppercase;}
     margin-bottom: 15px; margin-top: 11px; 
 }
 #searchForm label { 
-    display: none; 
-    width: 50px; 
+    display: none;
+    width: 0px;
     padding: 0; margin: 0;
     float: none;
 }
@@ -85,17 +85,25 @@ label#searchTitle, #Have_wrap label, #Need_wrap label { display: inline; }
     left: 0;
     width: 14em !important;
 }
-#Have_wrap { position: absolute; left: 14em; }
-#Need_wrap { position: absolute; left: 20em; }
+#Have_wrap { position: absolute; left: 15em; }
+#Need_wrap { position: absolute; left: 21em; }
 #Search_wrap { position: absolute; left: 27em; }
 #Search_wrap input { width: 200px; }
 #Category_wrap { position: absolute; left: 43em; }
 #Category_wrap select { width: 13em; }
+
 .searchBtn { position: absolute; left: 57em; }
 /* End search form style. */
 
-div#featureBox { margin-top: 50px; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #dde3e8;}
-
+div#featureBox {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dde3e8;
+}
+div#featureBox p {
+    margin-bottom: 10px;
+}
 select { padding: 2px 0; margin-right: 5px;}
 
 div#pageMain { 
