@@ -158,3 +158,5 @@ span.toup li { list-style-type:circle; padding-left:5px; }
 
 #categories_nav li { padding: 2px 4px; clear: both; width: 200px; }
 #categories_nav span { float: right; }
+
+#footerWrapper { margin: 30px 0 30px; }
