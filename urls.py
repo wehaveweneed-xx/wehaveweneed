@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.views import login, logout, logout_then_login, password_change
 from django.contrib.auth.forms import AuthenticationForm
+from django.views.generic.simple import direct_to_template
 from haystack.views import SearchView
 from wehaveweneed.search.forms import PostSearchForm
 from wehaveweneed.web.forms import RegistrationForm
@@ -14,9 +15,12 @@ urlpatterns = patterns('',
         'registration.views.activate',
         {'extra_context': {'auth_form': AuthenticationForm()}},
         name='registration_activate'),
-    #url(r'^accounts/register/$', 'registration.views.register', {'form_class': RegistrationForm}),    
     url(r'^accounts/settings/$', 'wehaveweneed.web.views.account_settings'),
-    url(r'^accounts/', include('registration.urls')),
+    url(r'^accounts/request/$', 'registration.views.register', {'form_class': RegistrationForm}),
+    url(r'^register/complete/$', direct_to_template,
+           {'template': 'registration/registration_complete.html'},
+           name='registration_complete'),
+    url(r'^accounts/verify_email/(?P<verification_key>\w+)/$', 'wehaveweneed.accounts.views.verify_email'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('wehaveweneed.api.urls')),
     url(r'^termsofuse/','django.views.generic.simple.direct_to_template', {'template': 'termsofuse.html'}),

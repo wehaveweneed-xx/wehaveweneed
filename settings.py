@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'wehaveweneed.api',
     'wehaveweneed.search',
     'wehaveweneed.data',
+    'wehaveweneed.accounts',
 )
 
 PAGINATE_POSTS_BY = 20

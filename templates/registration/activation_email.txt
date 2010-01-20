@@ -1,3 +1,4 @@
-Please visit http://wehaveweneed.org/accounts/activate/{{ activation_key }} to activate your account.
+Please visit http://wehaveweneed.org/accounts/verify_email/{{ activation_key }} to verify your email address.
+Once verified, an administrator will review your details and activate your account as soon as possible.
 
--- WeHaveWeNeed.org
+-- We Have We Need
