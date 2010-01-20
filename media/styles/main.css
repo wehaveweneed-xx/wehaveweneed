@@ -175,3 +175,5 @@ span.toup li { list-style-type:circle; padding-left:5px; }
 .post_list li.post em { font-weight: bold; }
 
 body.needs div#ltColumn h2, body.haves div#ltColumn h2 { margin-bottom: 1.5em; text-transform: capitalize; }
+
+.errorlist { color: red; }
