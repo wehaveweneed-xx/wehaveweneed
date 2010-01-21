@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+
+{% block feeds %}
+<link rel="alternate" type="application/rss+xml" title="We Have We
+Need: Haves and needs from all categories" href="/feeds/all/" />
+{% endblock %}
+
 {% load cache %}
 {% block featureBox %}
 <div id="featureBox">
