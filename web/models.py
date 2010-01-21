@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
-from django.db.models import signals
+from django.db.models import Q, signals
 from wehaveweneed.accounts.listeners import send_activation_email
 
 POSTCHOICE = (
@@ -47,7 +47,20 @@ UNITS = (
     ('meters', 'meters'),
     )
 
+class PostManager(models.Manager):
+    def open(self):
+        """
+        Return posts that are not fulfilled, current time is
+        greater than start time, and end time does not exist
+        or current time is less than end time.
+        """
+        now = datetime.utcnow()
+        return Post.objects.filter(
+            fulfilled=False, time_start__lte=now).filter(
+                Q(time_end__gte=now) | Q(time_end__isnull=True))
+
 class Post(models.Model):
+    objects     = PostManager()
     created_at  = models.DateTimeField(default=datetime.utcnow)
     title       = models.CharField(max_length=200)
     type        = models.CharField(max_length=10, choices=POSTCHOICE,
