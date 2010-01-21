@@ -4,6 +4,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.admin.views.decorators import staff_member_required
+from registration.models import RegistrationProfile
 from wehaveweneed.accounts.utils import verify
 from wehaveweneed.accounts.forms import AccountSettingsForm
 
@@ -43,3 +46,21 @@ def verify_email(request, verification_key,
     return render_to_response(template_name,
                               { 'account': account},
                               context_instance=context)
+
+@staff_member_required
+def admin_activate(request):
+    if request.method == 'POST':
+        user = User.objects.get(id=request.POST['user_id'])
+        user.is_active = True
+        user.save()
+
+    profs = RegistrationProfile.objects.filter(
+        activation_key='EMAIL_VERIFIED',
+        user__is_active=False)
+
+
+    return render_to_response('registration/admin_activate.html',
+                    RequestContext(request,
+                                   {'users': [p.user for p in profs]}))
+
+
