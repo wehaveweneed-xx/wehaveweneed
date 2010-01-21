@@ -48,7 +48,7 @@ UNITS = (
     )
 
 class Post(models.Model):
-    created_at  = models.DateTimeField(default=datetime.now)
+    created_at  = models.DateTimeField(default=datetime.utcnow)
     title       = models.CharField(max_length=200)
     type        = models.CharField(max_length=10, choices=POSTCHOICE,
                                    default='need')
@@ -56,7 +56,7 @@ class Post(models.Model):
                                    default='mid')
     location    = models.CharField(max_length=100)
     geostamp    = models.CharField(max_length=100, blank=True)
-    time_start  = models.DateTimeField(default=datetime.now, blank=True)
+    time_start  = models.DateTimeField(default=datetime.utcnow, blank=True)
     time_end    = models.DateTimeField(blank=True, null=True)
     category    = models.ForeignKey(Category)
     contact     = models.ForeignKey(User, blank=True, null=True)
