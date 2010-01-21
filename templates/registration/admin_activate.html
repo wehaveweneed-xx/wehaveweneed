@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block featureBox %}
+<div id="featureBox">
+  <h3>Inactive users with validated email addresses:</h3>
+  <ol>
+  {% for u in users %}
+    <li>
+      {{ u.first_name }} {{ u.last_name }} /
+      <a href="mailto:{{ u.email }}">{{ u.email }}</a> /
+      {{ u.get_profile.organization }}
+      {% if u.get_profile.phone %}
+        / {{ u.get_profile.phone }}
+      {% endif %}
+      <form action="." method="POST" style="display:inline;">
+        <input type="hidden" name="user_id" value="{{u.pk}}" />
+        <input type="submit" value="Activate" />
+      </form>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endblock %}
