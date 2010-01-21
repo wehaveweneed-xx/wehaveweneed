@@ -35,45 +35,36 @@ class NeedFeed(Feed):
   def item_pubdate(self, item):
     return item.created_at
 
-
 # Display feed for a specific category
-# Unrecognized categories cause an empty list to be generated
-# The code for handling unrecognized categories is ugly and needs to be cleaned up
+# Attempts to avoid 404-errors by returning an empty lists for undefined categories
+# If no category was specified (url = /feeds/category) all items are returned
 class CategoryFeed(Feed):
   def get_object(self, bits):
-    # Currently using only the first bit
+    # Expecting the first bit to be the category slug
     if not len(bits):
-      return "category"
-    category = Category.objects.get(category__slug=bits[0])
-    if not category:
-      return bits[0]
+      # Always return something
+      return [""]
     else:
-      return category
-    
+      return bits
+  
   def title(self, obj):
-    name = ""
-    if type(obj).__name__ == 'str':
-      name = obj
-    else:
-      name = obj.name
-    return "Wehaveweneed haves and need for category: %s" % name
+    return "We Have We Need: Haves and needs from category %s" % obj[0]
     
   def link(self, obj):
-    if type(obj).__name__ == 'str':
-      return obj
-    else:
-      return obj.name
+    return "/category/%s" % obj[0]
 
   def description(self, obj):
-    name = ""
-    if type(obj).__name__ == 'str':
-      name = obj
-    else:
-      name = obj.name
-    return "Haves and needsd from category: %s" % name
+    return "Haves and needs from category %s" % obj[0]
 
   def items(self, obj):
-    if type(obj).__name__ == 'str':
+    # If no category type was specified return all posts
+    if not obj[0]:
+      return Post.objects.filter(fulfilled=False)[:20]
+
+    try:
+      return Post.objects.filter(fulfilled=False, category__slug=obj[0])[:20]
+    except:
       return []
-    else:
-      return Posts.objects.filter(category__slug=obj.name).all()[:20]
+
+  def item_pubdate(self, item):
+    return item.created_at
