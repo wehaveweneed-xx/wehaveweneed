@@ -2,7 +2,7 @@ from django.contrib.syndication.feeds import Feed
 from wehaveweneed.web.models import Post, Category
 
 class AllFeed(Feed):
-  title = "Wehaveweneed haves and needs from all categories"
+  title = "We Have We Need: Haves and needs from all categories"
   link = "/all/"
   description = "Haves and needs from all categories"
   
@@ -11,7 +11,7 @@ class AllFeed(Feed):
 
 
 class HaveFeed(Feed):
-  title = "Wehaveweneed haves"
+  title = "We Have We Need: Haves"
   link = "/have/"
   description = "Haves from all categories"
   
@@ -20,7 +20,7 @@ class HaveFeed(Feed):
 
 
 class NeedFeed(Feed):
-  title = "Wehaveweneed needs"
+  title = "We Have We Need: Needs"
   link = "/need/"
   description = "Needs from all categories"
   
