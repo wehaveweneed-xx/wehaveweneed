@@ -7,7 +7,10 @@ class AllFeed(Feed):
   description = "Haves and needs from all categories"
   
   def items(self):
-    return Post.objects.all()[:20]
+    return Post.objects.filter(fulfilled=False)[:20]
+
+  def item_pubdate(self, item):
+    return item.created_at
 
 
 class HaveFeed(Feed):
@@ -16,8 +19,10 @@ class HaveFeed(Feed):
   description = "Haves from all categories"
   
   def items(self):
-    return Post.objects.filter(type='have')[:20]
+    return Post.objects.filter(fulfilled=False, type='have')[:20]
 
+  def item_pubdate(self, item):
+    return item.created_at
 
 class NeedFeed(Feed):
   title = "We Have We Need: Needs"
@@ -25,7 +30,10 @@ class NeedFeed(Feed):
   description = "Needs from all categories"
   
   def items(self):
-    return Post.objects.filter(type='need')[:20]
+    return Post.objects.filter(fulfilled=False, type='need')[:20]
+
+  def item_pubdate(self, item):
+    return item.created_at
 
 
 # Display feed for a specific category
