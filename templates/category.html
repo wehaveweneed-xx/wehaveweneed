@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block bodyClass %}
+	<body class="category">
+{% endblock %}
+
+{% block featureBox %}
+{% endblock %}
+
+{% block ltColumn %}
+	<div id="haves_list">
+		<h2>{{ category.name }} Haves</h2>
+		{% with haves as post_list %}
+			{% include 'includes/post_list.html' %}
+		{% endwith %}
+		{% if haves %}
+			<a href="{% url web_viewhaves category.slug %}">View more haves</a>
+		{% else %}
+			<p>No available haves</p>
+		{% endif %}
+	</div>
+{% endblock %}
+	
+{% block rtColumn %}
+	<div id="needs_list">
+		<h2>{{ category.name }} Needs</h2>
+		{% with needs as post_list %}
+			{% include 'includes/post_list.html' %}
+		{% endwith %}
+		{% if needs %}
+			<a href="{% url web_viewneeds category.slug %}">View more needs</a>
+		{% else %}
+			<p>No available needs</p>
+		{% endif %}
+	</div>
+{% endblock %}

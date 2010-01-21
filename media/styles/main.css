@@ -123,6 +123,10 @@ div#ltColumn, div#rtColumn { float: left; margin-top: 50px;}
 div#ltColumn { width: 690px; margin-right: 30px;}
 div#rtColumn { width: 210px; margin-left: 30px;}
 
+div#haves_list, div#needs_list { float: left; margin-top: 50px;}
+div#haves_list { width: 450px; margin-right: 30px;}
+div#needs_list { width: 450px; margin-left: 30px;}
+
 body.home div#ltColumn { width: 290px; margin-top: 0px;}
 body.home div#rtColumn { width: 610px; margin-top: 0px;}
 
@@ -174,6 +178,12 @@ span.toup li { list-style-type:circle; padding-left:5px; }
 .post_list li.post p { margin: 0; padding: 0; }
 .post_list li.post em { font-weight: bold; }
 
-body.needs div#ltColumn h2, body.haves div#ltColumn h2 { margin-bottom: 1.5em; text-transform: capitalize; }
+body.needs div#ltColumn h2,
+body.haves div#ltColumn h2,
+body.category div#haves_list h2,
+body.category div#needs_list h2 {
+    margin-bottom: 1.5em;
+    text-transform: capitalize;
+}
 
 .errorlist { color: red; }

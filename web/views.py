@@ -46,6 +46,16 @@ def post_create(request):
         context_instance = RequestContext(request)
     )
 
+def category(request, category_slug):
+    category = Category.objects.get(slug=category_slug)
+    posts = Post.objects.open().filter(category=category)
+    data = {
+        'category': category,
+        'haves': posts.filter(type="have")[:10],
+        'needs': posts.filter(type="need")[:10],
+    }
+    return render_to_response('category.html', data, context_instance=RequestContext(request))
+
 def viewhaves(request, category=None):
     posts = Post.objects.open().filter(type="have")
     if category:
