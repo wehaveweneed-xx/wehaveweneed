@@ -24,9 +24,9 @@ class PostHandler(BaseHandler):
     
     def read(self, request, post_id=None, post_type=None, category=None):
         if post_id:
-            return Post.objects.filter(pk=post_id)
+            return Post.objects.get(pk=post_id)
         else:            
-            posts = Post.objects.all()
+            posts = Post.objects.open()
             if post_type:
                 posts = posts.filter(type=post_type)
             if category:

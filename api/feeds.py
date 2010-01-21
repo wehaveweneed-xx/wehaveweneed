@@ -7,7 +7,7 @@ class AllFeed(Feed):
   description = "Haves and needs from all categories"
   
   def items(self):
-    return Post.objects.filter(fulfilled=False)[:20]
+    return Post.objects.open()[:20]
 
   def item_pubdate(self, item):
     return item.created_at
@@ -19,7 +19,7 @@ class HaveFeed(Feed):
   description = "Haves from all categories"
   
   def items(self):
-    return Post.objects.filter(fulfilled=False, type='have')[:20]
+    return Post.objects.open().filter(type='have')[:20]
 
   def item_pubdate(self, item):
     return item.created_at
@@ -30,7 +30,7 @@ class NeedFeed(Feed):
   description = "Needs from all categories"
   
   def items(self):
-    return Post.objects.filter(fulfilled=False, type='need')[:20]
+    return Post.objects.open().filter(type='need')[:20]
 
   def item_pubdate(self, item):
     return item.created_at
@@ -59,10 +59,10 @@ class CategoryFeed(Feed):
   def items(self, obj):
     # If no category type was specified return all posts
     if not obj[0]:
-      return Post.objects.filter(fulfilled=False)[:20]
+      return Post.objects.open()[:20]
 
     try:
-      return Post.objects.filter(fulfilled=False, category__slug=obj[0])[:20]
+      return Post.objects.open().filter(category__slug=obj[0])[:20]
     except:
       return []
 

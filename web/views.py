@@ -47,7 +47,7 @@ def post_create(request):
     )
 
 def viewhaves(request, category=None):
-    posts = Post.objects.filter(type="have")
+    posts = Post.objects.open().filter(type="have")
     if category:
         posts = posts.filter(category__slug=category)
     return object_list(
@@ -60,7 +60,7 @@ def viewhaves(request, category=None):
     )
 
 def viewneeds(request, category=None):
-    posts = Post.objects.filter(type="need")
+    posts = Post.objects.open().filter(type="need")
     if category:
         posts = posts.filter(category__slug=category)
     return object_list(
@@ -73,7 +73,7 @@ def viewneeds(request, category=None):
     )
 
 def home(request):
-    posts = Post.objects.filter(fulfilled=False)
+    posts = Post.objects.open()
     categories = Category.objects.all()
 
     return object_list(
@@ -132,15 +132,13 @@ def view_post(request, id):
 
 
 def top_needs(request):
-    need_water = Post.objects.filter(object__iexact='water',
+    need_water = Post.objects.open().filter(object__iexact='water',
                                         unit__iexact='gallons',
-                                        fulfilled=False,
                                         type='need').aggregate(
         total=Sum('number'))['total'] or 0
 
-    have_water = Post.objects.filter(object__iexact='water',
+    have_water = Post.objects.open().filter(object__iexact='water',
                                       unit__iexact='gallons',
-                                      fulfilled=False,
                                       type='have').aggregate(
         total=Sum('number'))['total'] or 0
 
