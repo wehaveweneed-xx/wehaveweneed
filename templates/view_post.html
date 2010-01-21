@@ -21,7 +21,7 @@
     </p>
   {% endif %}
   <p><label>Location:</label> <span>{{ post.location }}</span></p>
-  <p><label>Posted at:</label> <span>{{ post.time_start }}</span></p>
+  <p><label>Posted at:</label> <span>{{ post.time_start|date }}</span></p>
   <p><label>Priority:</label> <span>{{ post.priority_full }}</span></p>
   <p><label>Category:</label> <span>{{ post.category }}</span></p>
   {% if post.object and post.number and post.unit %}
