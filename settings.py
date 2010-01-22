@@ -25,6 +25,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
@@ -49,6 +50,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.flatpages',
     'piston',
     'haystack',
     'registration',
@@ -63,7 +65,7 @@ PAGINATE_POSTS_BY = 20
 
 ACCOUNT_ACTIVATION_DAYS = 2
 
-DATE_FORMAT = "H:i M j"
+DATE_FORMAT = "fa F j T"
 
 try:
     from local_settings import *

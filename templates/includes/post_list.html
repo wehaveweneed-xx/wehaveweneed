@@ -8,7 +8,7 @@
 				<span>{{ post.type }} {{ post.category }}</span>
 			</h4>
 			<!-- <blockquote>{{ post.content }}</blockquote> -->
-			<p>Posted <em>{{ post.created_at|date:"fa F j" }}</em> by <em>{{ post.contact.get_profile.organization }}</em> in <em>{{ post.location }}</em></p>
+			<p>Posted <em>{{ post.created_at|date:"fa F j T" }}</em> by <em>{{ post.contact.get_profile.organization }}</em> in <em>{{ post.location }}</em></p>
 		</li>
 	{% endfor %}
 </ul>
