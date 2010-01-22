@@ -130,6 +130,9 @@ div#needs_list { width: 450px; margin-left: 30px;}
 body.home div#ltColumn { width: 290px; margin-top: 0px;}
 body.home div#rtColumn { width: 610px; margin-top: 0px;}
 
+body.category div#ltColumn { width: 390px;}
+body.category div#rtColumn { width: 510px;}
+
 span.detailHeader { font-weight: bold; width: 120px; display: block; float: left;}
 
 div#contactInfo { margin-top: 20px; background: #dee6ec; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 20px; border: 1px solid #ccd4da; margin-bottom: 30px;}
