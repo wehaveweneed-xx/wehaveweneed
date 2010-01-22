@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block ltColumn %}
+<div id="ltColumn">
 	<div id="haves_list">
 		<h2>{{ category.name }} Haves</h2>
 		{% with haves as post_list %}
@@ -16,10 +17,12 @@
 			<p>No available haves</p>
 		{% endif %}
 	</div>
+</div>
 {% endblock %}
 	
 {% block rtColumn %}
-	<div id="needs_list">
+<div id="rtColumn">
+    <div id="needs_list">
 		<h2>{{ category.name }} Needs</h2>
 		{% with needs as post_list %}
 			{% include 'includes/post_list.html' %}
@@ -30,4 +33,5 @@
 			<p>No available needs</p>
 		{% endif %}
 	</div>
+</div>
 {% endblock %}
