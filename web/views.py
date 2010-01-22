@@ -67,6 +67,7 @@ def viewhaves(request, category=None):
         template_name='haves.html',
         template_object_name='post',
         extra_context={ 'category': category },
+        allow_empty=True,
     )
 
 def viewneeds(request, category=None):
@@ -80,6 +81,7 @@ def viewneeds(request, category=None):
         template_name='needs.html',
         template_object_name='post',
         extra_context={ 'category': category },
+        allow_empty=True,
     )
 
 def home(request):
