@@ -54,6 +54,7 @@ INSTALLED_APPS = (
     'piston',
     'haystack',
     'registration',
+    'timezones',
     'wehaveweneed.web',
     'wehaveweneed.api',
     'wehaveweneed.search',
