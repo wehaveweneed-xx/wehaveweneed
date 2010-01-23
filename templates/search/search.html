@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load timezone_filters %}
 
 {% block search %}
 <div id="search">
@@ -22,42 +23,20 @@
 
 {% block featureBox %}
 <div id="featureBox">
-  <h3>{% block body_title %}Search results:{% endblock %}</h3>
-  <table id="searchResultsTable">
-				        <thead>
-					        <tr id="titles">
-								<th class="left">Name</th>
-                                <th class="center">Type</th>
-								<th class="center">Organization</th>
-								<th class="center">Location</th>
-                                <th class="center">Time</th>
-                                <th class="right">Category</th>
-
-							</tr>
-						</thead>
-						<tbody>
-					            {% for post in page.object_list %}
-						    <tr class="{% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
-								<td class="dataContent left">
-								    <a class="dataName" href="#">{{ post.title }}</a>
-								    {{ post.content|linebreaks }}
-								</td>
-                                <td class="center">
-                                  <span>{{ post.type|upper }}</span>
-                                </td>
-								<td class="center">
-                                  <span>{{ post.organization }}</span>
-								</td>
-								<td class="center">{{ post.location }}</td>
-								<td class="center">
-								    <span>{{ post.created_at|date }}</span>
-								</td>
-                                <td class="category">
-                                  <span>{{ post.category }}</span>
-                                </td>
-							</tr>
-						        {% endfor %}
-						</tbody>
-				    </table>
-
+  <h3>Search results:</h3>
+  <ul class="post_list">
+    {% for post in page.object_list %}
+    <li class="post {% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
+      <h4>
+        <a class="dataName" href="{{ post.object.get_absolute_url }}">
+          {{ post.title }}
+        </a>
+        <span>{{ post.type }} {{ post.category }}</span>
+      </h4>
+      <!-- <blockquote>{{ post.content }}</blockquote> -->
+      <p>Posted <em>{{ post.created_at|localtime:"EST"|date }}</em> by <em>{{ post.object.contact.get_profile.organization }}</em> in <em>{{ post.location }}</em></p>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
 {% endblock %}

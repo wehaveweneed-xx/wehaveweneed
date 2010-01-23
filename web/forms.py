@@ -44,7 +44,7 @@ class PostForm(forms.ModelForm):
                              label='Item (optional):')
     fulfilled = forms.BooleanField(initial=False, required=False)
     category = forms.ModelChoiceField(Category.objects.all(),
-                                      empty_label=None)
+                                      empty_label='')
 
     class Meta:
         model = Post
