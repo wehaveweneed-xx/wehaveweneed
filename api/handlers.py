@@ -1,4 +1,5 @@
 import urlparse
+from haystack.query import SearchQuerySet, RelatedSearchQuerySet
 from piston.handler import BaseHandler
 from piston.utils import rc, validate
 from django.contrib.sites.models import Site
@@ -42,10 +43,18 @@ class PostHandler(BaseHandler):
             return Post.objects.get(pk=post_id)
         else:
             posts = Post.objects.open()
+            search = SearchQuerySet()
             if post_type:
                 posts = posts.filter(type=post_type)
+                search = search.filter(type=post_type)
             if category:
-                posts = posts.filter(category__slug=category)
+                cat = Category.objects.get(slug=category)
+                posts = posts.filter(category=cat)
+                search = search.filter(category_id=cat.pk)
+            q = request.GET.get('q', None)
+            if q:
+                search = search.filter(content=q)
+                posts = posts.filter(id__in=[r.pk for r in search])
             return posts
 
     @validate(PostForm) # validate against post form
