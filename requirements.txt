@@ -3,6 +3,8 @@ Django
 django-mediasync
 -e git+git://github.com/toastdriven/django-haystack.git#egg=django-haystack
 django-registration
+django-timezones
+pytz
 
 # One of the next two
 whoosh

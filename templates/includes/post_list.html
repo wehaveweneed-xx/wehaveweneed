@@ -1,3 +1,5 @@
+{% load timezone_filters %}
+
 <ul class="post_list">
 	{% for post in post_list %}
 	    <li class="post {% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
@@ -8,7 +10,7 @@
 				<span>{{ post.type }} {{ post.category }}</span>
 			</h4>
 			<!-- <blockquote>{{ post.content }}</blockquote> -->
-			<p>Posted <em>{{ post.created_at|date:"fa F j T" }}</em> by <em>{{ post.contact.get_profile.organization }}</em> in <em>{{ post.location }}</em></p>
+			<p>Posted <em>{{ post.created_at|localtime:"EST"|date }}</em> by <em>{{ post.contact.get_profile.organization }}</em> in <em>{{ post.location }}</em></p>
 		</li>
 	{% endfor %}
 </ul>
