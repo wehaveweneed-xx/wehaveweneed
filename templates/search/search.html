@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load timezone_filters %}
 
 {% block search %}
 <div id="search">
@@ -50,7 +51,7 @@
 								</td>
 								<td class="center">{{ post.location }}</td>
 								<td class="center">
-								    <span>{{ post.created_at|date }}</span>
+								    <span>{{ post.created_at|localtime:"EST"|date }}</span>
 								</td>
                                 <td class="category">
                                   <span>{{ post.category }}</span>
