@@ -1,49 +1,5 @@
 {% extends "base.html" %}
 
-{% block heading %}
-
-	            <h1>
-                        Videntity<sup>TM</sup>
-                        <strong style="color:#7fb13b;">LOGOUT</strong> 
-                    </h1>
-                    <div>
-                        <p style="float:left;width:550px;">
-                        
-			{% if user.is_authenticated %}
-
-        		User<strong style="color:black;">{{user}}</strong> Successfully Logged Out
- 			</p>
-
-			{% else %}
-			You are not currently logged in. Please click the login button below to login. 
-
-
-
-		
- 	</p>
-		{% endif %}
-
-
-                        <div style="clear:both;"></div>  
-                    </div>
-              
-<br/><br/> 
-<br/><br/> 
-<br/><br/>       
-                                                         			
-{% endblock %}
-
 {% block ltColumn %}
-	
-
-		<a href="/login/" onClick="base_wopen('/login/', 'popup', 300, 100); return false;">
-                    <img border="0" id='button49' width="61" height="30" 
-                    src="{{web_server}}images/button21969768.png"
-                    onmouseover = 'document.getElementById("button49").src = "{{web_server}}images/button16141906.png"'
-                    onmouseout =  'document.getElementById("button49").src = "{{web_server}}images/button21969768.png"'>
-                </a>
-		
-	</form>
-
-
+	LOGOUT?
 {% endblock %}

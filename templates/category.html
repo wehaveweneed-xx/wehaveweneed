@@ -3,8 +3,7 @@
 {% block bodyClass %}category{% endblock %}
 
 {% block ltColumn %}
-<div id="ltColumn">
-	<div id="haves_list">
+	<div class="post_list haves">
 		<h2>{{ category.name }} Haves</h2>
 		{% with haves as post_list %}
 			{% include 'includes/post_list.html' %}
@@ -15,12 +14,10 @@
 			<p>No available haves</p>
 		{% endif %}
 	</div>
-</div>
 {% endblock %}
 	
 {% block rtColumn %}
-<div id="rtColumn">
-    <div id="needs_list">
+    <div class="post_list needs">
 		<h2>{{ category.name }} Needs</h2>
 		{% with needs as post_list %}
 			{% include 'includes/post_list.html' %}
@@ -31,5 +28,4 @@
 			<p>No available needs</p>
 		{% endif %}
 	</div>
-</div>
 {% endblock %}

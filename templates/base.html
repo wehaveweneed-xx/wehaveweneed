@@ -18,72 +18,58 @@
 
 	<body class="{% block bodyClass %}home{% endblock %}">
 
-    {% block headerWrapper %}
-		<div id="headerWrapper">
-      {% block pageMain %}
+        <div id="headerWrapper">
 			<div id="pageMain">
-        {% block header %}
-				<div id="header">
-      	  {% block utility %}
-		      {% if user.is_authenticated %}
-					<div id="utility">
-				        <ul>
-				            <li id="utilityRegister"><a href="/accounts/settings/">Account Settings</a></li>
-				            <li id="utilityLogout"><a href="/logout/">Log Out</a></li>
-				        </ul>
-					</div>
-
-		      {% else %}
-					<div id="utility">
-				        <ul>
-				            <li id="utilityRegister"><a href="/accounts/request/">Request Access</a></li>
-				            <li id="utilitySignup"><a href="/login/">Log In</a></li>
-				        </ul>
-					</div>
-      		{% endif %}
-	        {% endblock %}  <!-- utility -->
+			    <div id="header">
+		            {% if user.is_authenticated %}
+					    <div id="utility">
+    				        <ul>
+    				            <li id="utilityRegister"><a href="/accounts/settings/">Account Settings</a></li>
+    				            <li id="utilityLogout"><a href="/logout/">Log Out</a></li>
+    				        </ul>
+    					</div>
+		            {% else %}
+					    <div id="utility">
+				            <ul>
+				                <li id="utilityRegister"><a href="/accounts/request/">Request Access</a></li>
+				                <li id="utilitySignup"><a href="/login/">Log In</a></li>
+				            </ul>
+					    </div>
+      		        {% endif %}
 					<div class="clear"></div>
 					<h1><a href="/">We Have We Need</a><span>ALPHA</span></h1>
 					<h2 id="site">Earthquake Haiti: 2010</h2>
-      	  {% block nav %}
-					<div id="nav">
+				    <div id="nav">
 						<ul>
 							<li id="nav_post"><a href="/post/">Post</a></li>
 				            <li id="nav_have"><a href="/haves/">Haves</a></li>
 				            <li id="nav_need"><a href="/needs/">Needs</a></li>
 						</ul>
 					</div>
-	        {% endblock %}  <!-- nav -->
 					<div class="clear"></div>
-      	  {% block search %}
-					<div id="search">
-						{% search_bar %}
-					</div>	
-	        {% endblock %}  <!-- search -->
+      	            {% block search %}
+					    <div id="search">
+						    {% search_bar %}
+					    </div>	
+	                {% endblock %}  <!-- search -->
 				</div>
-	      {% endblock %}  <!-- header -->
-      	{% block featureBox %}
-	      {% endblock %}  <!-- featureBox -->
-      	{% block ltColumn %}
-	      {% endblock %}  <!-- ltColumn -->
-      	{% block rtColumn %}
-	      {% endblock %}  <!-- rtColumn -->
-				<div class="clear"></div>			
-			</div>
-	    {% endblock %}  <!-- pageMain -->
-		</div>
-	  {% endblock %}  <!-- headerWrapper -->
-	  {% block footerWrapper %}
-	  <div id="footerWrapper">
-      {% block footerMain %}
-	    <div id="footerMain">
-        <center>
-          <a href="/termsofuse/">Terms of Use</a> |
-          <a href="mailto:help@wehaveweneed.org">Contact Us</a>
-        </center>
-      </div>
-      {% endblock %}
-    </div>
-    {% endblock %}
-</body>
+      	        {% block featureBox %}{% endblock %}
+                <div id="ltColumn">
+                    {% block ltColumn %}{% endblock %}  <!-- ltColumn -->
+                </div>
+                <div id="lrtColumn">
+      	            {% block rtColumn %}{% endblock %}  <!-- rtColumn -->
+			    </div>    
+			    <div class="clear"></div>
+		    </div>
+		    <div id="footerWrapper">
+	            <div id="footerMain">
+                    <center>
+                        <a href="/termsofuse/">Terms of Use</a> |
+                        <a href="mailto:help@wehaveweneed.org">Contact Us</a>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
