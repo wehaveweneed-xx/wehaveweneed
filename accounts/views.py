@@ -19,12 +19,14 @@ def settings(request):
         if form.is_valid():
             profile.organization = form.cleaned_data['organization']
             profile.phone = form.cleaned_data['phone']
+            profile.twitter = form.cleaned_data['twitter']
             profile.save()
             updated = True
     else:
         form = AccountSettingsForm(
             {'organization': profile.organization,
-             'phone': profile.phone})
+             'phone': profile.phone,
+             'twitter': profile.twitter})
 
     return render_to_response('registration/account_settings.html',
                               RequestContext(request,

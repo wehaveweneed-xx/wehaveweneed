@@ -29,6 +29,7 @@ class UserProfile(models.Model):
     user  = models.ForeignKey(User, unique=True)
     phone = models.CharField(max_length=100, blank=True)
     organization = models.CharField(max_length=200)
+    twitter = models.CharField(max_length=100, blank=True)
 
     def __unicode__(self):
         return 'profile of %s' % self.user.username
