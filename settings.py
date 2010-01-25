@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'haystack',
     'registration',
     'timezones',
+    'mediasync',
     'wehaveweneed.web',
     'wehaveweneed.api',
     'wehaveweneed.search',

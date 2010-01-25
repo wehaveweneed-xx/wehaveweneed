@@ -1,3 +1,4 @@
+{% load media %}
 {% load search_tags %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -7,8 +8,8 @@
             <title>{% block title %}we have we need{% endblock %}</title>
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <meta name="description" content="A site where relief organizations can quickly post their most urgent needs and have them matched by generous donors during a time of crisis."/>
-            <link rel="stylesheet" href="/media/styles/main.css" type="text/css" media="screen" />
-            <link rel="image_src" href="/media/images/logo.png" />
+            {% css "styles/main.css" %}
+            <link rel="image_src" href="{% media_url %}/images/logo.png" />
             <!-- feeds -->
             <link rel="alternate" type="application/rss+xml" title="Needs" href="/feeds/need/" />
             <link rel="alternate" type="application/rss+xml" title="Haves" href="/feeds/have/" />
