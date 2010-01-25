@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from django import forms
-from wehaveweneed.web.models import *
-#from django.contrib.admin import widgets
+from wehaveweneed.web.models import Post, Category, UNITS, UserProfile
 from django.contrib.auth.models import User
 from django.forms.util import ErrorList
 from django.contrib.localflavor.us.forms import *
@@ -14,6 +13,8 @@ class RegistrationForm(RegistrationFormUniqueEmail):
     organization = forms.CharField(max_length=200)
     phone = forms.CharField(max_length=100, required=False,
                             label="Phone # (optional)")
+    twitter = forms.CharField(max_length=100, required=False,
+                              label="Twitter ID (optional)")
 
     def save(self, profile_callback=None):
         new_user = RegistrationProfile.objects.create_inactive_user(
