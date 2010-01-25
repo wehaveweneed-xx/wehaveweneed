@@ -15,10 +15,7 @@
 	{% endblock %}
 	</head>
 
-
-  {% block bodyClass %}
-	<body class="home">
-	{% endblock %}
+	<body class="{% block bodyClass %}home{% endblock %}">
 
     {% block headerWrapper %}
 		<div id="headerWrapper">
