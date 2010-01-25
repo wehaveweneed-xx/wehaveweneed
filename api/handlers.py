@@ -1,6 +1,6 @@
 import urlparse
 from haystack.query import SearchQuerySet, RelatedSearchQuerySet
-from piston.handler import BaseHandler
+from piston.handler import BaseHandler, AnonymousBaseHandler
 from piston.utils import rc, validate
 from django.contrib.sites.models import Site
 from wehaveweneed.web.forms import PostForm
@@ -23,10 +23,14 @@ class ContactHandler(BaseHandler):
     def organization(cls, model):
         return model.get_profile().organization
 
+class AnonymousPostHandler(AnonymousBaseHandler):
+    model = Post
+
 class PostHandler(BaseHandler):
     """
     Handler for individual posts and listing of posts.
     """
+    anonymous = AnonymousPostHandler
     allowed_methods = ('GET','POST')
     fields = ('id', 'type', 'title', 'location', 'priority',
               'contact', 'category', 'time_start', 'time_end',
