@@ -2,39 +2,40 @@
 {% load cache %}
 
 {% block featureBox %}
+    {% if messages %}
     <div id="featureBox">
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li class="message">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <h2>Welcome to We Have We Need</h2>
-        <p>
-            We Have We Need is a place where relief organizations can quickly post their most urgent needs and have them matched by generous donors during a time of crisis.
-            This site was built by a group of geeky do-gooders who saw this as an opportunity to use technology to help bring people and donations together in the aftermath of a devastating earthquake in Haiti.
-            If you'd like to participate in the program, <a href="mailto:help@wehaveweneed.org">please let us know</a>.
-        </p>
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="message">{{ message }}</li>
+            {% endfor %}
+        </ul>
     </div>
+    {% endif %}
 {% endblock %}  <!-- featureBox -->
 
 {% block ltColumn %}
-    {% cache 600 categories %}
-    <h3>Categories</h3>
-    <ul id="categories_nav">
-        {% for cat in categories %}
+    <div id="description" class="module">
+        <h2>Welcome to We Have We Need</h2>
+        <p>We Have We Need is a place where relief organizations can quickly post their most urgent needs and have them matched by generous donors during a time of crisis. This site was built by a group of geeky do-gooders who saw this as an opportunity to use technology to help bring people and donations together in the aftermath of a devastating earthquake in Haiti.</p>
+        <p>If you'd like to participate in the program, <a href="mailto:help@wehaveweneed.org">please let us know</a>.</p>
+    </div>  
+    <div id="categories" class="module">  
+        {% cache 600 categories %}
+        <h2>Categories</h2>
+        <ul id="categories_nav">
+            {% for cat in categories %}
             <li>
-		        <a href="{% url category cat.slug %}">{{ cat }}</a>
-		        <span><a href="{% url web_viewhaves cat.slug %}">haves</a> | <a href="{% url web_viewneeds cat.slug %}">needs</a></span>
-	        </li>
-        {% endfor %}
-    </ul>
-    {% endcache %}
+                <a href="{% url category cat.slug %}">{{ cat }}</a>
+                <span><a href="{% url web_viewhaves cat.slug %}">haves</a> | <a href="{% url web_viewneeds cat.slug %}">needs</a></span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endcache %}
+    </div>
 {% endblock %}  <!-- ltColumn -->
 
 {% block rtColumn %}
-    <h3>Recent Haves and Needs</h3>
+    <h2>Recent Haves and Needs</h2>
     {% include 'includes/post_list.html' %}
     {% if is_paginated %}
         <p id="pagination">

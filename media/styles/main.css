@@ -12,13 +12,13 @@ a:hover {outline: none; color: #046f8c}
 a:active {outline: none; color: #046f8c}
 
 body{
-	color:#706a67;
-	font-size: 76%;
-  	line-height: 20px;
-  	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-	background-image: url('/media/images/haiti_map.gif');
-	background-repeat: no-repeat;
-	background-position: center 230px;
+    color:#706a67;
+    font-size: 76%;
+    line-height: 20px;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    /*background-image: url('/media/images/haiti_map.gif');
+    background-repeat: no-repeat;
+    background-position: center 230px;*/
 }
 
 /* Some basic form style (we're using form.as_p for the most part*/
@@ -30,24 +30,12 @@ form input.submit { max-width: 10em; margin-left: 120px; }
 label { font-weight: bold; width: 120px; display: block; float: left; }
 
 div#headerWrapper {
-    background: url(/media/images/header_bg.jpg) top left repeat-x;
+    background: url(/media/images/header.jpg) top left repeat-x;
 }
-h1 { float: left; width: 146px; height: 72px; margin-top: 20px;}
-h1 a { 
-    background: url(/media/images/logo.png) top left no-repeat; 
-    width: 146px; 
-    height: 72px; 
-    display: block; 
-    text-indent: -9999em;
-}
-h1 span {
-    display: block;
-    text-align: center;
-    font-variant: small-caps;
-    font-weight: bold;
-    width: 100%;
-    letter-spacing: 5px;
-}
+div#header { padding-bottom: 40px; height: 210px;}
+h1 { float: left; width: 310px; height: 78px; margin-top: 20px;}
+h1 a { background: url(/media/images/logo.png) top left no-repeat; width: 310px; height: 78px; display: block; text-indent: -9999em;}
+
 #site { 
     float: left;
     font-style: normal;
@@ -59,22 +47,30 @@ h1 span {
 div#utility { float: right; margin-top: 15px; line-height: 12px;}
 div#utility li { float: left;}
 li#utilityRegister { margin-right: 15px; padding-right: 15px; border-right: 1px solid #DDE3E8;}
-div#nav { float: right; margin-top: 81px; }
-div#nav li { float: left; background: #c2d1df; padding: 10px 30px; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px; -webkit-border-top-left-radius: 3px; -webkit-border-top-right-radius: 3px; margin-left: 2px; font-size: 120%; border-top: 1px solid #c5cacf; border-left: 1px solid #c5cacf; border-right: 1px solid #c5cacf;}
-body.post div#nav li#nav_post, body.haves div#nav li#nav_have, body.needs div#nav li#nav_need { background: #dee6ec; padding: 10px 30px 11px;}
+div#nav { float: right; margin-top: 75px; }
+/*div#nav li { float: left; background: #c2d1df; padding: 10px 30px; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px; -webkit-border-top-left-radius: 3px; -webkit-border-top-right-radius: 3px; margin-left: 2px; font-size: 120%; border-top: 1px solid #c5cacf; border-left: 1px solid #c5cacf; border-right: 1px solid #c5cacf;}*/
+div#nav li { float: left; margin-left: 15px;}
+li#nav_post a, li#nav_have a, li#nav_need a { text-indent: -9999em; display: block; width: 79px; height: 31px;}
+li#nav_post a { background: url(/media/images/nav_post.png) top left no-repeat; }
+li#nav_have a { background: url(/media/images/nav_have.png) top left no-repeat; }
+li#nav_need a { background: url(/media/images/nav_need.png) top left no-repeat; }
+li#nav_post a:hover { background: url(/media/images/nav_post.png) left -31px no-repeat; }
+li#nav_have a:hover { background: url(/media/images/nav_have.png) left -31px no-repeat; }
+li#nav_need a:hover { background: url(/media/images/nav_need.png) left -31px no-repeat; }
 
 div#nav li a { text-decoration: none; text-transform: uppercase;}
 
 /* newly refactored search from styling */
-#searchForm ul { margin: 0; padding: 0; }
+#searchForm { padding-top: 20px;}
+li.q_field input{ width: 200px;}
+#searchForm ul { margin: 0; padding: 0; color: #fff; text-transform: uppercase;}
+#searchForm ul select { text-transform: none; width: 200px;}
 #searchForm ul li { display: block; float: left; margin: 1em 1.5em 0 0; }
 #searchForm ul li p { font-weight: bold; }
 #searchForm ul li label { display: inline; float: none; width: auto; }
+li.category_field label { margin-right: 10px; }
 #searchForm ul li.have_field label, #searchForm ul li.need_field label {
     margin-left: 0.3em;
-}
-#searchForm ul li.category_field label {
-    margin-right: 0.3em;
 }
 /* end search form styling */
 
@@ -96,7 +92,7 @@ div#pageMain {
 }
 
 h2, h3 { font-family: Georgia, Times New Roman, Times, serif; color:#55504E; margin-bottom: 20px; font-style: oblique;}
-h2 { font-size: 210%; }
+h2 { font-size: 215%; line-height:30px;}
 h3 { font-size: 150%;}
 
 h2.detailHeader { float: left;}
@@ -116,12 +112,17 @@ body.home div#rtColumn { width: 610px; margin-top: 0px;}
 body.category div#ltColumn { width: 390px;}
 body.category div#rtColumn { width: 510px;}
 
+div#categories { background-color: #f6f6f4; padding: 15px;}
+
 span.detailHeader { font-weight: bold; width: 120px; display: block; float: left;}
 
 div#contactInfo { margin-top: 20px; background: #dee6ec; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 20px; border: 1px solid #ccd4da; margin-bottom: 30px;}
 div#contactInfo h3 { float: left; margin-right: 15px;}
 
-input, textarea { -moz-border-radius: 3px; -webkit-border-radius: 3px; border: 2px solid #e2e7e7; padding: 3px; border: 1px solid #d1d7db;}
+div#description p { font-size: 110%; line-height:23px}
+div.module { margin-bottom: 30px;}
+
+input, textarea { -moz-border-radius: 3px; -webkit-border-radius: 3px; border: 2px solid #e2e7e7; padding: 2px; border: 1px solid #d1d7db;}
 label#timeHeader { float: none; margin-bottom: 10px;}
 ul#timeDetails label{ padding-left: 15px; color: #99918d;}
 ul#timeDetails input{ margin-left: -15px;}

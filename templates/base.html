@@ -18,53 +18,51 @@
 	</head>
 
 	<body class="{% block bodyClass %}home{% endblock %}">
-
         <div id="headerWrapper">
-			<div id="pageMain">
-			    <div id="header">
-		            {% if user.is_authenticated %}
-					    <div id="utility">
-    				        <ul>
-    				            <li id="utilityRegister"><a href="/accounts/settings/">Account Settings</a></li>
-    				            <li id="utilityLogout"><a href="/logout/">Log Out</a></li>
-    				        </ul>
-    					</div>
-		            {% else %}
-					    <div id="utility">
-				            <ul>
-				                <li id="utilityRegister"><a href="/accounts/request/">Request Access</a></li>
-				                <li id="utilitySignup"><a href="/login/">Log In</a></li>
-				            </ul>
-					    </div>
-      		        {% endif %}
-					<div class="clear"></div>
-					<h1><a href="/">We Have We Need</a><span>ALPHA</span></h1>
-					<h2 id="site">Earthquake Haiti: 2010</h2>
-				    <div id="nav">
-						<ul>
-							<li id="nav_post"><a href="/post/">Post</a></li>
-				            <li id="nav_have"><a href="/haves/">Haves</a></li>
-				            <li id="nav_need"><a href="/needs/">Needs</a></li>
-						</ul>
-					</div>
-					<div class="clear"></div>
-      	            {% block search %}
-					    <div id="search">
-						    {% search_bar %}
-					    </div>	
-	                {% endblock %}  <!-- search -->
-				</div>
-      	        {% block featureBox %}{% endblock %}
+            <div id="pageMain">
+                <div id="header">
+                    {% if user.is_authenticated %}
+                    <div id="utility">
+                        <ul>
+                            <li id="utilityRegister"><a href="/accounts/settings/">Account Settings</a></li>
+                            <li id="utilityLogout"><a href="/logout/">Log Out</a></li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div id="utility">
+                        <ul>
+                            <li id="utilityRegister"><a href="/accounts/request/">Request Access</a></li>
+                            <li id="utilitySignup"><a href="/login/">Log In</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                    <div class="clear"></div>
+                    <h1><a href="/"><big>We Have We Need</big><small>Earthquake Haiti: 2010</small><span>ALPHA</span></a></h1>
+                    <div id="nav">
+                        <ul>
+                            <li id="nav_post"><a href="/post/">Post</a></li>
+                            <li id="nav_have"><a href="/haves/">Haves</a></li>
+                            <li id="nav_need"><a href="/needs/">Needs</a></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                    {% block search %}
+                    <div id="search">
+                        {% search_bar %}
+                    </div>	
+                    {% endblock %}  <!-- search -->
+                </div>
+                {% block featureBox %}{% endblock %}
                 <div id="ltColumn">
                     {% block ltColumn %}{% endblock %}  <!-- ltColumn -->
                 </div>
-                <div id="lrtColumn">
-      	            {% block rtColumn %}{% endblock %}  <!-- rtColumn -->
-			    </div>    
-			    <div class="clear"></div>
-		    </div>
-		    <div id="footerWrapper">
-	            <div id="footerMain">
+                <div id="rtColumn">
+                    {% block rtColumn %}{% endblock %}  <!-- rtColumn -->
+                </div>    
+                <div class="clear"></div>
+            </div>
+            <div id="footerWrapper">
+                <div id="footerMain">
                     <a href="/termsofuse/">Terms of Use</a> |
                     <a href="mailto:help@wehaveweneed.org">Contact Us</a>
                 </div>
