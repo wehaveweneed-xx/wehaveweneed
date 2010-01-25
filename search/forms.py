@@ -18,7 +18,7 @@ class PostSearchForm(SearchForm):
     need = forms.BooleanField(initial=True, required=False)
 
     category = CategoryChoiceField(queryset=Category.objects.all(),
-                                   empty_label='in all categories',
+                                   empty_label='all categories',
                                    required=False)
 
 

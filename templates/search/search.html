@@ -1,42 +1,22 @@
 {% extends "base.html" %}
 {% load timezone_filters %}
 
-{% block search %}
-<div id="search">
-  <form id="searchForm" action="/search" method="get">
-      <fieldset>
-          <label id="searchTitle">I am looking for people who</label>
-          {% for field in form %}
-          <div id="{{ field.label }}_wrap">
-              {{ field.errors }}
-              {{ field }}{{ field.label_tag }}
-          </div>
-          {% endfor %}
-
-      <button class="searchBtn" type="submit">
-          <span>Go</span>
-      </button>
-      </fieldset>
-  </form>
-</div>
-{% endblock %}
-
 {% block featureBox %}
-<div id="featureBox">
-  <h3>Search results:</h3>
-  <ul class="post_list">
-    {% for post in page.object_list %}
-    <li class="post {% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
-      <h4>
-        <a class="dataName" href="{{ post.object.get_absolute_url }}">
-          {{ post.title }}
-        </a>
-        <span>{{ post.type }} {{ post.category }}</span>
-      </h4>
-      <!-- <blockquote>{{ post.content }}</blockquote> -->
-      <p>Posted <em>{{ post.created_at|localtime:"EST"|date }}</em> by <em>{{ post.object.contact.get_profile.organization }}</em> in <em>{{ post.location }}</em></p>
-    </li>
-    {% endfor %}
-  </ul>
-</div>
+    <div id="featureBox">
+      <h3>Search results:</h3>
+      <ul class="post_list">
+        {% for post in page.object_list %}
+        <li class="post {% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
+          <h4>
+            <a class="dataName" href="{{ post.object.get_absolute_url }}">
+              {{ post.title }}
+            </a>
+            <span>{{ post.type }} {{ post.category }}</span>
+          </h4>
+          <!-- <blockquote>{{ post.content }}</blockquote> -->
+          <p>Posted <em>{{ post.created_at|localtime:"EST"|date }}</em> by <em>{{ post.object.contact.get_profile.organization }}</em> in <em>{{ post.location }}</em></p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
 {% endblock %}

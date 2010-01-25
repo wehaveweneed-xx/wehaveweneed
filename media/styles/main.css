@@ -65,35 +65,18 @@ body.post div#nav li#nav_post, body.haves div#nav li#nav_have, body.needs div#na
 
 div#nav li a { text-decoration: none; text-transform: uppercase;}
 
-/* Complicated search form style -- should probably be refactored. */
-#search { height: 10px; }
-#searchForm { 
-    font-size: 120%; 
-    margin-bottom: 15px; margin-top: 11px; 
+/* newly refactored search from styling */
+#searchForm ul { margin: 0; padding: 0; }
+#searchForm ul li { display: block; float: left; margin: 1em 1.5em 0 0; }
+#searchForm ul li p { font-weight: bold; }
+#searchForm ul li label { display: inline; float: none; width: auto; }
+#searchForm ul li.have_field label, #searchForm ul li.need_field label {
+    margin-left: 0.3em;
 }
-#searchForm label { 
-    display: none;
-    width: 0px;
-    padding: 0; margin: 0;
-    float: none;
+#searchForm ul li.category_field label {
+    margin-right: 0.3em;
 }
-label#searchTitle, #Have_wrap label, #Need_wrap label { display: inline; }
-#Have_wrap label, #Need_wrap label { margin-left: 10px; }
-#searchTitle{ 
-    font-weight: bold; 
-    position: absolute;
-    left: 0;
-    width: 14em !important;
-}
-#Have_wrap { position: absolute; left: 15em; }
-#Need_wrap { position: absolute; left: 21em; }
-#Search_wrap { position: absolute; left: 27em; }
-#Search_wrap input { width: 200px; }
-#Category_wrap { position: absolute; left: 43em; }
-#Category_wrap select { width: 13em; }
-
-.searchBtn { position: absolute; left: 57em; }
-/* End search form style. */
+/* end search form styling */
 
 div#featureBox {
     margin-top: 50px;

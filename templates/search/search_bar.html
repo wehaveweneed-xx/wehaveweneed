@@ -1,19 +1,27 @@
-
 {% load cache %}
-{% cache 600 search_bar %}
-<form id="searchForm" action="/search" method="get">
-    <fieldset>
-        <label id="searchTitle">I am looking for people who</label>
-        {% for field in form %}
-        <div id="{{ field.label }}_wrap">
-            {{ field.errors }}  
-            {{ field }}{{ field.label_tag }}
-        </div>
-        {% endfor %}
 
-    <button class="searchBtn" type="submit">
-        <span>Go</span>
-    </button>
-    </fieldset>
-</form>
+{% cache 600 search_bar %}
+    <form id="searchForm" action="/search" method="get">
+        <ul>
+            <li class="label"><p>I am looking for people who</p></li>
+            <li class="have_field">
+                {{ form.have }}
+                <label for="id_have">have</label>
+            </li>
+            <li class="need_field">
+                {{ form.need }}
+                <label for="id_need">need</label>
+            </li>
+            <li class="q_field">
+                {{ form.q }}
+            </li>
+            <li class="category_field">
+                <label for="id_category">in</label> {{ form.category }}
+            </li>
+            <li>
+                <input type="submit" value="Go" class="searchBtn" />
+            </li>
+        </ul>
+    </form>
+    <div class="clear"></div>
 {% endcache %}
