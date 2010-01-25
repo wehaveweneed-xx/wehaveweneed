@@ -21,6 +21,7 @@ class RegistrationForm(RegistrationFormUniqueEmail):
             username=self.cleaned_data['username'],
             password=self.cleaned_data['password1'],
             email=self.cleaned_data['email'],
+            twitter=self.cleaned_data['twitter'],
             profile_callback=profile_callback)
 
         new_user.first_name = self.cleaned_data.get('first_name', "")
