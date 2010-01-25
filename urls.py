@@ -11,6 +11,7 @@ from wehaveweneed.web.forms import RegistrationForm
 
 admin.autodiscover()
 
+#  account-related urls
 urlpatterns = patterns('',
     #url(r'^accounts/activate/(?P<activation_key>\w+)/$',
     #    'registration.views.activate',
@@ -23,22 +24,34 @@ urlpatterns = patterns('',
            name='registration_complete'),
     url(r'^accounts/verify_email/(?P<verification_key>\w+)/$', 'wehaveweneed.accounts.views.verify_email'),
     url(r'^accounts/admin_activate/', 'wehaveweneed.accounts.views.admin_activate'),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^category/(?P<category_slug>[-\w]+)/$', 'wehaveweneed.web.views.category', name='category'),
-    url(r'^api/', include('wehaveweneed.api.urls')),
-    url(r'^termsofuse/','django.views.generic.simple.direct_to_template', {'template': 'termsofuse.html'}),
-    url(r'^feeds/', include('wehaveweneed.api.feedurls')),
     url(r'^login/', login, { 'template_name': 'registration/login.html' }),
     url(r'^logout/', logout_then_login ),
-    url(r'^haves/$', 'wehaveweneed.web.views.viewhaves', name='web_viewallhaves'),
-    url(r'^needs/$', 'wehaveweneed.web.views.viewneeds', name='web_viewallneeds'),
-    url(r'^haves/(?P<category>[-\w]+)/$', 'wehaveweneed.web.views.viewhaves', name='web_viewhaves'),
-    url(r'^needs/(?P<category>[-\w]+)/$', 'wehaveweneed.web.views.viewneeds', name='web_viewneeds'),
-    url(r'^post/', 'wehaveweneed.web.views.post_create', name='web_postcreate'),
+)
+
+# have/need views
+urlpatterns += patterns('wehaveweneed.web.views',
+    url(r'^category/(?P<category_slug>[-\w]+)/$', 'category', name='category'),
+    url(r'^haves/$', 'viewhaves', name='web_viewallhaves'),
+    url(r'^haves/(?P<category>[-\w]+)/$', 'viewhaves', name='web_viewhaves'),
+    url(r'^needs/$', 'viewneeds', name='web_viewallneeds'),
+    url(r'^needs/(?P<category>[-\w]+)/$', 'viewneeds', name='web_viewneeds'),
+    url(r'^post/(?P<id>\d+)/$', 'view_post', name='view_post'),
+    url(r'^post/$', 'post_create', name='web_postcreate'),
+    url(r'^top_needs/$', 'top_needs', name='top_needs'),
+    url(r'^$', 'home', name="home"),
+)
+
+# other views
+urlpatterns += patterns('',
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/', include('wehaveweneed.api.urls')),
+    url(r'^feeds/', include('wehaveweneed.api.feedurls')),
     url(r'^search/', PostSearchView(form_class=PostSearchForm)),
-    url(r'^top_needs/$', 'wehaveweneed.web.views.top_needs', name='top_needs'),
-    url(r'^view/(?P<id>\d+)/$', 'wehaveweneed.web.views.view_post', name='view_post'),
-    url(r'^$', 'wehaveweneed.web.views.home', name="home"),
+    url(r'^termsofuse/','django.views.generic.simple.direct_to_template', {'template': 'termsofuse.html'}),
+    # deprecate /view/<id>/ in favor of /post/<id>/
+    # this keeps the GET and POST behavior consistent
+    url(r'^view/(?P<id>\d+)/$', 'django.views.generic.simple.redirect_to', {'url': '/post/%(id)s/'}),
+    
 )
 
 if (settings.DEBUG):  
