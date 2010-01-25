@@ -8,4 +8,4 @@ pytz
 
 # One of the next two
 whoosh
-pysolr
+#pysolr
