@@ -9,17 +9,22 @@
             <input type="submit" value="update post" />
         </form>
     {% else %}
-        <h3>{{ post.type|title }} details:</h3>
-        <p><label>Title:</label> <span>{{ post.title }}</span></p>
-        <p>
-            <label>Organization:</label>
-            <span>{{ post.contact.get_profile.organization }}</span>
-        </p>
-        {% if user.is_authenticated and post.contact.get_profile.phone %}
-            <p>
+        <h2>{{ post.type|title }} details</h2>
+        <ul>
+            <li>
+                <label>Title:</label>
+                <span>{{ post.title }}</span>
+            </li>
+            <li>
+                <label>Organization:</label>
+                <span>{{ post.contact.get_profile.organization }}</span>
+            </li>
+            {% if user.is_authenticated and post.contact.get_profile.phone %}
+            <li>
                 <label>Phone #:</label>
                 <spah>{{ post.contact.get_profile.phone }}</span>
-            </p>
+            </li>
+        </ul>
         {% endif %}
     
         <p><label>Location:</label> <span>{{ post.location }}</span></p>

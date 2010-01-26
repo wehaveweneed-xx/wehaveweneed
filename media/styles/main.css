@@ -63,7 +63,7 @@ div#nav li a { text-decoration: none; text-transform: uppercase;}
 /* newly refactored search from styling */
 #searchForm { padding-top: 27px;}
 #searchForm ul li.last { margin-right: 0px;}
-li.q_field input{ width: 200px;}
+li.q_field input{ width: 205px;}
 #searchForm ul { margin: 0; padding: 0; color: #fff; text-transform: uppercase;}
 #searchForm ul select { text-transform: none; width: 200px;}
 #searchForm ul li { display: block; float: left; margin: 1em 1.5em 0 0; }
@@ -136,8 +136,13 @@ ul#timeDetails label{ padding-left: 15px; color: #99918d;}
 ul#timeDetails input{ margin-left: -15px;}
 form li { margin-bottom: 15px;}
 
+div#ltColumn li.number_unit input { width: 100px; float: left; margin-right: 15px;}
+div#ltColumn li.number_unit select { width: 185px;}
+
 div#ltColumn input, div#ltColumn textarea { width: 300px;}
 div#ltColumn input.radio { margin-right: 7px; width: 15px;}
+
+div#ltColumn form { margin-bottom: 30px;}
 
 ul.postMetadata { font-style: oblique; font-size: 95%;}
 ul.postMetadata li { float: left; margin-right: 5px; color: #9B9490;}
@@ -181,7 +186,7 @@ body.category div.post_list h2 {
     text-transform: capitalize;
 }
 
-div.warning { font-size: 95%; font-style: oblique; color: #9B9490; line-height: 18px;}
+p.warning { font-size: 95%; font-style: oblique; color: #9B9490; line-height: 18px;}
 
 button { cursor: pointer;}
 button.searchBtn { background: url(/media/images/btn_go.png) top left no-repeat; width: 130px; height: 20px; text-indent: -9999em; display: block; border: none; margin-top: 1px;}
