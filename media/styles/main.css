@@ -76,10 +76,11 @@ li.category_field label { margin-right: 10px; }
 /* end search form styling */
 
 div#featureBox {
-    margin-top: 50px;
     margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #dde3e8;
+    background-color: #e5eaea;
+    border: solid 2px #a0c1cd;
+    padding: 15px;
+    -moz-border-radius: 3px; -webkit-border-radius: 3px;
 }
 div#featureBox p {
     margin-bottom: 10px;
@@ -96,6 +97,9 @@ h2, h3 { font-family: Georgia, Times New Roman, Times, serif; color:#55504E; mar
 h2 { font-size: 215%; line-height:30px; font-style: oblique;}
 h3 { font-size: 150%; }
 h3.withWarning { margin-bottom: 5px;}
+
+h3.recentHeaders { float: left; margin-bottom: 0px;}
+button.fulfilledBtn { float: right;}
 
 h2.detailHeader { float: left;}
 a#reportProblem { float: right; padding-top:5px;}

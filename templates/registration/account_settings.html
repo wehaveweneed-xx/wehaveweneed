@@ -1,33 +1,55 @@
 {% extends "base.html" %}
 
 {% block ltColumn %}
-  {% if updated %}
-  Account settings updated successfully!
-  {% endif %}
-  <p><label>User name:</label> <span>{{ user.username }}</span></p>
-  <p><label>Email:</label> <span>{{ user.email }}</span></p>
-  <p><label>First Name:</label> <span>{{ user.first_name }}</span></p>
-  <p><label>Last Name:</label> <span>{{ user.last_name }}</span></p>
-  <form action="." method="POST">
-    {{ form.as_p }}
-    <input type="submit" name="update" />
-  </form>
-
-  <p class="warning">Warning: Your name, organization, as well as your phone number if you choose to include one, may be displayed publicly.</div>
+    <h2>Account Information</h2>
+    <p class="warning">Warning: Your name, organization, as well as your phone number if you choose to include one, may be displayed publicly.</p>
+    {% if updated %}
+        Account settings updated successfully!
+    {% endif %}
+    <form action="." method="POST">
+        <ul>
+            <li>
+                <label>User Name</label>
+                <input id="username" type="text" name="word" />
+            </li>
+            <li>
+                <label>Email</label>
+                <input id="email" type="text" name="word" />
+            </li>
+            <li>
+                <label>First Name</label>
+                <input id="firstName" type="text" name="word" />
+            </li>
+            <li>
+                <label>Last Name</label>
+                <input id="lastName" type="text" name="word" />
+            </li>
+            {{ form.as_ul }}
+            <li>
+                <button class="updateBtn" name="update" type="submit">
+                    <span>Update</span>
+                </button>
+            </li>    
+        </ul>
+    </form>
+  
 {% endblock %}
 
 {% block rtColumn %}
     {% if posts %}
-        Your recent posts
-        <ol>
+        <h2>Your recent posts</h2>
+        <ul class="post_list">
             {% for post in posts %}
-                <li>
-                    <a href="{% url view_post post.pk %}">{{ post.title }}</a>
+                <li class="post {% cycle 'even' 'odd' %}">
+                    <h3 class="recentHeaders"><a href="{% url view_post post.pk %}">{{ post.title }}</a></h3>
                     <form>
-                        <input type="submit" value="Mark as fulfilled.">
+                        <button class="fulfilledBtn" type="submit">
+                            <span>Mark as Fulfilled</span>
+                        </button>
                     </form>
+                    <div class="clear"></div>
                 </li>
             {% endfor %}
-        </ol>
+        </ul>
     {% endif %}
 {% endblock %}
