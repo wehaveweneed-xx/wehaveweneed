@@ -9,7 +9,12 @@
         <h2>Edit '{{ post.title }}'</h2>
                 
         <div id="fulfilled">
-            <span id="fulfilledHeader">Make sure your post is up-to-date!</span>
+            <!-- <span id="fulfilledHeader">Make sure your post is up-to-date!</span> -->
+            {% ifequal post.type "need" %}
+                <span id="fulfilledHeader">Has your need been fulfilled? Hide your post!</span>
+            {% else %}
+                <span id="fulfilledHeader">Has your offer been accepted? Hide your post!</span>
+            {% endifequal %}
             <form action="{% url view_post post.pk %}" method="post" class="toggle_form">
                 <input type="hidden" name="fulfilled" value="{% if post.fulfilled %}false{% else %}true{% endif %}" class="fulfilled" />
                 <button class="fulfilledBtn {% if post.fulfilled %}fulfilled{% endif %}" type="submit">
