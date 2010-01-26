@@ -44,7 +44,6 @@ class PostForm(forms.ModelForm):
                              label='Unit (optional):')
     object = forms.CharField(required=False,
                              label='Item (optional):')
-    fulfilled = forms.BooleanField(initial=False, required=False)
     category = forms.ModelChoiceField(Category.objects.all(),
                                       empty_label='')
 
@@ -56,7 +55,6 @@ class PostForm(forms.ModelForm):
                   'number',
                   'unit',
                   'object',
-                  'fulfilled',
                   'content',)
 
 class ReplyForm(forms.Form):
