@@ -4,7 +4,7 @@
     {% for post in post_list %}
     <li class="post {% cycle 'even' 'odd' %}">
         <h3 class="listHeader">
-            <a class="dataName" href="{{ post.get_absolute_url }}">
+            <a class="dataName" href="{% url view_post post.pk %}">
                 {{ post.title }}
             </a>
         </h3>

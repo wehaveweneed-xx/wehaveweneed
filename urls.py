@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     #    'registration.views.activate',
     #    {'extra_context': {'auth_form': AuthenticationForm()}},
     #    name='registration_activate'),
-    url(r'^accounts/settings/$', 'wehaveweneed.accounts.views.settings'),
+    url(r'^accounts/settings/$', 'wehaveweneed.accounts.views.settings', name="account_settings"),
     url(r'^accounts/request/$', 'registration.views.register', {'form_class': RegistrationForm}),
     url(r'^register/complete/$', direct_to_template,
            {'template': 'registration/registration_complete.html'},
@@ -35,9 +35,8 @@ urlpatterns += patterns('wehaveweneed.web.views',
     url(r'^haves/(?P<category>[-\w]+)/$', 'viewhaves', name='web_viewhaves'),
     url(r'^needs/$', 'viewneeds', name='web_viewallneeds'),
     url(r'^needs/(?P<category>[-\w]+)/$', 'viewneeds', name='web_viewneeds'),
-    url(r'^post/(?P<id>\d+)/$', 'view_post', name='view_post'),
+    url(r'^post/(?P<post_id>\d+)/$', 'view_post', name='view_post'),
     url(r'^post/$', 'post_create', name='web_postcreate'),
-    url(r'^top_needs/$', 'top_needs', name='top_needs'),
     url(r'^$', 'home', name="home"),
 )
 
@@ -50,7 +49,7 @@ urlpatterns += patterns('',
     url(r'^termsofuse/','django.views.generic.simple.direct_to_template', {'template': 'termsofuse.html'}, name="termsofuse"),
     # deprecate /view/<id>/ in favor of /post/<id>/
     # this keeps the GET and POST behavior consistent
-    url(r'^view/(?P<id>\d+)/$', 'django.views.generic.simple.redirect_to', {'url': '/post/%(id)s/'}),
+    url(r'^view/(?P<post_id>\d+)/$', 'django.views.generic.simple.redirect_to', {'url': '/post/%(post_id)s/'}),
     
 )
 
