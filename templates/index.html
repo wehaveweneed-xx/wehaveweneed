@@ -26,10 +26,10 @@
             {% for cat in categories %}
             <li>
                 <a href="{% url category cat.slug %}">{{ cat }}</a>
-                <span><a href="{% url web_viewhaves cat.slug %}">haves</a> | <a href="{% url web_viewneeds cat.slug %}">needs</a></span>
             </li>
             {% endfor %}
         </ul>
+        <div class="clear"></div>
         {% endcache %}
     </div>
 {% endblock %}  <!-- ltColumn -->

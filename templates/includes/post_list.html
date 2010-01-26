@@ -1,16 +1,27 @@
 {% load timezone_filters %}
 
 <ul class="post_list">
-	{% for post in post_list %}
-	    <li class="post {% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
-			<h4>
-			    <a class="dataName" href="{{ post.get_absolute_url }}">
-					{{ post.title }}
-				</a>
-				<span>{{ post.type }} {{ post.category }}</span>
-			</h4>
-			<!-- <blockquote>{{ post.content }}</blockquote> -->
-			<p>Posted <em>{{ post.created_at|localtime:"EST"|date }}</em> by <em>{{ post.contact.get_profile.organization }}</em> in <em>{{ post.location }}</em></p>
-		</li>
-	{% endfor %}
+    {% for post in post_list %}
+    <li class="post {% cycle 'even' 'odd' %}">
+        <h3 class="listHeader">
+            <a class="dataName" href="{{ post.get_absolute_url }}">
+                {{ post.title }}
+            </a>
+        </h3>
+        <span class="listCategory">{{ post.type }}: {{ post.category }}</span>
+        <!-- <blockquote>{{ post.content }}</blockquote> -->
+        <ul class="postMetadata">
+            <li>
+                <span class="time">Posted <em>{{ post.created_at|localtime:"EST"|date }}</em></span>
+            </li>
+            <li>
+                <span class="organization">by <em>{{ post.contact.get_profile.organization }}</em></span>
+            </li>
+            <li>
+                <span class="location">in <em>{{ post.location }}</em></span>
+            </li>
+        </ul>  
+        <div class="clear"></div>  
+    </li>
+    {% endfor %}
 </ul>
