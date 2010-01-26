@@ -7,11 +7,13 @@
 
     {% ifequal user post.contact %}
         <h2>Edit '{{ post.title }}'</h2>
+                
         <div id="fulfilled">
             <span id="fulfilledHeader">Make sure your post is up-to-date!</span>
-            <form>
+            <form action="{% url view_post post.pk %}" method="post" class="toggle_form">
+                <input type="hidden" name="fulfilled" value="{% if post.fulfilled %}false{% else %}true{% endif %}" class="fulfilled" />
                 <button class="fulfilledBtn" type="submit">
-                    <span>Hide Post</span>
+                    <span>{% if post.fulfilled %}Show{% else %}Hide{% endif %} Post</span>
                 </button>
             </form>
             <div class="clear"></div>

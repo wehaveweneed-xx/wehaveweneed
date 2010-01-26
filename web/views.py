@@ -97,17 +97,20 @@ def home(request):
         extra_context = { 'categories': categories },
         )
 
-def view_post(request, id):
-    post = get_object_or_404(Post, pk=id)
+def view_post(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
     sent =  False
 
     if request.method == 'POST':
         if request.user == post.contact:
-            form = PostForm(request.POST, instance=post)
-            if form.is_valid():
-                form.save()
-                request.user.message_set.create(
-                    message='Your post was updated.')
+            if 'fulfilled' in request.POST:
+                return toggle_post(request, post=post)
+            else:
+                form = PostForm(request.POST, instance=post)
+                if form.is_valid():
+                    form.save()
+                    request.user.message_set.create(
+                        message='Your post was updated.')
         elif request.user.is_authenticated():
             form = ReplyForm(request.POST)
             if form.is_valid():
@@ -142,25 +145,19 @@ def view_post(request, id):
                                               'form': form,
                                               'sent': sent}))
 
-
-def top_needs(request):
-    need_water = Post.objects.open().filter(object__iexact='water',
-                                        unit__iexact='gallons',
-                                        type='need').aggregate(
-        total=Sum('number'))['total'] or 0
-
-    have_water = Post.objects.open().filter(object__iexact='water',
-                                      unit__iexact='gallons',
-                                      type='have').aggregate(
-        total=Sum('number'))['total'] or 0
-
-    net_water = need_water - have_water
-
-    return render_to_response('top_needs.html',
-                              RequestContext(request,
-                                             {'need_water':
-                                                  need_water,
-                                              'have_water':
-                                                  have_water,
-                                              'net_water':
-                                                  net_water}))
+@login_required
+def toggle_post(request, post_id=None, post=None):
+    
+    if not post:
+        post = Post.objects.get(pk=post_id)
+    post.fulfilled = request.POST.get('fulfilled', None) == 'true'
+    post.save()
+    
+    if request.is_ajax():
+        return HttpResponse('')
+    else:
+        next = request.POST.get('next', None)
+        if not next:
+            next = post.get_absolute_url()
+        return HttpResponseRedirect(next)
+    

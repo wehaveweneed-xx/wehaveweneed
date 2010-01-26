@@ -42,9 +42,11 @@
             {% for post in posts %}
                 <li class="post {% cycle 'even' 'odd' %}">
                     <h3 class="recentHeaders"><a href="{% url view_post post.pk %}">{{ post.title }}</a></h3>
-                    <form>
+                    <form action="{% url view_post post.pk %}" method="post" class="toggle_form">
+                        <input type="hidden" name="next" value="{% url account_settings %}" class="next" />
+                        <input type="hidden" name="fulfilled" value="{% if post.fulfilled %}false{% else %}true{% endif %}" class="fulfilled" />
                         <button class="fulfilledBtn" type="submit">
-                            <span>Hide Post</span>
+                            <span>{% if post.fulfilled %}Show{% else %}Hide{% endif %} Post</span>
                         </button>
                     </form>
                     <div class="clear"></div>
