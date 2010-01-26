@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% load timezone_filters %}
 
+{% block bodyClass %}post{% endblock %}
+
 {% block ltColumn %}
 
     {% ifequal user post.contact %}
-        <form action="." method="POST">
-            {{ form.as_p }}
-            <input type="submit" value="update post" />
-        </form>
+        {% include 'includes/post_form.html' %}
     {% else %}
         <h2>{{ post.type|title }} details</h2>
         <ul>
@@ -20,26 +19,24 @@
                 <span>{{ post.contact.get_profile.organization }}</span>
             </li>
             {% if user.is_authenticated and post.contact.get_profile.phone %}
-            <li>
-                <label>Phone #:</label>
-                <spah>{{ post.contact.get_profile.phone }}</span>
-            </li>
-        </ul>
-        {% endif %}
+                <li>
+                    <label>Phone #:</label>
+                    <spah>{{ post.contact.get_profile.phone }}</span>
+                </li>
+            {% endif %}    
     
-        <p><label>Location:</label> <span>{{ post.location }}</span></p>
-        <p><label>Posted at:</label> <span>{{ post.time_start|localtime:"EST"|date }}</span></p>
-        <p><label>Priority:</label> <span>{{ post.priority_full }}</span></p>
-        <p><label>Category:</label> <span>{{ post.category }}</span></p>
+            <p><label>Location:</label> <span>{{ post.location }}</span></p>
+            <p><label>Posted at:</label> <span>{{ post.time_start|localtime:"EST"|date }}</span></p>
+            <p><label>Priority:</label> <span>{{ post.priority_full }}</span></p>
+            <p><label>Category:</label> <span>{{ post.category }}</span></p>
     
         {% if post.object and post.number and post.unit %}
             <p><label>Specific {{post.type}}:</label> <span>{{post.number}} {{post.unit}} of {{post.object}}</span></p>
-        {% endif %}
+        {% endif %}  
     
         <p><label>Content:</label></p>
-        <p>{{ post.content|linebreaks }}</p>
-
-        <hr />
+        <p>{{ post.content|linebreaks }}</p>  
+        </ul>
     
         {% if user.is_authenticated %}
             <div id="replyBox">

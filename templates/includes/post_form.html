@@ -1,0 +1,50 @@
+<form id="postForm" action="." method="POST">
+    <ul>
+        <li>
+            {{ form.title.errors }}
+            <label for="id_title">{{ form.title.label }}</label>
+            {{ form.title }}
+        </li>
+        <li>
+            {{ form.type.errors }}
+            <label for="id_type">{{ form.type.label }}</label>
+            {{ form.type }}
+        </li>
+        <li>
+            {{ form.priority.errors }}
+            <label for="id_priority">{{ form.priority.label }}</label>
+            {{ form.priority }}
+        </li>
+        <li>
+            {{ form.location.errors }}
+            <label for="id_location">{{ form.location.label }}</label>
+            {{ form.location }}
+        </li>
+        <li>
+            {{ form.category.errors }}
+            <label for="id_category">{{ form.category.label }}</label>
+            {{ form.category }}
+        </li>
+        <li class="number_unit">
+            {{ form.number.errors }}
+            {{ form.unit.errors }}
+            <label for="id_number">{{ form.number.label }}</label>
+            {{ form.number }} {{ form.unit }}
+        </li>
+        <li>
+            {{ form.object.errors }}
+            <label for="id_object">{{ form.object.label }}</label>
+            {{ form.object }}
+        </li>
+        <li>
+            {{ form.content.errors }}
+            <label for="id_content">{{ form.content.label }}</label>
+            {{ form.content }}
+        </li>
+        <li>
+            <button class="postBtn" value="Post" type="submit">
+                <span>Save post</span>
+            </button>
+        </li>
+    </ul>
+</form>

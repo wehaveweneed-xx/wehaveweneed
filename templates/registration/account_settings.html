@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
-{% block featureBox %}
-<div id="featureBox">
+{% block ltColumn %}
   {% if updated %}
   Account settings updated successfully!
   {% endif %}
@@ -14,9 +13,21 @@
     <input type="submit" name="update" />
   </form>
 
-  <div class="warning">
-    Warning: Your name, organization, as well as your phone number
-    if you choose to include one, may be displayed publicly.
-  </div>
-</div>
+  <p class="warning">Warning: Your name, organization, as well as your phone number if you choose to include one, may be displayed publicly.</div>
+{% endblock %}
+
+{% block rtColumn %}
+    {% if posts %}
+        Your recent posts
+        <ol>
+            {% for post in posts %}
+                <li>
+                    <a href="{% url view_post post.pk %}">{{ post.title }}</a>
+                    <form>
+                        <input type="submit" value="Mark as fulfilled.">
+                    </form>
+                </li>
+            {% endfor %}
+        </ol>
+    {% endif %}
 {% endblock %}

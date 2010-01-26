@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.admin.views.decorators import staff_member_required
 from registration.models import RegistrationProfile
+from wehaveweneed.web.models import Post
 from wehaveweneed.accounts.utils import verify
 from wehaveweneed.accounts.forms import AccountSettingsForm
 
@@ -14,6 +15,7 @@ from wehaveweneed.accounts.forms import AccountSettingsForm
 def settings(request):
     updated = False
     profile = request.user.get_profile()
+    posts = Post.objects.filter(contact=request.user)
     if request.method == 'POST':
         form = AccountSettingsForm(request.POST)
         if form.is_valid():
@@ -32,7 +34,8 @@ def settings(request):
                               RequestContext(request,
                                              {'form': form,
                                               'user': request.user,
-                                              'updated': updated}))
+                                              'updated': updated,
+                                              'posts': posts}))
 
 def verify_email(request, verification_key,
                  template_name='registration/activate.html',
