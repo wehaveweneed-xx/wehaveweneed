@@ -47,7 +47,7 @@ urlpatterns += patterns('',
     url(r'^api/', include('wehaveweneed.api.urls')),
     url(r'^feeds/', include('wehaveweneed.api.feedurls')),
     url(r'^search/', PostSearchView(form_class=PostSearchForm)),
-    url(r'^termsofuse/','django.views.generic.simple.direct_to_template', {'template': 'termsofuse.html'}),
+    url(r'^termsofuse/','django.views.generic.simple.direct_to_template', {'template': 'termsofuse.html'}, name="termsofuse"),
     # deprecate /view/<id>/ in favor of /post/<id>/
     # this keeps the GET and POST behavior consistent
     url(r'^view/(?P<id>\d+)/$', 'django.views.generic.simple.redirect_to', {'url': '/post/%(id)s/'}),
