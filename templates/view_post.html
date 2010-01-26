@@ -10,13 +10,23 @@
     {% else %}
         <h2><span id="haveNeed_title">{{ post.type|title }}:</span> {{ post.title }}</h2>
         <dl>
-            <dt>Organization</dt>
-            <dd>{{ post.contact.get_profile.organization }}</dd>
             
-            {% if user.is_authenticated and post.contact.get_profile.phone %}
-                <dt>Phone #</dt>
-                <dd>{{ post.contact.get_profile.phone }}</dd>
-            {% endif %}    
+            {% if post.contact %}
+                {% with post.contact.get_profile as profile %}
+                    {% if profile %}
+                    
+                        <dt>Organization</dt>
+                        <dd>{{ profile.organization }}</dd>
+                        
+                        {% if user.is_authenticated and profile.phone %}
+                            <dt>Phone #</dt>
+                            <dd>{{ profile.phone }}</dd>
+                        {% endif %}
+                        
+                    {% endif %}
+                {% endwith %}
+            {% endif %}
+            
             <dt>Location</dt> 
             <dd>{{ post.location }}</dd>
 
