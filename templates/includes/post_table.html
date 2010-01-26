@@ -12,7 +12,7 @@
 						</thead>
 						<tbody>
 					            {% for post in post_list %}
-						    <tr class="{% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
+						    <tr class="post {% cycle 'even' 'odd' %}">
 								<td class="dataContent left">
 								    <a class="dataName" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
 								</td>
