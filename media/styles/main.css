@@ -201,6 +201,11 @@ p.warning { font-size: 95%; font-style: oblique; color: #9B9490; line-height: 18
 
 button { cursor: pointer;}
 button.searchBtn { background: url(/media/images/btn_go.png) top left no-repeat; width: 130px; height: 20px; text-indent: -9999em; display: block; border: none; margin-top: 1px;}
+button.updateBtn { background: url(/media/images/btn_update.png) top left no-repeat; width: 110px; height: 39px; text-indent: -9999em; display: block; border: none;}
+button.postBtn { background: url(/media/images/btn_savepost.png) top left no-repeat; width: 110px; height: 39px; text-indent: -9999em; display: block; border: none; margin-left: 120px;}
+button.signinBtn{ background: url(/media/images/btn_login.png) top left no-repeat; width: 110px; height: 39px; text-indent: -9999em; display: block; border: none; margin-left: 120px;}
+
+a.forgotPassword { margin-left: 120px;}
 
 span#haveNeed_title { text-transform: uppercase;}
 dt { font-weight: bold; float: left; width: 110px;}
