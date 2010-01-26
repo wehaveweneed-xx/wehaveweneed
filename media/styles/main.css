@@ -75,13 +75,16 @@ li.category_field label { margin-right: 10px; }
 }
 /* end search form styling */
 
-div#featureBox {
+div#featureBox, div#fulfilled {
     margin-bottom: 40px;
     background-color: #e5eaea;
     border: solid 2px #a0c1cd;
     padding: 15px;
     -moz-border-radius: 3px; -webkit-border-radius: 3px;
 }
+
+span#fulfilledHeader { float: left;}
+
 div#featureBox p {
     margin-bottom: 10px;
 }
@@ -141,6 +144,8 @@ label#timeHeader { float: none; margin-bottom: 10px;}
 ul#timeDetails label{ padding-left: 15px; color: #99918d;}
 ul#timeDetails input{ margin-left: -15px;}
 form li { margin-bottom: 15px;}
+
+div#ltColumn div#fulfilled form { margin-bottom: 0px;}
 
 div#ltColumn li.number_unit input { width: 100px; float: left; margin-right: 15px;}
 div#ltColumn li.number_unit select { width: 185px;}

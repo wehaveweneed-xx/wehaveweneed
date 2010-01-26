@@ -7,9 +7,18 @@
 
     {% ifequal user post.contact %}
         <h2>Edit '{{ post.title }}'</h2>
+        <div id="fulfilled">
+            <span id="fulfilledHeader">Make sure your post is up-to-date!</span>
+            <form>
+                <button class="fulfilledBtn" type="submit">
+                    <span>Hide Post</span>
+                </button>
+            </form>
+            <div class="clear"></div>
+        </div>
         {% include 'includes/post_form.html' %}
     {% else %}
-        <h2><span id="haveNeed_title">{{ post.type|title }}:</span> {{ post.title }}</h2>
+        <h2><span id="haveNeed_title">{{ post.type|title }}:</span> {{ post.title }}</h2>   
         <dl>
             
             {% if post.contact %}
