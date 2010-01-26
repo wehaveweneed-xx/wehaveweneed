@@ -1,19 +1,21 @@
 {% extends "base.html" %}
 
+{% block bodyClass %}registration{% endblock %}
+
 {% block featureBox %}
-<div id="featureBox">
-	<h2>Request Account</h2>
-	  <h3>An administrator will review your account and activate it as soon as possible.</h3>
-		<form action="." method="POST">
-			<fieldset>
-				{{ form.as_p }}
-				<input type="submit" value="Request" class="submit" />
-			</fieldset>
-		</form>
-		<div class="warning">
-			Warning: Your name, organization, and phone number (if you choose
-			to include one) may be shared publicly. Your email address will
-			not be shared publicly except with your permission.
-		</div>
+<div id="ltColumn">
+    <h2>Request Account</h2>
+    <p class="warning">An administrator will review your account and activate it as soon as possible.</p>
+    <p class="warning">Your name, organization, and phone number (if you choose to include one) may be shared publicly. Your email address will not be shared publicly except with your permission.</p>
+    <form action="." method="POST">
+        <ul>
+            {{ form.as_ul }}
+            <li>
+                <button class="requestBtn" type="submit">
+                    <span>Request Access</span>
+                </button>
+            </li>  
+        </ul>  
+    </form>
 </div>
 {% endblock %}

@@ -95,6 +95,7 @@ div#pageMain {
 h2, h3 { font-family: Georgia, Times New Roman, Times, serif; color:#55504E; margin-bottom: 20px;}
 h2 { font-size: 215%; line-height:30px; font-style: oblique;}
 h3 { font-size: 150%; }
+h3.withWarning { margin-bottom: 5px;}
 
 h2.detailHeader { float: left;}
 a#reportProblem { float: right; padding-top:5px;}
@@ -111,6 +112,7 @@ div.post_list.haves { width: 450px; margin-right: 30px;}
 div.post_list.needs { width: 450px; margin-left: 30px;}
 
 ul.post_list li.post { padding: 15px;}
+ul.post_list { margin-bottom: 20px;}
 
 body.home div#ltColumn { width: 290px; margin-top: 0px;}
 body.home div#rtColumn { width: 610px; margin-top: 0px;}
@@ -186,12 +188,16 @@ body.category div.post_list h2 {
     text-transform: capitalize;
 }
 
-p.warning { font-size: 95%; font-style: oblique; color: #9B9490; line-height: 18px;}
+p.warning { font-size: 95%; font-style: oblique; color: #9B9490; line-height: 18px; margin-bottom: 30px;}
 
 button { cursor: pointer;}
 button.searchBtn { background: url(/media/images/btn_go.png) top left no-repeat; width: 130px; height: 20px; text-indent: -9999em; display: block; border: none; margin-top: 1px;}
 
 span#haveNeed_title { text-transform: uppercase;}
 dt { font-weight: bold; float: left; width: 110px;}
+dd { float: left; width: 230px;}
+div#post_description { margin-top: 20px; margin-bottom: 30px;}
+div#replyBox { background-color: #f6f6f4; padding: 20px; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
+div#replyBox textarea { width: 450px;}
 
 .errorlist { color: red; }

@@ -1,20 +1,35 @@
 {% extends "base.html" %}
 
-{% block featureBox %}
-<div id="featureBox">
-  {% if form.errors %}
-    <p class="error">Sorry, that's not a valid username or password</p>
-  {% endif %}
+{% block bodyClass %}signin{% endblock %}
 
-  <form action='.' method='POST'>
-      <label for="username">User name:</label>
-      <input type="text" name="username" value="" id="username">
-      <br>
-      <label for="password">Password:</label>
-      <input type="password" name="password" value="" id="password">
-      <br>
-      <input type="submit" value="login" />
-      <input type="hidden" name="next" value="{{ next|escape }}" />
+{% block featureBox %}
+<div id="ltColumn">
+    <h2>Log In</h2>
+    {% if form.errors %}
+        <p class="error">Sorry, that's not a valid username or password</p>
+    {% endif %}
+    <form action='.' method='POST'>
+        <ul>
+            <li>
+                <label for="username">User name:</label>
+                <input type="text" name="username" value="" id="username">
+            </li>
+            <li>
+                <label for="password">Password:</label>
+                <input type="password" name="password" value="" id="password">
+            </li>
+            <li>
+                <a href="#">Forgot your password?</a>
+            </li>    
+            <li>
+                <button class="signinBtn" type="submit">
+                    <span>Sign In</span>
+                </button>
+            </li>
+            <li>
+                <input type="hidden" name="next" value="{{ next|escape }}" />
+            </li>
+        </ul>
   </form>
 </div>
 {% endblock %}

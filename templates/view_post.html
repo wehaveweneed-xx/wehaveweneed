@@ -42,13 +42,14 @@
                 <dt>Specific {{post.type}}</dt>
                 <dd>{{post.number}} {{post.unit}} of {{post.object}}</dd>
             {% endif %}  
-            <dt>Content</dt>
-            <dd>{{ post.content|linebreaks }}</dd> 
         </dl>
+        <div class="clear"></div>
+        <div id="post_description">{{ post.content|linebreaks }}</div>
     
         {% if user.is_authenticated %}
         <div id="replyBox">
-            <h3>Reply</h3>
+            <h3 class="withWarning">Reply</h3>
+            <p class="warning">Your email address will be shared with the person you're replying to.</p>
             <form action="." method="POST">
                 <ul>
                     {{ form.as_ul }}
@@ -59,7 +60,6 @@
                     </li>
                 </ul>
             </form>
-            <p class="warning">Warning: your email address will be shared with the person you're replying to.</p>
         </div>
         {% else %}
         Please <a href="/login/">login</a> or
