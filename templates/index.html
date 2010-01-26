@@ -16,7 +16,7 @@
 {% block ltColumn %}
     <div id="description" class="module">
         <h2>Welcome to We Have We Need</h2>
-        <p>We Have We Need is a place where relief organizations can quickly post their most urgent needs and have them matched by generous donors during a time of crisis. This site was built by a group of geeky do-gooders who saw this as an opportunity to use technology to help bring people and donations together in the aftermath of a devastating earthquake in Haiti.</p>
+        <p>We Have We Need is a place where relief organizations can quickly post their most urgent needs and have them matched by generous donors during a time of crisis.</p>
         <p>If you'd like to participate in the program, <a href="mailto:help@wehaveweneed.org">please let us know</a>.</p>
     </div>  
     <div id="categories" class="module">  
@@ -37,14 +37,5 @@
 {% block rtColumn %}
     <h2>Recent Haves and Needs</h2>
     {% include 'includes/post_list.html' %}
-    {% if is_paginated %}
-        <p id="pagination">
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="next">Next</a>
-            {% endif %}
-            {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}" class="previous">Previous</a>
-            {% endif %}
-        </p>
-    {% endif %}
+    View more <a href="{% url web_viewallhaves %}">haves</a> and <a href="{% url web_viewallneeds %}">needs</a>.
 {% endblock %}  <!-- rtColumn -->

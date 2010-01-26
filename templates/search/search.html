@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 {% load timezone_filters %}
 
-{% block featureBox %}
-    <div id="featureBox">
+{% block ltColumn %}
       <h3>Search results:</h3>
       <ul class="post_list">
         {% for post in page.object_list %}
-        <li class="post {% if forloop.counter.is_even %}even{% else %}odd{% endif %}">
+        <li class="post {% cycle 'even' 'odd' %}">
           <h4>
             <a class="dataName" href="{{ post.object.get_absolute_url }}">
               {{ post.title }}
@@ -18,5 +17,4 @@
         </li>
         {% endfor %}
       </ul>
-    </div>
 {% endblock %}

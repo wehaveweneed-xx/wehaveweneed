@@ -1,18 +1,16 @@
 {% extends "base.html" %}
 
 {% block ltColumn %}
-	<div class="post_list">
-	    <h2>{% block body_title %}{% endblock %}</h2>
-	    {% include 'includes/post_list.html' %}
-    	{% if is_paginated %}
-    		<p id="pagination">
-    			{% if page_obj.has_next %}
-    				<a href="?page={{ page_obj.next_page_number }}" class="next">Next</a>
-    			{% endif %}
-    			{% if page_obj.has_previous %}
-    				<a href="?page={{ page_obj.previous_page_number }}" class="previous">Previous</a>
-    			{% endif %}
-    		</p>
-    	{% endif %}
-    </div>
+    <h2>{% block body_title %}{% endblock %}</h2>
+    {% include 'includes/post_list.html' %}
+	{% if is_paginated %}
+		<p id="pagination">
+			{% if page_obj.has_next %}
+				<a href="?page={{ page_obj.next_page_number }}" class="next">Next</a>
+			{% endif %}
+			{% if page_obj.has_previous %}
+				<a href="?page={{ page_obj.previous_page_number }}" class="previous">Previous</a>
+			{% endif %}
+		</p>
+	{% endif %}
 {% endblock %}  <!-- ltColumn -->

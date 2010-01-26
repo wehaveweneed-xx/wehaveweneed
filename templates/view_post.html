@@ -1,53 +1,55 @@
 {% extends "base.html" %}
 {% load timezone_filters %}
 
-{% block featureBox %}
-<div id="featureBox">
-  {% ifequal user post.contact %}
-  <form action="." method="POST">
-    {{ form.as_p }}
-    <input type="submit" value="update post" />
-  </form>
-  {% else %}
-  <h3>{{ post.type|title }} details:</h3>
-  <p><label>Title:</label> <span>{{ post.title }}</span></p>
-  <p>
-    <label>Organization:</label>
-    <span>{{ post.contact.get_profile.organization }}</span>
-  </p>
-  {% if user.is_authenticated and post.contact.get_profile.phone %}
-    <p>
-      <label>Phone #:</label>
-      <spah>{{ post.contact.get_profile.phone }}</span>
-    </p>
-  {% endif %}
-  <p><label>Location:</label> <span>{{ post.location }}</span></p>
-  <p><label>Posted at:</label> <span>{{ post.time_start|localtime:"EST"|date }}</span></p>
-  <p><label>Priority:</label> <span>{{ post.priority_full }}</span></p>
-  <p><label>Category:</label> <span>{{ post.category }}</span></p>
-  {% if post.object and post.number and post.unit %}
-  <p><label>Specific {{post.type}}:</label> <span>{{post.number}} {{post.unit}} of {{post.object}}</span></p>
-  {% endif %}
-  <p><label>Content:</label></p>
-  <p>{{ post.content|linebreaks }}</p>
+{% block ltColumn %}
 
-  <hr />
-  {% if user.is_authenticated %}
-  <div id="replyBox">
-    <h3>Reply:</h3>
-    <form action="." method="POST">
-      {{ form.as_p }}
-      <input type="submit" value="submit" />
-    </form>
+    {% ifequal user post.contact %}
+        <form action="." method="POST">
+            {{ form.as_p }}
+            <input type="submit" value="update post" />
+        </form>
+    {% else %}
+        <h3>{{ post.type|title }} details:</h3>
+        <p><label>Title:</label> <span>{{ post.title }}</span></p>
+        <p>
+            <label>Organization:</label>
+            <span>{{ post.contact.get_profile.organization }}</span>
+        </p>
+        {% if user.is_authenticated and post.contact.get_profile.phone %}
+            <p>
+                <label>Phone #:</label>
+                <spah>{{ post.contact.get_profile.phone }}</span>
+            </p>
+        {% endif %}
+    
+        <p><label>Location:</label> <span>{{ post.location }}</span></p>
+        <p><label>Posted at:</label> <span>{{ post.time_start|localtime:"EST"|date }}</span></p>
+        <p><label>Priority:</label> <span>{{ post.priority_full }}</span></p>
+        <p><label>Category:</label> <span>{{ post.category }}</span></p>
+    
+        {% if post.object and post.number and post.unit %}
+            <p><label>Specific {{post.type}}:</label> <span>{{post.number}} {{post.unit}} of {{post.object}}</span></p>
+        {% endif %}
+    
+        <p><label>Content:</label></p>
+        <p>{{ post.content|linebreaks }}</p>
 
-    <p>Warning: your email address will be shared with the person
-    you're replying to!</p>
-  </div>
+        <hr />
+    
+        {% if user.is_authenticated %}
+            <div id="replyBox">
+                <h3>Reply:</h3>
+                <form action="." method="POST">
+                    {{ form.as_p }}
+                    <input type="submit" value="submit" />
+                </form>
 
-  {% else %}
-  Please <a href="/login/">login</a> or
-  <a href="/accounts/request/">request access</a> to reply.
-  {% endif %} <!-- if user post.contact -->
-  {% endifequal %} <!-- ifequal user post.user -->
-</div>
+                <p>Warning: your email address will be shared with the person you're replying to!</p>
+            </div>
+        {% else %}
+            Please <a href="/login/">login</a> or
+            <a href="/accounts/request/">request access</a> to reply.
+        {% endif %} <!-- if user post.contact -->
+    
+    {% endifequal %} <!-- ifequal user post.user -->
 {% endblock %}
