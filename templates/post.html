@@ -3,17 +3,18 @@
 {% block bodyClass %}post{% endblock %}
 
 {% block ltColumn %}
-  <h2>Post</h2>
-  <form id="postForm" action="." method="POST">
-    <fieldset>
-      {{ form.as_p }}
-      <input type="submit" value="Post" class="submit" />
-    </fieldset>
-  </form>
-  <div class="warning">
-    Warning: All data entered on this form, as well as the
-    organization associated with your account, will be displayed publicly.
-    Your name, email address and phone number (if provided)
-    will only be shared with other verified users of We Have We Need.
-  </div>
+    <h2>Post</h2>
+    <form id="postForm" action="." method="POST">
+        <ul>
+            <li>
+                {{ form.as_ul }}
+            </li>
+            <li>
+                <button class="postBtn" value="Post" type="submit">
+                    <span>Post</span>
+                </button>
+            </li>
+        </ul>
+    </form>
+    <p class="warning">Warning: All data entered on this form, as well as the organization associated with your account, will be displayed publicly. Your name, email address and phone number (if provided) will only be shared with other verified users of We Have We Need.</p>
 {% endblock %}  <!-- ltColumn -->

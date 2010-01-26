@@ -84,7 +84,7 @@ div#featureBox {
 div#featureBox p {
     margin-bottom: 10px;
 }
-select { padding: 2px 0; margin-right: 5px;}
+select { padding: 2px 0;}
 
 div#pageMain { 
     width: 960px; 
@@ -117,6 +117,8 @@ body.home div#rtColumn { width: 610px; margin-top: 0px;}
 
 body.category div#ltColumn { width: 390px;}
 body.category div#rtColumn { width: 510px;}
+
+div#ltColumn select { width: 303px;}
 
 div#categories { background-color: #f6f6f4; padding: 15px; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
 
@@ -178,6 +180,8 @@ body.category div.post_list h2 {
     margin-bottom: 1.5em;
     text-transform: capitalize;
 }
+
+div.warning { font-size: 95%; font-style: oblique; color: #9B9490; line-height: 18px;}
 
 button { cursor: pointer;}
 button.searchBtn { background: url(/media/images/btn_go.png) top left no-repeat; width: 130px; height: 20px; text-indent: -9999em; display: block; border: none; margin-top: 1px;}
