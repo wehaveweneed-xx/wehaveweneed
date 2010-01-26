@@ -45,7 +45,7 @@
                     <form action="{% url view_post post.pk %}" method="post" class="toggle_form">
                         <input type="hidden" name="next" value="{% url account_settings %}" class="next" />
                         <input type="hidden" name="fulfilled" value="{% if post.fulfilled %}false{% else %}true{% endif %}" class="fulfilled" />
-                        <button class="fulfilledBtn" type="submit">
+                        <button class="fulfilledBtn {% if post.fulfilled %}fulfilled{% endif %}" type="submit">
                             <span>{% if post.fulfilled %}Show{% else %}Hide{% endif %} Post</span>
                         </button>
                     </form>
