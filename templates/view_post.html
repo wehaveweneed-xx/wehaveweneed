@@ -8,49 +8,52 @@
     {% ifequal user post.contact %}
         {% include 'includes/post_form.html' %}
     {% else %}
-        <h2>{{ post.type|title }} details</h2>
-        <ul>
-            <li>
-                <label>Title:</label>
-                <span>{{ post.title }}</span>
-            </li>
-            <li>
-                <label>Organization:</label>
-                <span>{{ post.contact.get_profile.organization }}</span>
-            </li>
+        <h2><span id="haveNeed_title">{{ post.type|title }}:</span> {{ post.title }}</h2>
+        <dl>
+            <dt>Organization</dt>
+            <dd>{{ post.contact.get_profile.organization }}</dd>
+            
             {% if user.is_authenticated and post.contact.get_profile.phone %}
-                <li>
-                    <label>Phone #:</label>
-                    <spah>{{ post.contact.get_profile.phone }}</span>
-                </li>
+                <dt>Phone #</dt>
+                <dd>{{ post.contact.get_profile.phone }}</dd>
             {% endif %}    
-    
-            <p><label>Location:</label> <span>{{ post.location }}</span></p>
-            <p><label>Posted at:</label> <span>{{ post.time_start|localtime:"EST"|date }}</span></p>
-            <p><label>Priority:</label> <span>{{ post.priority_full }}</span></p>
-            <p><label>Category:</label> <span>{{ post.category }}</span></p>
-    
-        {% if post.object and post.number and post.unit %}
-            <p><label>Specific {{post.type}}:</label> <span>{{post.number}} {{post.unit}} of {{post.object}}</span></p>
-        {% endif %}  
-    
-        <p><label>Content:</label></p>
-        <p>{{ post.content|linebreaks }}</p>  
-        </ul>
+            <dt>Location</dt> 
+            <dd>{{ post.location }}</dd>
+
+            <dt>Posted at</dt>
+            <dd>{{ post.time_start|localtime:"EST"|date }}</dd>
+
+            <dt>Priority</dt>
+            <dd>{{ post.priority_full }}</dd>
+
+            <dt>Category</dt>
+            <dd>{{ post.category }}</dd>
+            {% if post.object and post.number and post.unit %}
+                <dt>Specific {{post.type}}</dt>
+                <dd>{{post.number}} {{post.unit}} of {{post.object}}</dd>
+            {% endif %}  
+            <dt>Content</dt>
+            <dd>{{ post.content|linebreaks }}</dd> 
+        </dl>
     
         {% if user.is_authenticated %}
-            <div id="replyBox">
-                <h3>Reply:</h3>
-                <form action="." method="POST">
-                    {{ form.as_p }}
-                    <input type="submit" value="submit" />
-                </form>
-
-                <p>Warning: your email address will be shared with the person you're replying to!</p>
-            </div>
+        <div id="replyBox">
+            <h3>Reply</h3>
+            <form action="." method="POST">
+                <ul>
+                    {{ form.as_ul }}
+                    <li>
+                        <button class="submitBtn" type="submit">
+                            <span>Submit</span>
+                        </button>
+                    </li>
+                </ul>
+            </form>
+            <p class="warning">Warning: your email address will be shared with the person you're replying to.</p>
+        </div>
         {% else %}
-            Please <a href="/login/">login</a> or
-            <a href="/accounts/request/">request access</a> to reply.
+        Please <a href="/login/">login</a> or
+        <a href="/accounts/request/">request access</a> to reply.
         {% endif %} <!-- if user post.contact -->
     
     {% endifequal %} <!-- ifequal user post.user -->
