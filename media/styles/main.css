@@ -54,9 +54,9 @@ li#nav_post a, li#nav_have a, li#nav_need a { text-indent: -9999em; display: blo
 li#nav_post a { background: url(/media/images/nav_post.png) top left no-repeat; }
 li#nav_have a { background: url(/media/images/nav_have.png) top left no-repeat; }
 li#nav_need a { background: url(/media/images/nav_need.png) top left no-repeat; }
-li#nav_post a:hover, body.post li#nav_post { background: url(/media/images/nav_post.png) left -39px no-repeat; }
-li#nav_have a:hover, body.have li#nav_post  { background: url(/media/images/nav_have.png) left -39px no-repeat; }
-li#nav_need a:hover, body.need li#nav_post  { background: url(/media/images/nav_need.png) left -39px no-repeat; }
+li#nav_post a:hover, body.post li#nav_post a { background: url(/media/images/nav_post.png) left -39px no-repeat; }
+li#nav_have a:hover, body.have li#nav_have a { background: url(/media/images/nav_have.png) left -39px no-repeat; }
+li#nav_need a:hover, body.need li#nav_need a { background: url(/media/images/nav_need.png) left -39px no-repeat; }
 
 div#nav li a { text-decoration: none; text-transform: uppercase;}
 

@@ -59,28 +59,34 @@ def category(request, category_slug):
 def viewhaves(request, category=None):
     posts = Post.objects.open().filter(type="have")
     if category:
-        posts = posts.filter(category__slug=category)
+        cat = Category.objects.get(slug=category)
+        posts = posts.filter(category=cat)
+    else:
+        cat = None
     return object_list(
         request,
         queryset=posts,
         paginate_by=getattr(settings, 'PAGINATE_POSTS_BY', 10),
         template_name='haves.html',
         template_object_name='post',
-        extra_context={ 'category': category },
+        extra_context={ 'category': cat },
         allow_empty=True,
     )
 
 def viewneeds(request, category=None):
     posts = Post.objects.open().filter(type="need")
     if category:
-        posts = posts.filter(category__slug=category)
+        cat = Category.objects.get(slug=category)
+        posts = posts.filter(category=cat)
+    else:
+        cat = None
     return object_list(
         request,
         queryset=posts,
         paginate_by=getattr(settings, 'PAGINATE_POSTS_BY', 10),
         template_name='needs.html',
         template_object_name='post',
-        extra_context={ 'category': category },
+        extra_context={ 'category': cat },
         allow_empty=True,
     )
 
