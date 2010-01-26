@@ -6,6 +6,7 @@
 {% block ltColumn %}
 
     {% ifequal user post.contact %}
+        <h2>Edit '{{ post.title }}'</h2>
         {% include 'includes/post_form.html' %}
     {% else %}
         <h2><span id="haveNeed_title">{{ post.type|title }}:</span> {{ post.title }}</h2>
