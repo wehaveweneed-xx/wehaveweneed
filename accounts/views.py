@@ -19,22 +19,40 @@ def settings(request):
     if request.method == 'POST':
         form = AccountSettingsForm(request.POST)
         if form.is_valid():
-            profile.organization = form.cleaned_data['organization']
-            profile.phone = form.cleaned_data['phone']
-            profile.twitter = form.cleaned_data['twitter']
+            
+            data = form.cleaned_data
+            
+            request.user.username = data['username']
+            request.user.email = data['email']
+            request.user.first_name = data['first_name']
+            request.user.last_name = data['last_name']
+            
+            profile.organization = data['organization']
+            profile.phone = data['phone']
+            profile.twitter = data['twitter']
+            
+            request.user.save()
             profile.save()
-            updated = True
+            
+            request.user.message_set.create(
+                message='Your account settings have been updated.')
+            return HttpResponseRedirect(reverse('account_settings'))
+            
     else:
-        form = AccountSettingsForm(
-            {'organization': profile.organization,
-             'phone': profile.phone,
-             'twitter': profile.twitter})
+        form = AccountSettingsForm({
+            'username': request.user.username,
+            'email': request.user.email,
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+            'organization': profile.organization,
+            'phone': profile.phone,
+            'twitter': profile.twitter
+        })
 
     return render_to_response('registration/account_settings.html',
                               RequestContext(request,
                                              {'form': form,
                                               'user': request.user,
-                                              'updated': updated,
                                               'posts': posts}))
 
 def verify_email(request, verification_key,
