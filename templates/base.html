@@ -26,15 +26,15 @@
                     {% if user.is_authenticated %}
                     <div id="utility">
                         <ul>
-                            <li id="utilityRegister"><a href="/accounts/settings/">Account Settings</a></li>
-                            <li id="utilityLogout"><a href="/logout/">Log Out</a></li>
+                            <li id="utilityRegister"><a href="{% url account_settings %}">Account Settings</a></li>
+                            <li id="utilityLogout"><a href="{% url django.contrib.auth.views.logout %}">Log Out</a></li>
                         </ul>
                     </div>
                     {% else %}
                     <div id="utility">
                         <ul>
-                            <li id="utilityRegister"><a href="/accounts/request/">Request Access</a></li>
-                            <li id="utilitySignup"><a href="/login/">Log In</a></li>
+                            <li id="utilityRegister"><a href="{% url request_account %}">Request Access</a></li>
+                            <li id="utilitySignup"><a href="{% url django.contrib.auth.views.login %}">Log In</a></li>
                         </ul>
                     </div>
                     {% endif %}

@@ -6,6 +6,7 @@
     {% if updated %}
         Account settings updated successfully!
     {% endif %}
+    <p>Would you like to <a href="{% url django.contrib.auth.views.password_change %}">change your password</a>?</p>
     <form action="." method="POST">
         <ul>
             <li>

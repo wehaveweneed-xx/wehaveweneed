@@ -17,15 +17,15 @@ urlpatterns = patterns('',
     #    'registration.views.activate',
     #    {'extra_context': {'auth_form': AuthenticationForm()}},
     #    name='registration_activate'),
+    url(r'^accounts/request/$', 'registration.views.register', {'form_class': RegistrationForm}, name="request_account"),
     url(r'^accounts/settings/$', 'wehaveweneed.accounts.views.settings', name="account_settings"),
-    url(r'^accounts/request/$', 'registration.views.register', {'form_class': RegistrationForm}),
     url(r'^register/complete/$', direct_to_template,
            {'template': 'registration/registration_complete.html'},
            name='registration_complete'),
     url(r'^accounts/verify_email/(?P<verification_key>\w+)/$', 'wehaveweneed.accounts.views.verify_email'),
     url(r'^accounts/admin_activate/', 'wehaveweneed.accounts.views.admin_activate'),
-    url(r'^login/', login, { 'template_name': 'registration/login.html' }),
-    url(r'^logout/', logout_then_login ),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', { 'next_page': '/' }),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 )
 
 # have/need views
