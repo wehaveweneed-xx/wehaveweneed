@@ -9,7 +9,51 @@
     <p class="warning">Your name, organization, and phone number (if you choose to include one) may be shared publicly. Your email address will not be shared publicly except with your permission.</p>
     <form action="." method="POST">
         <ul>
-            {{ form.as_ul }}
+            <li>
+                {{ form.username.errors }}
+                <label for="id_{{ form.username.html_name }}">User Name</label>
+                {{ form.username }}
+            </li>
+            <li>
+                {{ form.email.errors }}
+                <label for="id_{{ form.email.html_name }}">Email</label>
+                {{ form.email }}
+            </li>
+            <li>
+                {{ form.password1.errors }}
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </li>
+            <li>
+                {{ form.password2.errors }}
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </li>
+            <li>
+                {{ form.first_name.errors }}
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+            </li>
+            <li>
+                {{ form.last_name.errors }}
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+            </li>
+            <li>
+                {{ form.organization.errors }}
+                {{ form.organization.label_tag }}
+                {{ form.organization }}
+            </li>
+            <li>
+                {{ form.phone.errors }}
+                {{ form.phone.label_tag }}
+                {{ form.phone }}
+            </li>
+            <li>
+                {{ form.twitter.errors }}
+                {{ form.twitter.label_tag }}
+                {{ form.twitter }}
+            </li>
             <li>
                 <button class="requestBtn" type="submit">
                     <span>Request Access</span>

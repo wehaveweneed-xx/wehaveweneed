@@ -18,7 +18,12 @@
     <p>Would you like to <a href="{% url django.contrib.auth.views.password_change %}">change your password</a>?</p>
     <form action="." method="POST">
         <ul>
-            {{ form.as_ul }}
+            {% for field in form %}
+                <li>
+                    {{ field.label_tag }}
+                    {{ field }}
+                </li>
+            {% endfor %}
             <li>
                 <button class="updateBtn" name="update" type="submit">
                     <span>Update</span>

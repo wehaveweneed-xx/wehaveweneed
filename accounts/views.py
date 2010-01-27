@@ -70,9 +70,6 @@ def verify_email(request, verification_key,
                               { 'account': account},
                               context_instance=context)
 
-def reset_password(request):
-    pass
-
 @staff_member_required
 def admin_activate(request):
     if request.method == 'POST':
