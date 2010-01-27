@@ -149,6 +149,7 @@ div#ltColumn div#fulfilled form { margin-bottom: 0px;}
 
 div#ltColumn li.number_unit input { width: 100px; float: left; margin-right: 15px;}
 div#ltColumn li.number_unit select { width: 185px;}
+div#ltColumn label { text-transform: capitalize;}
 
 div#ltColumn input, div#ltColumn textarea { width: 300px;}
 div#ltColumn input.radio { margin-right: 7px; width: 15px;}
