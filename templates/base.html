@@ -48,11 +48,9 @@
                         </ul>
                     </div>
                     <div class="clear"></div>
-                    {% block search %}
                     <div id="search">
-                        {% search_bar %}
-                    </div>	
-                    {% endblock %}  <!-- search -->
+	                    {% block search %}{% search_bar %}{% endblock %}
+                    </div>
                 </div>
                 {% block featureBox %}{% endblock %}
                 <div id="ltColumn">
