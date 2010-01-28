@@ -20,6 +20,7 @@
         <ul>
             {% for field in form %}
                 <li>
+					{{ field.errors }}
                     {{ field.label_tag }}
                     {{ field }}
                 </li>
