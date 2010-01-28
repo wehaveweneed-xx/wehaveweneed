@@ -136,6 +136,7 @@ span.detailHeader { font-weight: bold; width: 120px; display: block; float: left
 div#contactInfo { margin-top: 20px; background: #dee6ec; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 20px; border: 1px solid #ccd4da; margin-bottom: 30px;}
 div#contactInfo h3 { float: left; margin-right: 15px;}
 
+div#description h2 { padding-right: 20px; }
 div#description p { font-size: 110%; line-height:23px}
 div.module { margin-bottom: 30px;}
 
