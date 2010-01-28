@@ -38,12 +38,12 @@ class RegistrationForm(RegistrationFormUniqueEmail):
 class PostForm(forms.ModelForm):
     number = forms.IntegerField(required=False,
                                 min_value=0, initial=0,
-                                label='Number (optional):')
+                                label='Number (optional)')
     unit = forms.ChoiceField(required=False,
                              choices=UNITS, initial='',
-                             label='Unit (optional):')
+                             label='Unit (optional)')
     object = forms.CharField(required=False,
-                             label='Item (optional):')
+                             label='Item (optional)')
     category = forms.ModelChoiceField(Category.objects.all(),
                                       empty_label='')
 
