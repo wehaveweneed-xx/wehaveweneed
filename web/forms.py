@@ -44,8 +44,11 @@ class PostForm(forms.ModelForm):
                              label='Unit (optional)')
     object = forms.CharField(required=False,
                              label='Item (optional)')
-    category = forms.ModelChoiceField(Category.objects.all(),
-                                      empty_label='')
+
+    def __init__(self, *args, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+        choices = (('', ''),) + tuple(Category.objects.values_list('slug', 'name'))
+        self.fields['category'] = forms.ChoiceField(required=True, choices=choices)
 
     class Meta:
         model = Post
