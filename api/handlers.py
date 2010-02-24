@@ -1,8 +1,11 @@
+import datetime
+import time
 import urlparse
+from django.http import HttpResponse
+from django.contrib.sites.models import Site
 from haystack.query import SearchQuerySet, RelatedSearchQuerySet
 from piston.handler import BaseHandler, AnonymousBaseHandler
 from piston.utils import rc, validate
-from django.contrib.sites.models import Site
 from wehaveweneed.web.forms import PostForm
 from wehaveweneed.web.models import Category, Post, User
 
@@ -63,20 +66,23 @@ class PostHandler(BaseHandler):
 
     @validate(PostForm) # validate against post form
     def create(self, request):
-        data = request.POST
+        # Doing another validation here to get the benefit of 'cleaned_data'
+        form = PostForm(request.POST)
+        form.is_valid()
+        data = form.cleaned_data
         post = self.model(
             title=data['title'],
             type=data['type'],
             priority=data['priority'],
             location=data['location'],
-            #time_start=data.get('time_start', None),  #### need to parse time
-            #time_end=data.get('time_end', None),
-            #category=Category.objects.get(slug=data['category']),
-            category=Category.objects.get(pk=data['category']),
-            #contact=request.user,
+            time_start=data.get('time_start', datetime.datetime.utcnow()),
+            time_end=data.get('time_end', None),
+            category=Category.objects.get(slug=data['category']),
+            contact=request.user,
             content=data['content'],
         )
         post.save()
-        print post.pk
-        return rc.CREATED
-
+        response_msg = "%s" % post.pk
+        # Manually create an HTTP response to set both the message body,
+        # and the HTTP return code properly.
+        return HttpResponse(response_msg, mimetype="text/plain", status=201)

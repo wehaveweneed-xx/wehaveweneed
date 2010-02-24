@@ -1,7 +1,9 @@
 from django.conf.urls.defaults import *
 from piston.resource import Resource
+from piston.authentication import HttpBasicAuthentication
 from wehaveweneed.api.handlers import CategoryHandler, PostHandler
 
+authenticated_post_resource = Resource(PostHandler, authentication=HttpBasicAuthentication())
 post_resource = Resource(PostHandler)
 category_resource = Resource(CategoryHandler)
 
@@ -13,7 +15,7 @@ urlpatterns = patterns('',
 # individual post
 urlpatterns += patterns('',
     url(r'^post/(?P<post_id>\d+).(?P<emitter_format>.+)$', post_resource),
-    url(r'^post/$', post_resource),
+    url(r'^post/$', authenticated_post_resource),
 )
 
 # post listings

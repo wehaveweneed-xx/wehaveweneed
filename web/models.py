@@ -72,7 +72,7 @@ class Post(models.Model):
     geostamp    = models.CharField(max_length=100, blank=True)
     time_start  = models.DateTimeField(default=datetime.utcnow, blank=True)
     time_end    = models.DateTimeField(blank=True, null=True)
-    category    = models.ForeignKey(Category)
+    category    = models.ForeignKey(Category, to_field="slug")
     contact     = models.ForeignKey(User, blank=True, null=True)
     content     = models.TextField()
     responses   = models.IntegerField(default=0)
