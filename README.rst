@@ -20,10 +20,7 @@ Requirements
 
 We Have We Need is written in Python using Django framework. A pip requirements.txt
 file is include in the project. If you do not have pip, use requirements.txt as a
-guide for the packages that need to be installed. The current requirements are:
-
-.. include:: requirements.txt
-   :literal:
+guide for the packages that need to be installed.
 
 Run We Have We Need From Scratch
 ================================
@@ -80,7 +77,7 @@ Get Application Running
     cd wehaveweneed
 
 In order to run the application, you must first customize the Django settings
-to your specific configuration. Please refer to the settings_ section.
+to your specific configuration. Please refer to the `Settings` section.
 
 If you are using SQLite as your database, just run syncdb::
 
@@ -95,8 +92,6 @@ The app is now running and is available on localhost: http://127.0.0.1:8000/
 
 Settings
 ========
-
-.. _example:
 
 Copy the `local_settings.example.py` file to `local_settings.py` and configure
 the included settings. The django documentation
