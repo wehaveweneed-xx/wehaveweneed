@@ -1,6 +1,6 @@
-======================
-README:We Have We Need
-======================
+===============
+We Have We Need
+===============
 
 Overview
 ========
@@ -13,7 +13,8 @@ as an opportunity to use technology to help bring people and donations together
 in the aftermath of a devastating earthquake in Haiti.
 
 This code is made available under a BSD-style license (see the `LICENSE` file).
-A `mailing list <http://groups.google.com/group/wehave_weneed>`_ exists for development discussion. The code is hosted on `GitHub <http://github.com/wehaveweneed/wehaveweneed>`_.
+A `mailing list <http://groups.google.com/group/wehave_weneed>`_ exists for development discussion.
+The code is hosted on `GitHub <http://github.com/wehaveweneed/wehaveweneed>`_.
 
 Requirements
 ============
@@ -74,6 +75,7 @@ Get Application Running
 -----------------------
 ::
 
+    source wehaveweneed-virt/bin/activate
     cd wehaveweneed
 
 In order to run the application, you must first customize the Django settings
