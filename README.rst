@@ -114,6 +114,8 @@ API Examples
 
 WeNeed API Examples!
 
+curl --basic -u "username:password" -d "category=transportation&content=I+would+be+glad+to+give+up+my+moped&title=I+have+a+moped&priority=mid&location=Maryland&type=have" http://localhost:8000/api/post/
+
 
 HELP
 =====

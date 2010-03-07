@@ -28,6 +28,7 @@ class ContactHandler(BaseHandler):
 
 class AnonymousPostHandler(AnonymousBaseHandler):
     model = Post
+    allowed_methods = ('GET',)
 
 class PostHandler(BaseHandler):
     """
