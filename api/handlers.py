@@ -57,7 +57,7 @@ class PostHandler(BaseHandler):
             if category:
                 cat = Category.objects.get(slug=category)
                 posts = posts.filter(category=cat)
-                search = search.filter(category_id=cat.pk)
+                search = search.filter(category=cat.slug)
             q = request.GET.get('q', None)
             if q:
                 search = search.filter(content=q)

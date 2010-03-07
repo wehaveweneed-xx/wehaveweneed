@@ -17,10 +17,10 @@ class PostSearchForm(SearchForm):
     have = forms.BooleanField(initial=True, required=False)
     need = forms.BooleanField(initial=True, required=False)
 
-    category = CategoryChoiceField(queryset=Category.objects.all(),
-                                   empty_label='all categories',
-                                   required=False)
-
+    def __init__(self, *args, **kwargs):
+        super(PostSearchForm, self).__init__(*args, **kwargs)
+        choices = (('', 'all categories'),) + tuple(Category.objects.values_list('slug', 'name'))
+        self.fields['category'] = forms.ChoiceField(required=True, choices=choices)
 
     def search(self):
         if self.is_valid():
@@ -35,7 +35,7 @@ class PostSearchForm(SearchForm):
 
         category = self.cleaned_data.get('category')
         if category:
-            sqs = sqs.filter(category_id=category.id)
+            sqs = sqs.filter(category=category)
 
         have = self.cleaned_data['have']
         need = self.cleaned_data['need']
