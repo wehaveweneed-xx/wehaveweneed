@@ -49,20 +49,15 @@ class PostHandler(BaseHandler):
         if post_id:
             return Post.objects.get(pk=post_id)
         else:
-            posts = Post.objects.open()
             search = SearchQuerySet()
             if post_type:
-                posts = posts.filter(type=post_type)
                 search = search.filter(type=post_type)
             if category:
-                cat = Category.objects.get(slug=category)
-                posts = posts.filter(category=cat)
-                search = search.filter(category=cat.slug)
+                search = search.filter(category=category)
             q = request.GET.get('q', None)
             if q:
                 search = search.filter(content=q)
-                posts = posts.filter(id__in=[r.pk for r in search])
-            return posts
+            return [r.object for r in search.load_all()]
 
     @validate(PostForm) # validate against post form
     def create(self, request):
