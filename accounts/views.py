@@ -7,14 +7,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.admin.views.decorators import staff_member_required
 from registration.models import RegistrationProfile
-from wehaveweneed.web.models import Post
+from wehaveweneed.web.models import Post, UserProfile
 from wehaveweneed.accounts.utils import verify
 from wehaveweneed.accounts.forms import AccountSettingsForm
 
 @login_required
 def settings(request):
     updated = False
-    profile = request.user.get_profile()
+    try:
+        profile = request.user.get_profile()
+    except UserProfile.DoesNotExist:
+        profile = UserProfile(user=request.user, organization='We Have We Need')
+        profile.save()
     posts = Post.objects.filter(contact=request.user)
     if request.method == 'POST':
         form = AccountSettingsForm(request.POST)
